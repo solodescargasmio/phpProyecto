@@ -11,6 +11,6 @@ and open the template in the editor.
     </head>
     <body>
         
-        <a href="mostrartodos.php">Mostrar todos</a>
+        <a href="mostrartodos.php">Mostrar todos los usuarios</a>
     </body>
 </html>
