@@ -9,11 +9,13 @@ btn-group
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 /*form-control*/
 html {
+    background: url(../imagenes/fondo1.jpg) no-repeat center center fixed;
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
 body {
+    padding-top: 80px;
   margin: 0;
 }
 article,

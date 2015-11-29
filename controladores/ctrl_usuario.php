@@ -85,5 +85,23 @@ function eliminar(){
             exit();
         }else{ $mensage="Imposible eliminar registro, varifique";}
     }
+} 
+    
+function datos_patronimicos(){
+    error_reporting(0);
+    $tpl = new Template();
+    if($_POST['nombre']){
+        $user= new usuario();
+        $nombre=$_POST['nombre'];
+        $user->setNombre($nombre);
+        $user->setImagen($imagen);
+    }
+    $data=array(
+        'mensage' => $mensage,
+        'titulo' => 'Proyecto final'
+    );
+    $tpl->mostrar("ficha_patronimica", $data);
 }
+
+
 
