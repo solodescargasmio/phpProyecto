@@ -244,8 +244,8 @@
                 <label  class="col-sm-4 control-label">Strees : </label>
                 <div class="col-sm-6">
                     <select name="menu" id="menu"  onchange="cambiarDisplay();">
-                    <option selected="selected" value="cliente">1</option>
-                    <option value="proveedor">2</option>
+                    <option selected="selected" value="cliente">Si</option>
+                    <option value="proveedor">No</option>
                     </select>
                 </div>
             </div>
@@ -305,16 +305,21 @@
 <br/>
 <input name="cbiinternet" type="checkbox" />T4
 <br/>
-<input name="cbiinternet" type="checkbox" />Otros
+<input class="ejemploCheckbox3" name="checkbox1" type="checkbox" />Otros
 <br>
-<textarea></textarea>
                     </div>
                 </div>
             </div> 
+    <div class="form-group" id="otrosremedios" style="display: none;"> 
+                     <label  class="col-sm-4 control-label">Otros farmacos:</label>
+                     <div class="col-sm-8">
+                        <textarea></textarea>
+                     </div>
+                 </div>      
                  <div class="form-group"> 
                      <label  class="col-sm-4 control-label">Peso :</label>
                      <div class="col-sm-8">
-                        <input type="date" name="datapicker" id="datapicker" size ="50" class="success">
+                        <input type="text" name="peso" id="datapicker" size ="50" class="success">
                      </div>
                  </div>
                          
@@ -336,8 +341,13 @@
                     <input type="text" name="nacimiento" required="required" size ="50">
                 </div>
             </div>
-                 </fieldset>
-
+                
+    <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Alta Datos</button>
+    </div>
+  </div>
+ </fieldset>
 </form>
       <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
@@ -376,6 +386,13 @@ function mostrarDiabetes(){
             document.getElementById('diabetes').style.display='none'; 
         }
 }
+$('[name="checkbox1"].ejemploCheckbox3').click(function() {
+  if($(this).is(':checked')) {
+    document.getElementById('otrosremedios').style.display='block';
+  } else {
+    document.getElementById('otrosremedios').style.display='none';
+  }
+});
     </script>
 </body>
 
