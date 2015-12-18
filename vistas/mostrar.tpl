@@ -24,9 +24,9 @@
           <h3>Esto es la pagina principal</h3>     
           <table class="table table-condensed">
                       <tr>
-                          <td>ID</td>
+                          <td>Cedula</td>
                           <td>Nombre</td>
-                          <td>Imagen</td>
+                          <td>Apellido</td>
                           
               </tr>
              
@@ -34,7 +34,7 @@
               {foreach from=$usuarios item=usuario} <tr class="success">
                  <td>{$usuario->getId()}</td>
                  <td>{$usuario->getNombre()}</td>
-                 <td><img src="imagenes/{$usuario->getImagen()}" width="50" height="50"> </td>
+                 <td>{$usuario->getApellido()}</td>
                  <td><a class="btn btn-lg btn-primary" href="editarUsuario.php?id={$usuario->getId()}">Editar</a></td>
  <td><a class="btn btn-lg btn-primary" href="eliminar.php?id={$usuario->getId()}">Eliminar</a></td>
                  </tr> 

@@ -5,17 +5,20 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-        <a class="navbar-brand" href="submenu.php">Demo Proyecto Final</a>
+        <a class="navbar-brand" href="index.php">Demo Proyecto Final</a>
+        {if isset($cedula)}
+            <a class="navbar-brand" href="#" style="float: right;">Esta trabajando con el usuario :{$apellido}  :{$cedula} </a>
+        {/if}
       <div class="navbar-collapse nav-collapse collapse navbar-header">
         <ul class="nav navbar-nav">
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Ficha y Riesgos <b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Ingresar Paciente<b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li><a tabindex="-1" href="ficha_patronimica.php">Ficha Patronimica</a></li>
-              <li><a tabindex="-1" href="#">Riesgo CV</a></li>
+              <li><a tabindex="-1" href="nuevo.php">Ingresar Paciente</a></li>
+              <li><a tabindex="-1" href="riesgos.php">Riesgo CV</a></li>
             </ul>
           </li>
-          <li> <a tabindex="-1" href="#">Paraclinica </a></li>
+          <li> <a tabindex="-1" href="imts.php">IMT </a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Ecografia <b class="caret"></b></a>
             <ul class="dropdown-menu">
@@ -34,15 +37,26 @@
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Velocidad de Onda de Pulso <b class="caret"></b></a>
-            <ul class="dropdown-menu">
+            <a href="vops.php">Velocidad de Onda de Pulso</a>
+          <!--  <ul class="dropdown-menu">
               <li><a tabindex="-1" href="#">PWV SPHYGMOCOR Carotido-Femoral</a></li>
               <li><a tabindex="-1" href="#">PWE Hemodin</a></li>
-            </ul>
+            </ul>-->
+          </li>
+          <li class="dropdown">
+            <a href="distancias.php">Distancia</a>
+          <!--  <ul class="dropdown-menu">
+              <li><a tabindex="-1" href="#">PWV SPHYGMOCOR Carotido-Femoral</a></li>
+              <li><a tabindex="-1" href="#">PWE Hemodin</a></li>
+            </ul>-->
           </li>
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Presión Central</a>
-          </li>
+            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Presión<b class="caret"></b></a>
+           <ul class="dropdown-menu">
+              <li><a tabindex="-1" href="pres_central.php">Presión Central</a></li>
+              <li><a tabindex="-1" href="pres_braquial.php">Presión Braquial</a></li>
+            </ul>  
+        </li>
        
       <li class="dropdown">
             <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Reactividad Vascular <b class="caret"></b></a>
@@ -78,4 +92,5 @@
     $(document).ready(function() {
       $('.js-activated').dropdownHover().dropdown();
     });
-  </script>
+    
+</script>

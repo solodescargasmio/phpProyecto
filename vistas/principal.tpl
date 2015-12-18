@@ -42,39 +42,9 @@
 <body>
     {include file="header.tpl"}
     <div class="container-fluid">
-        <font style="color:#fff;">{if isset($mensaje)}{$mensaje}{/if}</font>
+    {if isset($mensaje)}{$mensaje}{/if}
     </div>
-<form role="form" method="POST" class="form-horizontal">
-    <fieldset> <legend>Datos Patronimicos</legend>
-        <input type="text" class="form-control" name="ci" id="ci" value="{$cedula}">     
-                                     <div class="form-group"> 
-                <label  class="col-sm-4 control-label">Ingrese Peso : </label>
-                <div class="col-sm-6">
-                        <input type="text" name="peso" placeholder="Peso :" required="required" size ="50" class="texto">
-                </div>
-            </div>
-            <div class="form-group"> 
-                <label  class="col-sm-4 control-label">Ingrese Altura :</label>
-                <div class="col-sm-6">
-                    <input type="text" name="altura" placeholder="Altura :" required="required" size ="50" class="texto">
-                </div>
-            </div>
-              
-            <div class="form-group"> 
-                <label  class="col-sm-4 control-label">Fecha de Estudio: </label>
-                <div class="col-sm-6">
-                    <input type="text" value="{$fecha}" size ="50" class="texto" readonly="">
-                    <div id="masInfo" style="float: right"></div>
-                </div>
-            </div>
- <div class="form-group">
-    <div class="col-lg-offset-2 col-lg-10">
-      <button type="submit" class="btn btn-primary btn-lg btn-block">Agregar Ficha</button>
-    </div>
-  </div>
- </fieldset>
-</form>
-
+    <h3><font style="color: #fff">Proyecto Final Estudios Medicos</font></h3>
 </body>
 
 </html>

@@ -5,7 +5,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-require_once './controladores/ctrl_usuario.php';
-require_once './controladores/ctrl_datos.php';
-//ingresarFicha();
-principal();
+require_once ('./controladores/ctrl_datos.php');
+ingresaVop();
+

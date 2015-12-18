@@ -6,4 +6,5 @@
  * and open the template in the editor.
  */
 require_once ('./controladores/ctrl_usuario.php');
-datos_patronimicos();
+prueba();
+

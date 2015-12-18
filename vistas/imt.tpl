@@ -40,41 +40,44 @@
 </head>
 
 <body>
-    {include file="header.tpl"}
-    <div class="container-fluid">
-        <font style="color:#fff;">{if isset($mensaje)}{$mensaje}{/if}</font>
+            {include file="header.tpl"}
+    <div class="container-fluid" style="background: #fff;opacity: 0.9;">
+      <div class="row">
+          {if isset($mensage)}
+          {$mensage}
+          {/if}
+          <h3>Datos Paciente</h3>     
+          <form id="FormularioPatronimico" class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
+    <fieldset> <legend>Datos IMT</legend>
+    <div class="form-group">
+    <label for="ci" class="col-lg-2 control-label">CD</label>
+    <div class="col-lg-10">
+        <input type="text" class="form-control" name="cd" id="cd" required="">
     </div>
-<form role="form" method="POST" class="form-horizontal">
-    <fieldset> <legend>Datos Patronimicos</legend>
-        <input type="text" class="form-control" name="ci" id="ci" value="{$cedula}">     
-                                     <div class="form-group"> 
-                <label  class="col-sm-4 control-label">Ingrese Peso : </label>
-                <div class="col-sm-6">
-                        <input type="text" name="peso" placeholder="Peso :" required="required" size ="50" class="texto">
-                </div>
-            </div>
-            <div class="form-group"> 
-                <label  class="col-sm-4 control-label">Ingrese Altura :</label>
-                <div class="col-sm-6">
-                    <input type="text" name="altura" placeholder="Altura :" required="required" size ="50" class="texto">
-                </div>
-            </div>
+  </div>          
               
-            <div class="form-group"> 
-                <label  class="col-sm-4 control-label">Fecha de Estudio: </label>
-                <div class="col-sm-6">
-                    <input type="text" value="{$fecha}" size ="50" class="texto" readonly="">
-                    <div id="masInfo" style="float: right"></div>
-                </div>
-            </div>
- <div class="form-group">
-    <div class="col-lg-offset-2 col-lg-10">
-      <button type="submit" class="btn btn-primary btn-lg btn-block">Agregar Ficha</button>
+  <div class="form-group">
+    <label for="nombre" class="col-lg-2 control-label">CI</label>
+    <div class="col-lg-10">
+      <input type="text" class="form-control" name="ci" id="ci" required="">
     </div>
   </div>
- </fieldset>
+ 
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Alta Datos</button>
+    </div>
+  </div>
+    </fieldset>
 </form>
-
+      </div>
+             
+                    <script src="bootstrap-hover-dropdown.js"></script>
+  <script src="js/formToWizard.js" type="text/javascript"></script>
+  <script type="text/javascript">
+        $(document).ready(function(){
+            $("#FormularioPatronimico").formToWizard({ })
+        });</script>
 </body>
 
 </html>

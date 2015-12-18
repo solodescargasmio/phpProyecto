@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.20, created on 2015-11-19 23:33:20
+<?php /* Smarty version Smarty-3.1.20, created on 2015-12-15 17:57:13
          compiled from "vistas\mostrar.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:18729564de6ee1f36b3-15692500%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '5f5780e66a944be4e33fb8b0c197bcb876c3c800' => 
     array (
       0 => 'vistas\\mostrar.tpl',
-      1 => 1447975488,
+      1 => 1450202229,
       2 => 'file',
     ),
   ),
@@ -55,9 +55,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
           <h3>Esto es la pagina principal</h3>     
           <table class="table table-condensed">
                       <tr>
-                          <td>ID</td>
+                          <td>Cedula</td>
                           <td>Nombre</td>
-                          <td>Imagen</td>
+                          <td>Apellido</td>
                           
               </tr>
              
@@ -71,8 +71,8 @@ $_smarty_tpl->tpl_vars['usuario']->_loop = true;
 </td>
                  <td><?php echo $_smarty_tpl->tpl_vars['usuario']->value->getNombre();?>
 </td>
-                 <td><img src="imagenes/<?php echo $_smarty_tpl->tpl_vars['usuario']->value->getImagen();?>
-" width="50" height="50"> </td>
+                 <td><?php echo $_smarty_tpl->tpl_vars['usuario']->value->getApellido();?>
+</td>
                  <td><a class="btn btn-lg btn-primary" href="editarUsuario.php?id=<?php echo $_smarty_tpl->tpl_vars['usuario']->value->getId();?>
 ">Editar</a></td>
  <td><a class="btn btn-lg btn-primary" href="eliminar.php?id=<?php echo $_smarty_tpl->tpl_vars['usuario']->value->getId();?>

@@ -41,40 +41,40 @@
 
 <body>
     {include file="header.tpl"}
-    <div class="container-fluid">
-        <font style="color:#fff;">{if isset($mensaje)}{$mensaje}{/if}</font>
+   <div class="container-fluid">
+       <font style="color:red;" size=4> {if isset($mensaje)}{$mensaje}{/if}</font>
     </div>
-<form role="form" method="POST" class="form-horizontal">
-    <fieldset> <legend>Datos Patronimicos</legend>
-        <input type="text" class="form-control" name="ci" id="ci" value="{$cedula}">     
-                                     <div class="form-group"> 
-                <label  class="col-sm-4 control-label">Ingrese Peso : </label>
-                <div class="col-sm-6">
-                        <input type="text" name="peso" placeholder="Peso :" required="required" size ="50" class="texto">
-                </div>
-            </div>
-            <div class="form-group"> 
-                <label  class="col-sm-4 control-label">Ingrese Altura :</label>
-                <div class="col-sm-6">
-                    <input type="text" name="altura" placeholder="Altura :" required="required" size ="50" class="texto">
-                </div>
-            </div>
-              
-            <div class="form-group"> 
-                <label  class="col-sm-4 control-label">Fecha de Estudio: </label>
-                <div class="col-sm-6">
-                    <input type="text" value="{$fecha}" size ="50" class="texto" readonly="">
-                    <div id="masInfo" style="float: right"></div>
-                </div>
-            </div>
- <div class="form-group">
+    <form method="POST" class="form-horizontal">
+    <fieldset> <legend>Datos Riesgos</legend>
+  <input name="fuma" type="checkbox" /> <font face="caption" style="color: #fff;" size=4>Fuma
+<br/>
+<input name="presion" type="checkbox"/> Presíon
+<br/>
+<input name="colesterol" type="checkbox" /> Colesteról
+<br/>
+<input name="hiperglisemia" type="checkbox" /> Hiperglisémia
+<br/>
+<input name="antecedentes" type="checkbox"/> Antecedentes Familiares
+<br/>
+<input name="sedentarismo" type="checkbox" /> Sedentarísmo
+<br/>
+<input name="ejercicio" type="checkbox" /> Realiza Ejercicios
+<br/>
+<input name="medicacion" type="checkbox"/>  Medicacíon
+<br/>
+<br>
+                
+    <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
-      <button type="submit" class="btn btn-primary btn-lg btn-block">Agregar Ficha</button>
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Ingresar Datos</button>
     </div>
   </div>
  </fieldset>
 </form>
-
+      <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <script src="bootstrap-hover-dropdown.js"></script>
+ 
 </body>
 
 </html>
