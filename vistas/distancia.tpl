@@ -76,7 +76,7 @@
             <div class="form-group"> 
                 <label  class="col-sm-4 control-label">Hombro Rad. : </label>
                 <div class="col-sm-6">
-                    <input type="date" name="hombrorad" required="required" size ="50">
+                    <input type="text" name="hombrorad" required="required" size ="50">
                 </div>
             </div>
                          

@@ -108,7 +108,17 @@ public function setId($id) {
         $this->cuffxell_fem = $cuffxell_fem;
     }
 
-    
+     public function mostrarDistancia($id_user){
+        $stmt = $this->getDB()->prepare( 
+"SELECT * FROM distancia WHERE id_usuario=?" );
+        $stmt->bind_param( "i",$id_user);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+ while ($fila=$resultado->fetch_object()) {
+            $distancia= new distancia($fila);          
+}
+        return $distancia;
+}
       
         function insertarDistancia(){
     $id_user=  $this->getId_usuario();

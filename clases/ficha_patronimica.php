@@ -82,18 +82,17 @@ class ficha_patronimica extends clase_base{
     }
 
     
-    function modidicarFicha(){
-        $id=$this->getId();
-        $nombre= $this->getNombre();
-        $smtp=$this->getDB()->prepare("UPDATE usuario SET nombre=? WHERE id=?" );
-       $smtp->bind_param("ss",$nombre,$id);
-       $smtp->execute();
-       $res=false;
-       if($this->getDB()->affected_rows>0){
-        $res=true;   
-       }
-       return $res;  
-    }
+ public function mostrarFicha($id_user){
+        $stmt = $this->getDB()->prepare( 
+"SELECT * FROM ficha_patronimica WHERE id_usuario=?" );
+        $stmt->bind_param( "i",$id_user);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+ while ($fila=$resultado->fetch_object()) {
+            $ficha= new ficha_patronimica($fila);          
+}
+        return $ficha;
+}
      function ingresaFicha(){ 
         $id=$this->getId_usuario();
          $peso=$this->getPeso();

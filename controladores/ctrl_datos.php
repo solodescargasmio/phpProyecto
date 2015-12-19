@@ -5,6 +5,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+require_once ('./clases/ficha_patronimica.php');
 require_once ('./clases/riesgo.php');
 require_once ('./clases/template.php');
 require_once ('ctrl_usuario.php');
@@ -14,6 +15,61 @@ require_once ('./clases/session.php');
 require_once ('./clases/vop.php');
 require_once ('./clases/imt.php');
 require_once ('./clases/distancia.php');
+require_once ('./clases/usuario.php');
+function principal(){
+    Session::init();
+       $mensage="";
+     error_reporting(0);
+     $usu=new usuario();
+     $resultados=$usu->getListado();
+     $tpl= new Template();
+     if($_POST['elejir']){
+         $id_user=$_POST['elejir'];
+        $usuario=$usu->mostrarUser($id_user);
+        Session::init();
+        $edad=$usu->calcularEdad($usuario->getFecha_nac());
+        Session::set('cedula', $id_user);
+        Session::set('edad', $edad);
+        Session::set('apellido', $usuario->getApellido());
+    $fptr=new ficha_patronimica();
+    $dist=new distancia();
+    $imt=new imt();
+    $vop=new vop();
+    $riesgo=new riesgo();
+    $presb=new presion_braquial();
+    $presc=new presion_central();
+    $resficha=$fptr->mostrarFicha($id_user);
+    $resdist=$dist->mostrarDistancia($id_user);
+    $resimt=$imt->mostrarImt($id_user);
+    $resries=$riesgo->mostrarRiesgo($id_user);
+    $resvop=$vop->mostrarVop($id_user);
+    $respreb=$presb->mostrarPb($id_user);
+    $resprec=$presc->mostrarPc($id_user);
+         $data = array(
+             'usuarios' => $resultados,
+       'resultados' => $usuario,
+       'ficha' => $resficha,
+       'distancia' => $resdist,
+       'imts' => $resimt,
+       'riesgo' => $resries,
+       'vops' => $resvop,
+       'presb' => $respreb,
+       'presc' => $resprec,
+       'titulo' => 'Proyecto final',
+       'mensaje' => $mensage
+   );
+     }else{
+  
+   $data = array(
+       'usuarios' => $resultados,
+       'titulo' => 'Proyecto final',
+       'mensaje' => $mensage
+   );}
+   $tpl->asignar('edad', $edad);
+    $tpl->asignar('cedula', $id_user);
+    $tpl->asignar('apellido', $apell);
+   $tpl->mostrar("principal", $data); 
+}
 function ingresarRiesgos(){
     error_reporting(0);
     Session::init();
@@ -72,7 +128,6 @@ function ingresaPbraquial() {
     Session::init();
     $id_user=Session::get("cedula");
     $apell=Session::get("apellido");
-    $id_user=123456;
     $tpl=new Template();
     $mensaje="";
     $titulo="Presion Braquial"; 
@@ -105,7 +160,6 @@ function ingresaPcentral() {
     Session::init();
     $id_user=Session::get("cedula");
     $apell=Session::get("apellido");
-    $id_user=123456;
     $tpl=new Template();
     $mensaje="";
     $titulo="Presion Central"; 
@@ -140,7 +194,6 @@ function ingresaVop() {
     Session::init();
     $id_user=Session::get("cedula");
     $apell=Session::get("apellido");
-    $id_user=123456;
     $tpl=new Template();
     $mensaje="";
     $titulo="VOP"; 
@@ -176,7 +229,6 @@ function ingresaImt() {
     Session::init();
     $id_user=Session::get("cedula");
     $apell=Session::get("apellido");
-    $id_user=123456;
     $tpl=new Template();
     $mensaje="";
     $titulo="IMT"; 
@@ -212,7 +264,6 @@ function ingresarDis(){
     Session::init();
     $id_user=Session::get("cedula");
     $apell=Session::get("apellido");
-    $id_user=123456;
     $tpl=new Template();
     $mensaje="";
     $titulo="Distancias"; 

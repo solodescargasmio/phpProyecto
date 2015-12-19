@@ -61,6 +61,18 @@ class vop extends clase_base{
         $this->xcell = $xcell;
     }
 
+           public function mostrarVop($id_user){
+        $stmt = $this->getDB()->prepare( 
+"SELECT * FROM vop WHERE id_usuario=?" );
+        $stmt->bind_param( "i",$id_user);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+ while ($fila=$resultado->fetch_object()) {
+            $vop= new vop($fila);          
+}
+        return $vop;
+}
+    
     function insertarVop(){
     $id_user=  $this->getId_usuario();
     $hemo=  $this->getHemo();

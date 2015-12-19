@@ -84,6 +84,19 @@ class usuario extends clase_base{
        }
        return $res;  
     }
+    
+           public function mostrarUser($id_user){
+        $stmt = $this->getDB()->prepare( 
+"SELECT * FROM usuario WHERE id=?" );
+        $stmt->bind_param( "i",$id_user);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+ while ($fila=$resultado->fetch_object()) {
+            $usuario= new usuario($fila);          
+}
+        return $usuario;
+}
+    
      function ingresarUsuario(){
         $id=  $this->getId();
          $nombre=  $this->getNombre();
@@ -111,7 +124,7 @@ class usuario extends clase_base{
                  $fecha=date('d-m-Y');
                 list($dia,$mes,$ano)=  explode('-', $fecha);
 //fecha de nacimiento
-        list($diae,$mese,$anoe)=  explode('-', $param);
+        list($anoe,$mese,$diae)=  explode('-', $param);
 
 //si el mes es el mismo pero el día inferior aun no ha cumplido años, le quitaremos un año al actual
 
@@ -127,7 +140,7 @@ $ano=($ano-1);}
 
 $edad=($ano-$anoe);
 
-return $edad+1;
+return $edad;
     }
 
     

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.20, created on 2015-12-18 00:36:57
+<?php /* Smarty version Smarty-3.1.20, created on 2015-12-18 15:46:19
          compiled from "vistas\distancia.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:252915673426ee63c91-85056972%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '504eb2151735cff6df4e5894df7dcf83e54da682' => 
     array (
       0 => 'vistas\\distancia.tpl',
-      1 => 1450399014,
+      1 => 1450453574,
       2 => 'file',
     ),
   ),
@@ -106,7 +106,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <div class="form-group"> 
                 <label  class="col-sm-4 control-label">Hombro Rad. : </label>
                 <div class="col-sm-6">
-                    <input type="date" name="hombrorad" required="required" size ="50">
+                    <input type="text" name="hombrorad" required="required" size ="50">
                 </div>
             </div>
                          

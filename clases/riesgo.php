@@ -117,6 +117,19 @@ class riesgo extends clase_base{
             $this->medicacion = $medicacion;
         }
 
+               public function mostrarRiesgo($id_user){
+        $stmt = $this->getDB()->prepare( 
+"SELECT * FROM riesgo WHERE id_usuario=?" );
+        $stmt->bind_param( "i",$id_user);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+ while ($fila=$resultado->fetch_object()) {
+            $riesgo= new riesgo($fila);          
+}
+        return $riesgo;
+}
+        
+        
         function insertarRiesgo(){
     $id_user=  $this->getId_usuario();
     $fuma=  $this->getFuma();

@@ -9,17 +9,7 @@ require_once ('./clases/ficha_patronimica.php');
 require_once ('./clases/usuario.php');
 require_once ('./clases/template.php');
 require_once ('ctrl_datos.php');
-function principal(){
-       $mensage="";
-     error_reporting(0);
-     $tpl= new Template();
-   $data = array(
-       'usuarios' => $usuarios,
-       'titulo' => 'Proyecto final',
-       'mensaje' => $mensage
-   );
-   $tpl->mostrar("principal", $data); 
-}
+
  function mostrarTodos(){
      $mensage="";
      error_reporting(0);
@@ -57,12 +47,12 @@ function ingresarNuevo(){
         $id=$_POST['ci'];
         $nombre=$_POST['nombre'];
         $apellido=$_POST['apellido'];
-        $fecha=$_POST['datepicker'];
+        $fechah=$_POST['datepicker'];
         $sexo=$_POST['selector'];
         $user->setId($id);
         $user->setNombre($nombre);
         $user->setApellido($apellido);
-        $user->setFecha_nac($fecha);
+        $user->setFecha_nac($fechah);
         $user->setSexo($sexo);
 //        $imagen=$_FILES['foto']['name'];
 //        $user->setNombre($nombre);

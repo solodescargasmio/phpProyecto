@@ -61,6 +61,19 @@ class presion_braquial extends clase_base{
         public function setPdias_br($pdias_br) {
             $this->pdias_br = $pdias_br;
         }
+        
+           public function mostrarPb($id_user){
+        $stmt = $this->getDB()->prepare( 
+"SELECT * FROM presion_braquial WHERE id_usuario=?" );
+        $stmt->bind_param( "i",$id_user);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+ while ($fila=$resultado->fetch_object()) {
+            $presionb= new presion_braquial($fila);          
+}
+        return $presionb;
+}
+        
       function insertarPresionB(){
     $id_user=  $this->getId_usuario();
     $psis=  $this->getPsis_br();
