@@ -1,53 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    
-    <title>{$titulo}</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{$titulo}</title>
+           <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
+      <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+ <script src="js/jquery.js" type="text/javascript"></script> 
+ <link href="css/ficha.css" rel="stylesheet" type="text/css">
     <link href="css/dashboard.css" rel="stylesheet">
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.min.js"></script>
-  </head>
+</head>
 
-  <body>
-    {include file="header.tpl"}
-    <div class="container-fluid">
+<body>
+            {include file="header.tpl"}
+    <div class="container-fluid" style="background: #fff;opacity: 0.9;">
       <div class="row">
           {if isset($mensage)}
           {$mensage}
           {/if}
-          <h3>Usuario a modificar</h3>     
- 
-
-          <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
+          <h3>Datos Paciente</h3>     
+          <form id="FormularioPatronimico" class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
+    <fieldset> <legend>Datos Personales</legend>
+    <div class="form-group">
+    <label for="ci" class="col-lg-2 control-label">Cedula de Identidad</label>
+    <div class="col-lg-10">
+        <input type="text" class="form-control" name="ci" id="ci" required="">
+    </div>
+  </div>          
+              
+  <div class="form-group">
+    <label for="nombre" class="col-lg-2 control-label">Nombre</label>
+    <div class="col-lg-10">
+      <input type="text" class="form-control" name="nombre" id="nombre" required="">
+    </div>
+  </div>
+              
+  <div class="form-group">
+    <label for="apellido" class="col-lg-2 control-label">Apellido</label>
+    <div class="col-lg-10">
+      <input type="text" class="form-control" name="apellido" id="apellido" required="">
+    </div>
+  </div>
+             <div class="form-group">
+    <label for="fecha" class="col-lg-2 control-label">Fecha de Nacimiento</label>
+    {include file="fecha.tpl"}
+    </div>
+              <div class="form-group">
+    <label for="sexo" class="col-lg-2 control-label">Sexo</label>
+    <div class="col-lg-10">
+              <select name="selector">
+            <option value="masculino">Masculino</option>
+        <option value="femenino">Femenino</option>
+        <option value="indeterminado">Indeterminado</option>
+        </select>
+    </div>
+  </div>
+    </fieldset>
+    <fieldset> <legend>Datos Patronimicos</legend>    
+                                     <div class="form-group"> 
+                <label  class="col-sm-4 control-label">Ingrese Peso : </label>
+                <div class="col-sm-6">
+                        <input type="text" name="peso" placeholder="Peso :" required="required" size ="50" class="texto">
+                </div>
+            </div>
+            <div class="form-group"> 
+                <label  class="col-sm-4 control-label">Ingrese Altura :</label>
+                <div class="col-sm-6">
+                    <input type="text" name="altura" placeholder="Altura :" required="required" size ="50" class="texto">
+                </div>
+            </div>
+              
+            <div class="form-group"> 
+                <label  class="col-sm-4 control-label">Fecha de Estudio: </label>
+                <div class="col-sm-6">
+                    <input type="text" value="{$fecha}" size ="50" class="texto" readonly="">
+                    <div id="masInfo" style="float: right"></div>
+                </div>
+            </div>
     
-  <div class="form-group">
-    <label for="ejemplo_email_3" class="col-lg-2 control-label">Nombre</label>
-    <div class="col-lg-10">
-      <input type="text" class="form-control" name="nombre" id="nombre">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="imagen" class="col-lg-2 control-label">Imagen</label>
-    <div class="col-lg-10">
-        <input type="file" name="foto" id="foto">
-    </div>
-  </div>
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
       <button type="submit" class="btn btn-primary btn-lg btn-block">Alta usuario</button>
     </div>
   </div>
+    </fieldset>
 </form>
-
-
-             
       </div>
-    </div>
-  </body>
+             
+                    <script src="bootstrap-hover-dropdown.js"></script>
+  <script src="js/formToWizard.js" type="text/javascript"></script>
+  <script type="text/javascript">
+        $(document).ready(function(){
+            $("#FormularioPatronimico").formToWizard({ })
+        });</script>
+</body>
 </html>
