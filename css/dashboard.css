@@ -17,6 +17,19 @@ html{
 /*#comentario{
   float: right;
 }*/
+
+.container-fluid{
+    background: #fff; 
+    position: absolute; 
+    height: 100%;
+    width: 100%;
+    opacity: 0.9;
+}
+
+.next,
+.prev{
+    background: #0000ff;
+}
 body {
    
   padding-top: 80px;
@@ -66,6 +79,14 @@ height: auto;
 position: absolute;
 left: 400px;
 top: 20px;
+}
+
+.encuadro{
+    float: right;
+background: #c3defe;
+width: 150px;
+height: auto; 
+margin: 5px;
 }
 
 .dividir{

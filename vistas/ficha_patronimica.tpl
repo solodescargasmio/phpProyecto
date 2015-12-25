@@ -43,7 +43,7 @@
     {include file="header.tpl"}
     <div class="container-fluid">
         <font style="color:#fff;">{if isset($mensaje)}{$mensaje}{/if}</font>
-    </div>
+    {if isset($cedula)}
 <form role="form" method="POST" class="form-horizontal">
     <fieldset> <legend>Datos Patronimicos</legend>
         <input type="text" class="form-control" name="ci" id="ci" value="{$cedula}">     
@@ -74,7 +74,10 @@
   </div>
  </fieldset>
 </form>
-
+                     {else}
+              <h4><font style="color: red;">No puede ingresar los datos. No está trabajando con ningun paciente</font></h4>
+          {/if}
+</div>
 </body>
 
 </html>

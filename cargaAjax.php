@@ -21,17 +21,18 @@ require_once ('./clases/vop.php');
 require_once ('./clases/imt.php');
 require_once ('./clases/distancia.php');
 require_once ('./clases/usuario.php');
-     Session::init();
+     Session::init();  
        $mensage="";
      error_reporting(0);
      $usu=new usuario();
      $resultados=$usu->getListado();
      $tpl= new Template();
      if($_POST['user']){
-        // var_dump($_POST['user']);exit();
+        // 
          $id_user=$_POST['user'];
         $usuario=$usu->mostrarUser($id_user);
         Session::init();
+       // var_dump($usuario->getFecha_nac());exit();
         $edad=$usu->calcularEdad($usuario->getFecha_nac());
         Session::set('cedula', $id_user);
         Session::set('edad', $edad);

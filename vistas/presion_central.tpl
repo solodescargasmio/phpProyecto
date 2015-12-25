@@ -41,12 +41,14 @@
 
 <body>
             {include file="header.tpl"}
-    <div class="container-fluid" style="background: #fff;opacity: 0.9;">
+    <div class="container-fluid">
       <div class="row">
           {if isset($mensage)}
           {$mensage}
           {/if}
-          <h3>Datos Paciente</h3>     
+          <h3>Datos Paciente</h3>  
+          {if isset($cedula)}
+              {if !isset($presionc)}
           <form id="FormularioPatronimico" class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
     <fieldset> <legend>Datos Presion Central</legend>
     <div class="form-group">
@@ -70,6 +72,13 @@
   </div>
     </fieldset>
 </form>
+           {else}
+              <h4><font style="color: red;">Los datos de Presion central para este paciente,<br>yá fueron ingresados en la base de datos</font></h4>
+         
+    {/if}
+            {else}
+              <h4><font style="color: red;">No puede ingresar los datos. No está trabajando con ningun paciente</font></h4>
+          {/if}
       </div>
              
                     <script src="bootstrap-hover-dropdown.js"></script>
@@ -78,6 +87,8 @@
         $(document).ready(function(){
             $("#FormularioPatronimico").formToWizard({ })
         });</script>
+    
+    </div>
 </body>
 
 </html>

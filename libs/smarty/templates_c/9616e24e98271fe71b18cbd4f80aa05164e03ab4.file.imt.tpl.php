@@ -1,4 +1,32 @@
-<!DOCTYPE html>
+<?php /* Smarty version Smarty-3.1.20, created on 2015-12-25 18:11:12
+         compiled from "vistas\imt.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:158605679a383e4e1c7-44293551%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '9616e24e98271fe71b18cbd4f80aa05164e03ab4' => 
+    array (
+      0 => 'vistas\\imt.tpl',
+      1 => 1451063147,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '158605679a383e4e1c7-44293551',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.20',
+  'unifunc' => 'content_5679a3841ab3f3_71369597',
+  'variables' => 
+  array (
+    'titulo' => 0,
+    'mensage' => 0,
+    'cedula' => 0,
+    'imts' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_5679a3841ab3f3_71369597')) {function content_5679a3841ab3f3_71369597($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,7 +37,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{$titulo}</title>
+    <title><?php echo $_smarty_tpl->tpl_vars['titulo']->value;?>
+</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -40,28 +69,30 @@
 </head>
 
 <body>
-            {include file="header.tpl"}
+            <?php echo $_smarty_tpl->getSubTemplate ("header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
     <div class="container-fluid">
       <div class="row">
-          {if isset($mensage)}
-          {$mensage}
-          {/if}
-          <h3>Datos Paciente</h3>   
-          {if isset($cedula)}
-              {if !isset($presionb)}
+          <?php if (isset($_smarty_tpl->tpl_vars['mensage']->value)) {?>
+          <?php echo $_smarty_tpl->tpl_vars['mensage']->value;?>
+
+          <?php }?>
+          <h3>Datos Paciente</h3>  
+          <?php if (isset($_smarty_tpl->tpl_vars['cedula']->value)) {?>
+              <?php if (!isset($_smarty_tpl->tpl_vars['imts']->value)) {?>
           <form id="FormularioPatronimico" class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
-    <fieldset> <legend>Datos Presion Branquial</legend>
+    <fieldset> <legend>Datos IMT</legend>
     <div class="form-group">
-    <label for="ci" class="col-lg-2 control-label">Psis BR</label>
+    <label for="ci" class="col-lg-2 control-label">CD</label>
     <div class="col-lg-10">
-        <input type="text" class="form-control" name="psis" id="psis" required="">
+        <input type="text" class="form-control" name="cd" id="cd" required="">
     </div>
   </div>          
               
   <div class="form-group">
-    <label for="nombre" class="col-lg-2 control-label">Pdias BR</label>
+    <label for="nombre" class="col-lg-2 control-label">CI</label>
     <div class="col-lg-10">
-      <input type="text" class="form-control" name="pdias" id="pdias" required="">
+      <input type="text" class="form-control" name="ci" id="ci" required="">
     </div>
   </div>
  
@@ -72,13 +103,13 @@
   </div>
     </fieldset>
 </form>
-              {else}
-              <h4><font style="color: red;">Los datos de Presion braquial para este paciente,<br>yá fueron ingresados en la base de datos</font></h4>
+           <?php } else { ?>
+              <h4><font style="color: red;">Los datos de IMT para este paciente,<br>yá fueron ingresados en la base de datos</font></h4>
          
-    {/if}
-            {else}
+    <?php }?>
+          <?php } else { ?>
               <h4><font style="color: red;">No puede ingresar los datos. No está trabajando con ningun paciente</font></h4>
-          {/if}
+          <?php }?>
       </div>
              
                     <script src="bootstrap-hover-dropdown.js"></script>
@@ -87,8 +118,7 @@
         $(document).ready(function(){
             $("#FormularioPatronimico").formToWizard({ })
         });</script>
-  
-    </div>
+        </div>
 </body>
 
-</html>
+</html><?php }} ?>

@@ -16,8 +16,13 @@ require_once ('./clases/vop.php');
 require_once ('./clases/imt.php');
 require_once ('./clases/distancia.php');
 require_once ('./clases/usuario.php');
+require_once ('./conexion/config.php');
+require_once ('./multimedia/guardarMultimedia.php');
 function principal(){
     Session::init();
+    $id_user=Session::get('cedula');
+    $apell= Session::get('apellido');
+    $edad=  Session::get('edad');
        $mensage="";
      error_reporting(0);
      $usu=new usuario();
@@ -65,6 +70,7 @@ function principal(){
        'titulo' => 'Proyecto final',
        'mensaje' => $mensage
    );}
+
    $tpl->asignar('edad', $edad);
     $tpl->asignar('cedula', $id_user);
     $tpl->asignar('apellido', $apell);
@@ -75,8 +81,10 @@ function ingresarRiesgos(){
     Session::init();
     $id_user=Session::get("cedula");
     $apell=Session::get("apellido");
+    $edad=  Session::get('edad');
     $tpl=new Template();
     $riesgo=new riesgo();
+    $resries=$riesgo->mostrarRiesgo($id_user);
     $mensaje="";
     $titulo="Riesgos CV"; 
     $id_usuario=$id_user;
@@ -114,10 +122,12 @@ function ingresarRiesgos(){
      else{$mensaje="Error al ingresar los riesgos. Verifique";}
     }
     $datos=array(
+        'riesgo' => $resries,
         'fecha' => $fecha,
         'mensaje' => $mensaje,
         'titulo' => $titulo,
     );
+    $tpl->asignar('edad', $edad);
     $tpl->asignar('cedula', $id_user);
     $tpl->asignar('apellido', $apell);
     $tpl->mostrar("riesgos", $datos);
@@ -128,12 +138,14 @@ function ingresaPbraquial() {
     Session::init();
     $id_user=Session::get("cedula");
     $apell=Session::get("apellido");
+    $edad=  Session::get('edad');
     $tpl=new Template();
     $mensaje="";
     $titulo="Presion Braquial"; 
     $id_usuario=$id_user; 
-    if($_POST['psis']){
-         $pbraquial=new presion_braquial();
+    $pbraquial=new presion_braquial();
+    $respreb=$pbraquial->mostrarPb($id_user);
+    if($_POST['psis']){  
         $psis=$_POST['psis'];
         $pdias=$_POST['pdias'];
         $pbraquial->setId_usuario($id_usuario);
@@ -147,9 +159,11 @@ function ingresaPbraquial() {
     }
     
       $datos=array(
+         'presionb' => $respreb, 
         'mensaje' => $mensaje,
         'titulo' => $titulo,
     );
+      $tpl->asignar('edad', $edad);
     $tpl->asignar('cedula', $id_user);
     $tpl->asignar('apellido', $apell);
     $tpl->mostrar("presion_braquial", $datos);
@@ -160,13 +174,15 @@ function ingresaPcentral() {
     Session::init();
     $id_user=Session::get("cedula");
     $apell=Session::get("apellido");
+    $edad=  Session::get('edad');
     $tpl=new Template();
     $mensaje="";
     $titulo="Presion Central"; 
     $id_usuario=$id_user; 
-    
+    $pcen=new presion_central(); 
+    $resprec=$pcen->mostrarPc($id_user);
     if($_POST['psis']){
-       $pcen=new presion_central();  
+        
         $psis=$_POST['psis'];
         $pdias=$_POST['pdias'];
         $pcen->setId_usuario($id_usuario);
@@ -180,9 +196,11 @@ function ingresaPcentral() {
     }
     
       $datos=array(
+          'presionc' => $resprec,
         'mensaje' => $mensaje,
         'titulo' => $titulo,
     );
+      $tpl->asignar('edad', $edad);
     $tpl->asignar('cedula', $id_user);
     $tpl->asignar('apellido', $apell);
     $tpl->mostrar("presion_central", $datos);
@@ -194,13 +212,15 @@ function ingresaVop() {
     Session::init();
     $id_user=Session::get("cedula");
     $apell=Session::get("apellido");
+    $edad=  Session::get('edad');
     $tpl=new Template();
     $mensaje="";
     $titulo="VOP"; 
     $id_usuario=$id_user; 
-    
-    if($_POST['hemo']){
-       $vop=new vop();  
+     $vop=new vop();
+     $resvop=$vop->mostrarVop($id_user);
+     
+    if($_POST['hemo']){  
         $hemo=$_POST['hemo'];
         $xcell=$_POST['xcell'];
        
@@ -215,9 +235,11 @@ function ingresaVop() {
     }
     
       $datos=array(
+          'vops' => $resvop,
         'mensaje' => $mensaje,
         'titulo' => $titulo,
     );
+      $tpl->asignar('edad', $edad);
     $tpl->asignar('cedula', $id_user);
     $tpl->asignar('apellido', $apell);
     $tpl->mostrar("vop", $datos);
@@ -229,13 +251,15 @@ function ingresaImt() {
     Session::init();
     $id_user=Session::get("cedula");
     $apell=Session::get("apellido");
+    $edad=  Session::get('edad');
     $tpl=new Template();
     $mensaje="";
     $titulo="IMT"; 
     $id_usuario=$id_user; 
-    
+    $imt=new imt(); 
+    $resimt=$imt->mostrarImt($id_user);
     if($_POST['cd']){
-       $imt=new imt();  
+        
         $cd=$_POST['cd'];
         $ci=$_POST['ci'];
        
@@ -250,9 +274,11 @@ function ingresaImt() {
     }
     
       $datos=array(
+          'imts' => $resimt,
         'mensaje' => $mensaje,
         'titulo' => $titulo,
     );
+      $tpl->asignar('edad', $edad);
     $tpl->asignar('cedula', $id_user);
     $tpl->asignar('apellido', $apell);
     $tpl->mostrar("imt", $datos);
@@ -264,12 +290,15 @@ function ingresarDis(){
     Session::init();
     $id_user=Session::get("cedula");
     $apell=Session::get("apellido");
+    $edad=  Session::get('edad');
     $tpl=new Template();
     $mensaje="";
     $titulo="Distancias"; 
     $id_usuario=$id_user; 
+    $distancia=new distancia();
+    $resdis=$distancia->mostrarDistancia($id_user);
     if($_POST['carfem']){
-        $distancia=new distancia();
+        
         $carfem=$_POST['carfem'];
         $carhueco=$_POST['carhueco'];
         $huecohombro=$_POST['huecohombro'];
@@ -293,10 +322,16 @@ function ingresarDis(){
         else{$mensaje="Error al ingresar IMT. Verifique";}
     }
       $datos=array(
+          'distancias' => $resdis,
         'mensaje' => $mensaje,
         'titulo' => $titulo,
     );
+      $tpl->asignar('edad', $edad);
     $tpl->asignar('cedula', $id_user);
     $tpl->asignar('apellido', $apell);
     $tpl->mostrar("distancia", $datos);    
+}
+
+function guardarArchivos(){
+    subirDatos();
 }

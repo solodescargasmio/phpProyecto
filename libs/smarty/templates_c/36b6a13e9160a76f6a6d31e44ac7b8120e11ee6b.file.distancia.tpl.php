@@ -1,4 +1,33 @@
-<!DOCTYPE html>
+<?php /* Smarty version Smarty-3.1.20, created on 2015-12-25 18:09:37
+         compiled from "vistas\distancia.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:27725679c909ca2dd9-09548218%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '36b6a13e9160a76f6a6d31e44ac7b8120e11ee6b' => 
+    array (
+      0 => 'vistas\\distancia.tpl',
+      1 => 1451063317,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '27725679c909ca2dd9-09548218',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.20',
+  'unifunc' => 'content_5679c90a000000_66766242',
+  'variables' => 
+  array (
+    'titulo' => 0,
+    'mensage' => 0,
+    'mensaje' => 0,
+    'cedula' => 0,
+    'distancias' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_5679c90a000000_66766242')) {function content_5679c90a000000_66766242($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,7 +38,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{$titulo}</title>
+    <title><?php echo $_smarty_tpl->tpl_vars['titulo']->value;?>
+</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -40,12 +70,14 @@
 </head>
 
 <body>
-    {include file="header.tpl"}
+    <?php echo $_smarty_tpl->getSubTemplate ("header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
     <div class="container-fluid">
-    {if isset($mensage)}{$mensaje}{/if}
+    <?php if (isset($_smarty_tpl->tpl_vars['mensage']->value)) {?><?php echo $_smarty_tpl->tpl_vars['mensaje']->value;?>
+<?php }?>
     <h3>Datos Paciente</h3> 
-    {if isset($cedula)}
-        {if !isset($distancias)}
+    <?php if (isset($_smarty_tpl->tpl_vars['cedula']->value)) {?>
+        <?php if (!isset($_smarty_tpl->tpl_vars['distancias']->value)) {?>
     <form id="FormularioPatronimico" method="POST" class="form-horizontal">
     <fieldset> <legend>Datos Distancia</legend>
                          <div class="form-group">     
@@ -103,13 +135,13 @@
   </div>
  
 </form>
-     {else}
+     <?php } else { ?>
               <h4><font style="color: red;">Los datos de Distancias para este paciente,<br>yá fueron ingresados en la base de datos</font></h4>
          
-    {/if}
-     {else}
+    <?php }?>
+     <?php } else { ?>
               <h4><font style="color: red;">No puede ingresar los datos. No está trabajando con ningun paciente</font></h4>
-          {/if}
+          <?php }?>
       <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   <script src="bootstrap-hover-dropdown.js"></script>
@@ -122,4 +154,4 @@
     </script></div>
 </body>
 
-</html>
+</html><?php }} ?>

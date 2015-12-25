@@ -1,4 +1,32 @@
-<!DOCTYPE html>
+<?php /* Smarty version Smarty-3.1.20, created on 2015-12-25 18:11:21
+         compiled from "vistas\riesgos.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:2783567c5019a037a2-51045260%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '84555092028d572ecd4c3c16f698af740ad45d91' => 
+    array (
+      0 => 'vistas\\riesgos.tpl',
+      1 => 1451062751,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '2783567c5019a037a2-51045260',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.20',
+  'unifunc' => 'content_567c5019d1cef6_15343589',
+  'variables' => 
+  array (
+    'titulo' => 0,
+    'mensaje' => 0,
+    'cedula' => 0,
+    'riesgo' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_567c5019d1cef6_15343589')) {function content_567c5019d1cef6_15343589($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,7 +37,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{$titulo}</title>
+    <title><?php echo $_smarty_tpl->tpl_vars['titulo']->value;?>
+</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -40,12 +69,14 @@
 </head>
 
 <body>
-    {include file="header.tpl"}
+    <?php echo $_smarty_tpl->getSubTemplate ("header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
    <div class="container-fluid">
-       <font style="color:red;" size=4> {if isset($mensaje)}{$mensaje}{/if}</font>
+       <font style="color:red;" size=4> <?php if (isset($_smarty_tpl->tpl_vars['mensaje']->value)) {?><?php echo $_smarty_tpl->tpl_vars['mensaje']->value;?>
+<?php }?></font>
     <h3>Datos Paciente</h3> 
-       {if isset($cedula)}
-             {if !isset($riesgo)}
+       <?php if (isset($_smarty_tpl->tpl_vars['cedula']->value)) {?>
+             <?php if (!isset($_smarty_tpl->tpl_vars['riesgo']->value)) {?>
     <form method="POST" class="form-horizontal">
     <fieldset> <legend>Datos Riesgos</legend>
   <input name="fuma" type="checkbox" /> <font face="caption" style="color: #000;" size=4>Fuma
@@ -72,17 +103,17 @@
     </div>
   </div>
  </fieldset>
-</form> {else}
+</form> <?php } else { ?>
               <h4><font style="color: red;">Los datos de Riesgos para este paciente,<br>yá fueron ingresados en la base de datos</font></h4>
          
-    {/if}
-         {else}
+    <?php }?>
+         <?php } else { ?>
               <h4><font style="color: red;">No puede ingresar los datos. No está trabajando con ningun paciente</font></h4>
-          {/if}
+          <?php }?>
       <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   <script src="bootstrap-hover-dropdown.js"></script>
  </div>
 </body>
 
-</html>
+</html><?php }} ?>

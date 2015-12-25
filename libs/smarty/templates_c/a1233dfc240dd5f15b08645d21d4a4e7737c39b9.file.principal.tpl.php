@@ -1,4 +1,34 @@
-<!DOCTYPE html>
+<?php /* Smarty version Smarty-3.1.20, created on 2015-12-25 17:47:54
+         compiled from "vistas\principal.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:3115356799beaa7d8c6-25755120%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    'a1233dfc240dd5f15b08645d21d4a4e7737c39b9' => 
+    array (
+      0 => 'vistas\\principal.tpl',
+      1 => 1451062070,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '3115356799beaa7d8c6-25755120',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.20',
+  'unifunc' => 'content_56799beebaeb92_90131273',
+  'variables' => 
+  array (
+    'titulo' => 0,
+    'mensage' => 0,
+    'cedula' => 0,
+    'mensaje' => 0,
+    'usuarios' => 0,
+    'usuario' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_56799beebaeb92_90131273')) {function content_56799beebaeb92_90131273($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,7 +39,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{$titulo}</title>
+    <title><?php echo $_smarty_tpl->tpl_vars['titulo']->value;?>
+</title>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,15 +58,18 @@
 </head>
 
 <body>
-    {include file="header.tpl"}
+    <?php echo $_smarty_tpl->getSubTemplate ("header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
  <div class="container-fluid">
       <div class="row">
-          {if isset($mensage)}
-          {$mensage}
-          {/if}
-    {if is_null($cedula)}
+          <?php if (isset($_smarty_tpl->tpl_vars['mensage']->value)) {?>
+          <?php echo $_smarty_tpl->tpl_vars['mensage']->value;?>
+
+          <?php }?>
+    <?php if (is_null($_smarty_tpl->tpl_vars['cedula']->value)) {?>
     <div class="container-fluid">
-    {if isset($mensaje)}{$mensaje}{/if}
+    <?php if (isset($_smarty_tpl->tpl_vars['mensaje']->value)) {?><?php echo $_smarty_tpl->tpl_vars['mensaje']->value;?>
+<?php }?>
     </div>
     <h3><font style="color: #fff;">Proyecto Final Estudios Medicos</font></h3>
  <legend>Pacientes en Sistema</legend>
@@ -43,16 +77,23 @@
     <label for="nombre" class="col-lg-2 control-label">Seleccione paciente con el cual va a trabajar o <a tabindex="-1" href="nuevo.php">Ingresar Paciente Nuevo</a></label>
     <div class="col-lg-10">
         <select id="elejir"><option>Seleccione una opcion</option>
-            {if isset($usuarios)}
-    {foreach from=$usuarios item=usuario}
-        <option value="{$usuario->getId()}">{$usuario->getId()} : {$usuario->getApellido()}</option>
- {/foreach}
+            <?php if (isset($_smarty_tpl->tpl_vars['usuarios']->value)) {?>
+    <?php  $_smarty_tpl->tpl_vars['usuario'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['usuario']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['usuarios']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['usuario']->key => $_smarty_tpl->tpl_vars['usuario']->value) {
+$_smarty_tpl->tpl_vars['usuario']->_loop = true;
+?>
+        <option value="<?php echo $_smarty_tpl->tpl_vars['usuario']->value->getId();?>
+"><?php echo $_smarty_tpl->tpl_vars['usuario']->value->getId();?>
+ : <?php echo $_smarty_tpl->tpl_vars['usuario']->value->getApellido();?>
+</option>
+ <?php } ?>
 
-    {/if}
+    <?php }?>
         </select>
     </div>
   </div>
- {/if}
+ <?php }?>
         <div id="respuestauser"></div>
         </div>
         </div>
@@ -94,4 +135,4 @@
    </script>
 </body>
 
-</html>
+</html><?php }} ?>
