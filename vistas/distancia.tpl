@@ -10,7 +10,7 @@
     <meta name="author" content="">
 
     <title>{$titulo}</title>
-
+ 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -47,7 +47,7 @@
     <form id="FormularioPatronimico" method="POST" class="form-horizontal">
     <fieldset> <legend>Datos Distancia</legend>
                          <div class="form-group">     
-                    <label  class="col-sm-4 control-label">Car. Fem. : </label>
+                    <label  class="col-sm-4 control-label">Carfemprueba. Fem. : </label>
                     <div class="col-sm-8">
                         <input type="text" name="carfem" class="success" size ="50">
                     </div> 
