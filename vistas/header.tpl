@@ -46,8 +46,13 @@
               <li><a tabindex="-1" href="pres_braquial.php">Presión Braquial</a></li>
             </ul>  
         </li>
-       
-      <li class="dropdown">
+        <li class="dropdown">
+            <a tabindex="-1" href="comentarios.php">Comentarios</a>
+          </li>
+           <li class="dropdown">
+            <a tabindex="-1" href="imprimir.php">Ver Ficha</a>
+          </li>
+    <!--  <li class="dropdown">
             <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Reactividad Vascular <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li><a tabindex="-1" href="#">Basal</a></li>
@@ -63,7 +68,7 @@
       <li class="divider"></li>
       <li><a tabindex="-1" href="cifras.php">Cifras</a></li>
             </ul>
-          </li>    
+          </li>   --> 
         </ul>
       </div> <!-- .nav-collapse -->
     </div> <!-- .container -->

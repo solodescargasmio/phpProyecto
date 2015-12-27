@@ -23,6 +23,7 @@ class riesgo extends clase_base{
     private $sedentarismo;
     private $ejercicio;
     private $medicacion;
+    private $diabetes;
     
              //Contructor que recibe un array
 	public function __construct($obj=NULL) {
@@ -36,8 +37,15 @@ class riesgo extends clase_base{
         parent::__construct($tabla);
 
     }
-        
-        public function getId() {
+    public function getDiabetes() {
+        return $this->diabetes;
+    }
+
+    public function setDiabetes($diabetes) {
+        $this->diabetes = $diabetes;
+    }
+
+            public function getId() {
             return $this->id;
         }
 
@@ -140,8 +148,9 @@ class riesgo extends clase_base{
     $seden=  $this->getSedentarismo();
     $ejer=  $this->getEjercicio();
     $medic=  $this->getMedicacion();
-    $smtp=  $this->getDB()->prepare("INSERT INTO riesgo(id_usuario,fuma,presion,colesterol,hiperglicemia,ant_fliares,sedentarismo,ejercicio,medicacion)VALUES (?,?,?,?,?,?,?,?,?)");
-    $smtp->bind_param('iiiiiiiii',$id_user,$fuma,$presion,$colesterol,$hiper,$ant,$seden,$ejer,$medic);
+    $dia=  $this->getDiabetes();
+    $smtp=  $this->getDB()->prepare("INSERT INTO riesgo(id_usuario,fuma,presion,colesterol,hiperglicemia,ant_fliares,sedentarismo,ejercicio,medicacion,diabetes)VALUES (?,?,?,?,?,?,?,?,?,?)");
+    $smtp->bind_param('iiiiiiiiii',$id_user,$fuma,$presion,$colesterol,$hiper,$ant,$seden,$ejer,$medic,$dia);
     $smtp->execute();
     $res=false;
       if($this->getDB()->affected_rows>0){

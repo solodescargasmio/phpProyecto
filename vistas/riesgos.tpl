@@ -64,6 +64,8 @@
 <br/>
 <input name="medicacion" type="checkbox"/>  Medicacíon
 <br/>
+<input name="diabetes" type="checkbox"/>  Diabetes
+<br/>
 <br>
                 
     <div class="form-group">

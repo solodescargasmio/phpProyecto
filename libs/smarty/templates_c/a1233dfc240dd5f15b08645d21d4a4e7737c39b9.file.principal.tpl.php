@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.20, created on 2015-12-25 17:47:54
+<?php /* Smarty version Smarty-3.1.20, created on 2015-12-27 16:32:52
          compiled from "vistas\principal.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3115356799beaa7d8c6-25755120%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a1233dfc240dd5f15b08645d21d4a4e7737c39b9' => 
     array (
       0 => 'vistas\\principal.tpl',
-      1 => 1451062070,
+      1 => 1451230365,
       2 => 'file',
     ),
   ),
@@ -71,8 +71,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <?php if (isset($_smarty_tpl->tpl_vars['mensaje']->value)) {?><?php echo $_smarty_tpl->tpl_vars['mensaje']->value;?>
 <?php }?>
     </div>
-    <h3><font style="color: #fff;">Proyecto Final Estudios Medicos</font></h3>
- <legend>Pacientes en Sistema</legend>
+    <h3><font style="color: #000;">Proyecto Final Estudios Medicos</h3>
+ <legend>Pacientes en Sistema</legend></font>
       <div class="form-group">
     <label for="nombre" class="col-lg-2 control-label">Seleccione paciente con el cual va a trabajar o <a tabindex="-1" href="nuevo.php">Ingresar Paciente Nuevo</a></label>
     <div class="col-lg-10">
@@ -93,6 +93,15 @@ $_smarty_tpl->tpl_vars['usuario']->_loop = true;
         </select>
     </div>
   </div>
+        <?php } else { ?>
+            <?php if (isset($_smarty_tpl->tpl_vars['usuarios']->value)) {?>
+          <select id="elejir"> 
+              <option value="<?php echo $_smarty_tpl->tpl_vars['cedula']->value;?>
+">Ver avances</option>
+        <option value="<?php echo $_smarty_tpl->tpl_vars['cedula']->value;?>
+">Ver avances</option>
+    <?php }?>
+        </select> 
  <?php }?>
         <div id="respuestauser"></div>
         </div>

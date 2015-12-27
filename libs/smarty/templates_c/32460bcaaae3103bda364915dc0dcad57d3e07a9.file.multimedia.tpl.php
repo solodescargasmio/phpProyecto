@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.20, created on 2015-12-25 17:48:14
+<?php /* Smarty version Smarty-3.1.20, created on 2015-12-26 14:54:30
          compiled from "vistas\multimedia.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:64835679f26fa7d8c1-71060648%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '32460bcaaae3103bda364915dc0dcad57d3e07a9' => 
     array (
       0 => 'vistas\\multimedia.tpl',
-      1 => 1451053937,
+      1 => 1451138037,
       2 => 'file',
     ),
   ),
@@ -81,7 +81,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <label for="ci" class="col-lg-2 control-label">Seccion del archivo</label>
     <div class="col-lg-10">
     <select name="cursos" id="cursos">
-<option>Seleccione una opcion</option>
+<option value="0">Seleccione una opcion</option>
             <option value="Ecografia Carotidea Izquierda">Ecografía Carotídea Izquierda</option>
             <option value="Ecografia Femoral Comun Izquierda">Ecografía Femoral Común Izquierda</option>
             <option value="Arteria Vertebral Izquierda">Arteria Vertebral Izquierda</option>
@@ -94,6 +94,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     </div>
     <div id="respuestauser"></div>
    </div>
+          <div class="form-group">
+    <label for="ci" class="col-lg-2 control-label">O introducir nombre de archivo (Sin extencion, este nombre es el que se usara para identificar el archivo en BD)</label>
+    <div class="col-lg-10">
+        <input type="text" name="nombre" id="nombre" class="success">
+    </div>
+        </div>
         <div class="form-group">
     <label for="ci" class="col-lg-2 control-label">Seleccione el archivo a subir</label>
     <div class="col-lg-10">
@@ -112,6 +118,23 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	//Aqui se coge el elemento y con la propiedad .on que requiere dos  parametros : change (cuando el valor de ese id cambie, que es cuando se elige otra opcion en la desplegable)y ejecutar la siguiente funcion cuando se haga change
 	$('#cursos').on('change', function(){
               user=$('#cursos').val();
+          //    alert(user);
+             datatypo='user='+user;//genero un array con indice
+    $.ajax({
+         url: 'controlArchivos.php',//llamo a la pagina q hace el control
+         type:'POST',//metodo por el cual paso el dato
+         data:datatypo,
+             success: function (data) { //funcion q recoge la respuesta de la pagina q hace el control
+                  $("#respuestauser").fadeIn(1000).html(data); //imprimo el mensaje en el div      
+                
+    }
+     });     
+    });  
+    });
+      $(function(){
+	//Aqui se coge el elemento y con la propiedad .on que requiere dos  parametros : change (cuando el valor de ese id cambie, que es cuando se elige otra opcion en la desplegable)y ejecutar la siguiente funcion cuando se haga change
+	$('#nombre').on('blur', function(){
+              user=$('#nombre').val();
           //    alert(user);
              datatypo='user='+user;//genero un array con indice
     $.ajax({

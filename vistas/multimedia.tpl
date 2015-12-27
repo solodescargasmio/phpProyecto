@@ -51,7 +51,7 @@
     <label for="ci" class="col-lg-2 control-label">Seccion del archivo</label>
     <div class="col-lg-10">
     <select name="cursos" id="cursos">
-<option>Seleccione una opcion</option>
+<option value="0">Seleccione una opcion</option>
             <option value="Ecografia Carotidea Izquierda">Ecografía Carotídea Izquierda</option>
             <option value="Ecografia Femoral Comun Izquierda">Ecografía Femoral Común Izquierda</option>
             <option value="Arteria Vertebral Izquierda">Arteria Vertebral Izquierda</option>
@@ -64,6 +64,12 @@
     </div>
     <div id="respuestauser"></div>
    </div>
+          <div class="form-group">
+    <label for="ci" class="col-lg-2 control-label">O introducir nombre de archivo (Sin extencion, este nombre es el que se usara para identificar el archivo en BD)</label>
+    <div class="col-lg-10">
+        <input type="text" name="nombre" id="nombre" class="success">
+    </div>
+        </div>
         <div class="form-group">
     <label for="ci" class="col-lg-2 control-label">Seleccione el archivo a subir</label>
     <div class="col-lg-10">
@@ -82,6 +88,23 @@
 	//Aqui se coge el elemento y con la propiedad .on que requiere dos  parametros : change (cuando el valor de ese id cambie, que es cuando se elige otra opcion en la desplegable)y ejecutar la siguiente funcion cuando se haga change
 	$('#cursos').on('change', function(){
               user=$('#cursos').val();
+          //    alert(user);
+             datatypo='user='+user;//genero un array con indice
+    $.ajax({
+         url: 'controlArchivos.php',//llamo a la pagina q hace el control
+         type:'POST',//metodo por el cual paso el dato
+         data:datatypo,
+             success: function (data) { //funcion q recoge la respuesta de la pagina q hace el control
+                  $("#respuestauser").fadeIn(1000).html(data); //imprimo el mensaje en el div      
+                
+    }
+     });     
+    });  
+    });
+      $(function(){
+	//Aqui se coge el elemento y con la propiedad .on que requiere dos  parametros : change (cuando el valor de ese id cambie, que es cuando se elige otra opcion en la desplegable)y ejecutar la siguiente funcion cuando se haga change
+	$('#nombre').on('blur', function(){
+              user=$('#nombre').val();
           //    alert(user);
              datatypo='user='+user;//genero un array con indice
     $.ajax({

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.20, created on 2015-12-25 18:06:22
+<?php /* Smarty version Smarty-3.1.20, created on 2015-12-27 16:01:46
          compiled from "vistas\presion_central.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2745679cb271e8484-29854567%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '854751aadca0f01c3bf26088d327a4e6c6f18820' => 
     array (
       0 => 'vistas\\presion_central.tpl',
-      1 => 1451062818,
+      1 => 1451063457,
       2 => 'file',
     ),
   ),
@@ -79,7 +79,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
           <?php }?>
           <h3>Datos Paciente</h3>  
           <?php if (isset($_smarty_tpl->tpl_vars['cedula']->value)) {?>
-              <?php if (isset($_smarty_tpl->tpl_vars['presionc']->value)) {?>
+              <?php if (!isset($_smarty_tpl->tpl_vars['presionc']->value)) {?>
           <form id="FormularioPatronimico" class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
     <fieldset> <legend>Datos Presion Central</legend>
     <div class="form-group">

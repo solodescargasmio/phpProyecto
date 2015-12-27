@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.20, created on 2015-12-25 15:34:57
+<?php /* Smarty version Smarty-3.1.20, created on 2015-12-26 18:26:01
          compiled from "vistas\fecha.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3274956799e2da037a0-95906391%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3a6b4426dceea9eb1c8a5e6c48a8f44fa192b97d' => 
     array (
       0 => 'vistas\\fecha.tpl',
-      1 => 1451054093,
+      1 => 1451054157,
       2 => 'file',
     ),
   ),
@@ -60,7 +60,7 @@ onSelect: function (date) {
 
 
     <div class="col-lg-10">
-        <input type="date" id="datepicker" name="datepicker">
+        <input type="date" id="datepicker" name="datepicker" required="">
     </div>
 
 </body>

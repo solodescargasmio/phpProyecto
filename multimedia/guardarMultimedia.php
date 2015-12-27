@@ -29,9 +29,11 @@ function subirDatos(){
     $mensaje="";
     $titulo="Multimedia"; 
     $archivo=new archivo();
-    if(isset($_POST['cursos'])){    
+    if(isset($_POST['cursos'])){
 $serv = $ruta=dirname(__FILE__).'/'.$id_user.'/';
-$varia=$_POST['cursos'];
+if(strcmp($_POST['cursos'],"0")==0){$varia=$_POST['nombre'];}
+else {$varia=$_POST['cursos'];}
+//var_dump($varia);exit();
   $exten=explode(".",$_FILES['archivo']['name']);
         $ex=  end($exten);
         $var=$varia.'.'.$ex;
@@ -59,18 +61,14 @@ $varia=$_POST['cursos'];
 	$remoto = $_FILES["archivo"]["tmp_name"];
 	// Juntamos la ruta del servidor con el nombre real del archivo
 	$ruta = $serv.$local;
-	// Verificamos si no hemos excedido el tamaño del archivo
-//	if (!$tama<=$_POST["MAX_FILE_SIZE"]){
-//		echo "Excede el tamaño del archivo...<br />";
-//	} else {
+
 		// Verificamos si ya se subio el archivo temporal
 		if (is_uploaded_file($remoto)){
-			// copiamos el archivo temporal, del directorio de temporales de nuestro servidor a la ruta que creamos	
                         $archivo->setId_usuario($id_user);
                         $archivo->setNombre($varia);
                         $archivo->setExtension($ex);
-                        if($archivo->insertarArchivo()){
-                          copy($remoto, $ruta);  
+                        if($archivo->insertarArchivo()){//guardamos nombre en base de datos
+                          copy($remoto, $ruta);// copiamos el archivo temporal, del directorio de temporales de nuestro servidor a la ruta que creamos	  
                         }else{$mensaje="error al guardar archivo";}
                       
 		}

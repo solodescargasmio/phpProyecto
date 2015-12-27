@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.20, created on 2015-12-25 17:31:21
+<?php /* Smarty version Smarty-3.1.20, created on 2015-12-27 16:01:36
          compiled from "vistas\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2831056799bf1f05375-02067113%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f182a762fb5bbfed403502ca5c5c11512569e1d5' => 
     array (
       0 => 'vistas\\header.tpl',
-      1 => 1451061031,
+      1 => 1451228492,
       2 => 'file',
     ),
   ),
@@ -76,8 +76,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
               <li><a tabindex="-1" href="pres_braquial.php">Presión Braquial</a></li>
             </ul>  
         </li>
-       
-      <li class="dropdown">
+        <li class="dropdown">
+            <a tabindex="-1" href="comentarios.php">Comentarios</a>
+          </li>
+           <li class="dropdown">
+            <a tabindex="-1" href="imprimir.php">Ver Ficha</a>
+          </li>
+    <!--  <li class="dropdown">
             <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Reactividad Vascular <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li><a tabindex="-1" href="#">Basal</a></li>
@@ -93,7 +98,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       <li class="divider"></li>
       <li><a tabindex="-1" href="cifras.php">Cifras</a></li>
             </ul>
-          </li>    
+          </li>   --> 
         </ul>
       </div> <!-- .nav-collapse -->
     </div> <!-- .container -->

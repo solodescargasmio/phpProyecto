@@ -119,6 +119,7 @@ class usuario extends clase_base{
          
        return $res;  
     }
+ 
     function calcularEdad($param) {
         
                  $fecha=date('d-m-Y');

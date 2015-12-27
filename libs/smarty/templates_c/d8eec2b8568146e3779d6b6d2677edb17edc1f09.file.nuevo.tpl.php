@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.20, created on 2015-12-22 20:15:52
+<?php /* Smarty version Smarty-3.1.20, created on 2015-12-26 18:26:00
          compiled from "vistas\nuevo.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1178056799e2d501bd0-69669296%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd8eec2b8568146e3779d6b6d2677edb17edc1f09' => 
     array (
       0 => 'vistas\\nuevo.tpl',
-      1 => 1450811748,
+      1 => 1451150757,
       2 => 'file',
     ),
   ),
@@ -61,7 +61,7 @@ and open the template in the editor.
     <div class="form-group">
     <label for="ci" class="col-lg-2 control-label">Cedula de Identidad</label>
     <div class="col-lg-10">
-        <input type="text" class="form-control" name="ci" id="ci" required="">
+        <input type="number" class="form-control" name="ci" id="ci" required="">
     </div>
   </div>          
               

@@ -8,12 +8,14 @@
 require_once ('./clases/ficha_patronimica.php');
 require_once ('./clases/riesgo.php');
 require_once ('./clases/template.php');
+
 require_once ('ctrl_usuario.php');
 require_once ('./clases/presion_braquial.php');
 require_once ('./clases/presion_central.php');
 require_once ('./clases/session.php');
 require_once ('./clases/vop.php');
 require_once ('./clases/imt.php');
+require_once ('./clases/comentario.php');
 require_once ('./clases/distancia.php');
 require_once ('./clases/usuario.php');
 require_once ('./conexion/config.php');
@@ -96,6 +98,7 @@ function ingresarRiesgos(){
     $sedentarismo=0;
     $ejercicio=0;
     $medicacion=0;
+    $diabetes=0;
     
     if($_POST){
     if($_POST['fuma']){$fuma=1;}
@@ -106,6 +109,7 @@ function ingresarRiesgos(){
     if($_POST['sedentarismo']){$sedentarismo=1;}
     if($_POST['ejercicio']){$ejercicio=1;}
     if($_POST['medicacion']){$medicacion=1;}
+    if($_POST['diabetes']){$diabetes=1;}
      $riesgo->setId_usuario($id_usuario);
      $riesgo->setFuma($fuma);
      $riesgo->setPresion($presion);
@@ -115,6 +119,7 @@ function ingresarRiesgos(){
      $riesgo->setSedentarismo($sedentarismo);
      $riesgo->setEjercicio($ejercicio);
      $riesgo->setMedicacion($medicacion);
+     $riesgo->setDiabetes($diabetes);
      if($riesgo->insertarRiesgo()){
           header('Location: index.php');
          exit();
@@ -332,6 +337,102 @@ function ingresarDis(){
     $tpl->mostrar("distancia", $datos);    
 }
 
+function ingresarComentarios(){
+         error_reporting(0);
+    Session::init();
+    $id_user=Session::get("cedula");
+    $apell=Session::get("apellido");
+    $edad= Session::get('edad');
+    $tpl=new Template();
+    $mensaje="";
+    $titulo="Comentarios"; 
+    $id_usuario=$id_user; 
+    $comentario=new comentario();
+    if($_POST['titulo']){
+        $titu=$_POST['titulo'];
+        $texto=$_POST['texto'];
+        $comentario->setId_usuario($id_usuario);
+        $comentario->setTitulo($titu);
+        $comentario->setTexto($texto);
+         if($comentario->insertarComentario()){
+            header('Location: index.php');
+            exit();
+        }
+        else{$mensaje="Error al ingresar ".$_POST['titulo'].". Verifique";}
+    }
+      $datos=array(
+        'mensaje' => $mensaje,
+        'titulo' => $titulo,
+    );
+      $tpl->asignar('edad', $edad);
+    $tpl->asignar('cedula', $id_user);
+    $tpl->asignar('apellido', $apell);
+    $tpl->mostrar("comentario", $datos);    
+}
+
+function fichaImrimir(){
+         error_reporting(0);
+    Session::init();
+    $id_user=Session::get("cedula");
+    $apell=Session::get("apellido");
+    $edad= Session::get('edad');
+    $tpl=new Template();
+    $mensaje="";
+    $titulo="Ficha para imprimir"; 
+    $usu=new usuario();
+ $usuario=$usu->mostrarUser($id_user);
+    $fptr=new ficha_patronimica();
+    $dist=new distancia();
+    $imt=new imt();
+    $vop=new vop();
+    $riesgo=new riesgo();
+    $comentario=new comentario();
+    $presb=new presion_braquial();
+    $presc=new presion_central();
+    $resficha=$fptr->mostrarFicha($id_user);
+    $resdist=$dist->mostrarDistancia($id_user);
+    $resimt=$imt->mostrarImt($id_user);
+    $resries=$riesgo->mostrarRiesgo($id_user);
+    $resvop=$vop->mostrarVop($id_user);
+    $respreb=$presb->mostrarPb($id_user);
+    $resprec=$presc->mostrarPc($id_user);
+    $rescom=$comentario->mostrarComentario($id_user);
+//    foreach ($rescom as $key => $value) { 
+//        if(strcmp($value->getTitulo(),"Resumen")==0){
+//            $resumen=new comentario();
+//            $resumen=$value;  
+//        }
+//        else  if(strcmp($value->getTitulo(),"Resumen")==0){
+//            $resumen=new comentario();
+//            $resumen=$value;  
+//        }
+//        
+//        
+//    }
+    /*      
+       'distancia' => $resdist,
+       'imts' => $resimt,
+       
+       'vops' => $resvop,
+       
+       */
+    //var_dump($usuario);exit();
+   $datos = array(
+       'usuarios' => $usuario,
+       'ficha' => $resficha,
+       'riesgo' => $resries,
+       'comentarios' => $rescom,
+       'presb' => $respreb,
+       'presc' => $resprec,
+       'mensaje' => $mensage
+   );
+      $tpl->asignar('edad', $edad);
+    $tpl->asignar('cedula', $id_user);
+    $tpl->asignar('apellido', $apell);
+    $tpl->mostrar("fichaImprimir", $datos);    
+}
+
 function guardarArchivos(){
-    subirDatos();
+    subirDatos();//Esta funcion esta en la carpeta multimedia 
+    //en el archivo guardar...php
 }

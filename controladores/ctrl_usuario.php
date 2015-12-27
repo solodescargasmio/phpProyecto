@@ -67,7 +67,7 @@ function ingresarNuevo(){
 //        $ruta="imagenes/".$_FILES['foto']['name'];
 //        @move_uploaded_file($_FILES['foto']['tmp_name'], $ruta);
         if($user->ingresarUsuario()){
-            crearDir($id);
+            crearDir($id);//esta funcion esta en carpeta multimedia archivo crear...php
 //            $ruta=$_SERVER['DOCUMENT_ROOT'].'/phpProyecto/multimedia/'.$id;
 //            if (!file_exists($ruta)) {  
 //    mkdir($ruta, 0777, true);   

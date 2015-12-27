@@ -31,7 +31,7 @@ and open the template in the editor.
     <div class="form-group">
     <label for="ci" class="col-lg-2 control-label">Cedula de Identidad</label>
     <div class="col-lg-10">
-        <input type="text" class="form-control" name="ci" id="ci" required="">
+        <input type="number" class="form-control" name="ci" id="ci" required="">
     </div>
   </div>          
               
