@@ -5,46 +5,35 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-        <a class="navbar-brand" href="index.php">Demo Proyecto Final</a>
+        <a tabindex="-1" class="navbar-brand" href="index.php">Inicio</a>
+        
+        <a tabindex="-1" class="navbar-brand" href="cerrar.php" style="  margin-left: auto; margin-right: auto;;">Cerrar</a>
         {if isset($cedula)}
-            <a class="navbar-brand" href="#" style="float: right;">Esta trabajando con el usuario :{$apellido}  :{$cedula} </a>
+            <div style="float: right;"><font style="color: #fff;">Apellido: {$apellido}<br>Cedula : {$cedula} <br>Edad : {$edad}</font></div>
         {/if}
       <div class="navbar-collapse nav-collapse collapse navbar-header">
         <ul class="nav navbar-nav">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Ingresar Paciente<b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a tabindex="-1" href="nuevo.php">Ingresar Paciente</a></li>
-              <li><a tabindex="-1" href="riesgos.php">Riesgo CV</a></li>
-            </ul>
+          <li class="dropdown">{if !isset($cedula)}
+            <a tabindex="-1" href="nuevo.php">Ingresar Paciente</a>
+              {/if}
+
           </li>
           <li> <a tabindex="-1" href="imts.php">IMT </a></li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Ecografia <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a tabindex="-1" href="#">Ecografía Carotídea Izquierda</a></li>
-              <li><a tabindex="-1" href="#">Ecografía Femoral Común Izquierda</a></li>
-              <li><a tabindex="-1" href="#">Arteria Vertebral Izquierda</a></li>
-              <li class="divider"></li>
-              <li><a tabindex="-1" href="#">Ecografía Carotídea Derecha</a></li>
-              <li><a tabindex="-1" href="#">Ecografía Femoral Común Derecha</a></li>
-              <li><a tabindex="-1" href="#">Arteria Vertebral Derecha</a></li>
-              <li class="divider"></li>
-              <li><a tabindex="-1" href="#">Ecografía Radial Derecha</a></li>
-              <li><a tabindex="-1" href="#">Ecografía Braquial Derecha</a></li>
-              <li class="divider"></li>
-              <li><a tabindex="-1" href="#">Caracterización de Placa</a></li>
-            </ul>
+            <a tabindex="-1" href="guardarmultimedia.php">Archivos</a>
           </li>
           <li class="dropdown">
-            <a href="vops.php">Velocidad de Onda de Pulso</a>
+            <a tabindex="-1" href="riesgos.php">Riesgo CV</a>
+          </li>
+          <li class="dropdown">
+            <a tabindex="-1" href="vops.php">Velocidad de Onda de Pulso</a>
           <!--  <ul class="dropdown-menu">
               <li><a tabindex="-1" href="#">PWV SPHYGMOCOR Carotido-Femoral</a></li>
               <li><a tabindex="-1" href="#">PWE Hemodin</a></li>
             </ul>-->
           </li>
           <li class="dropdown">
-            <a href="distancias.php">Distancia</a>
+            <a tabindex="-1" href="distancias.php">Distancia</a>
           <!--  <ul class="dropdown-menu">
               <li><a tabindex="-1" href="#">PWV SPHYGMOCOR Carotido-Femoral</a></li>
               <li><a tabindex="-1" href="#">PWE Hemodin</a></li>
@@ -57,8 +46,13 @@
               <li><a tabindex="-1" href="pres_braquial.php">Presión Braquial</a></li>
             </ul>  
         </li>
-       
-      <li class="dropdown">
+        <li class="dropdown">
+            <a tabindex="-1" href="comentarios.php">Comentarios</a>
+          </li>
+           <li class="dropdown">
+            <a tabindex="-1" href="imprimir.php">Ver Ficha</a>
+          </li>
+    <!--  <li class="dropdown">
             <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Reactividad Vascular <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li><a tabindex="-1" href="#">Basal</a></li>
@@ -74,7 +68,7 @@
       <li class="divider"></li>
       <li><a tabindex="-1" href="cifras.php">Cifras</a></li>
             </ul>
-          </li>    
+          </li>   --> 
         </ul>
       </div> <!-- .nav-collapse -->
     </div> <!-- .container -->

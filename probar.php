@@ -9,6 +9,7 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <title></title>
           <script src="js/jquery.js" type="text/javascript"></script>
+          <script src="js/nicEdit.js" type="text/javascript"></script>
      <script type="text/javascript">
         $(function(){
 	//Aqui se coge el elemento ciudad y con la propiedad .on que requiere dos  parametros : change (cuando el valor de ese id cambie, que es cuando se elige otra opcion en la desplegable)y ejecutar la siguiente funcion cuando se haga change
@@ -32,13 +33,56 @@ and open the template in the editor.
      });
      });
  });   */
+     bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
    </script>
     </head>
     <body>
-        <select name="elejir" id="elejir">
-            <option value="uno">UNO</option>
-            <option value="dos">DOS</option>
-            <option value="tres">TRES</option>
-            </select>
+             <a href="javascript:imprSelec('cuadros')" >
+   <button id="buscar" name="buscar" class="btn btn-success">
+       <img src="./imagenes/boton_imprimir.gif" width="90" height="50"></button>  
+     </a>
+      <div class="cuadros" id="cuadros">
+        <h4>Second Textarea</h4>
+<textarea name="area2" style="width: 500px; height: 300px;">
+	Some Initial Content was in this textarea
+</textarea>
+        <?php 
+        $param="06-01-1980";
+        echo calcularEdad($param);
+     function calcularEdad($param) {
+        
+                 $fecha=date('d-m-Y');
+                list($dia,$mes,$ano)=  explode('-', $fecha);
+//fecha de nacimiento
+        list($diae,$mese,$anoe)=  explode('-', $param);
+
+//si el mes es el mismo pero el día inferior aun no ha cumplido años, le quitaremos un año al actual
+
+if (($mese == $mes) && ($diae > $dia)) {
+$ano=($ano-1); }
+
+//si el mes es superior al actual tampoco habrá cumplido años, por eso le quitamos un año al actual
+
+if ($mese > $mes) {
+$ano=($ano-1);}
+
+//ya no habría mas condiciones, ahora simplemente restamos los años y mostramos el resultado como su edad
+
+$edad=($ano-$anoe);
+
+return $edad;
+    }
+        ?></div>
+            <script language="Javascript">
+function imprSelec(nombre)
+{
+  var ficha = document.getElementById(nombre);
+  var ventimp = window.open(' ', 'popimpr');
+  ventimp.document.write( ficha.innerHTML );
+  ventimp.document.close();
+  ventimp.print( );
+  ventimp.close();
+}
+</script>
     </body>
 </html>

@@ -43,10 +43,12 @@
     {include file="header.tpl"}
    <div class="container-fluid">
        <font style="color:red;" size=4> {if isset($mensaje)}{$mensaje}{/if}</font>
-    </div>
+    <h3>Datos Paciente</h3> 
+       {if isset($cedula)}
+             {if !isset($riesgo)}
     <form method="POST" class="form-horizontal">
     <fieldset> <legend>Datos Riesgos</legend>
-  <input name="fuma" type="checkbox" /> <font face="caption" style="color: #fff;" size=4>Fuma
+  <input name="fuma" type="checkbox" /> <font face="caption" style="color: #000;" size=4>Fuma
 <br/>
 <input name="presion" type="checkbox"/> Presíon
 <br/>
@@ -62,6 +64,8 @@
 <br/>
 <input name="medicacion" type="checkbox"/>  Medicacíon
 <br/>
+<input name="diabetes" type="checkbox"/>  Diabetes
+<br/>
 <br>
                 
     <div class="form-group">
@@ -70,11 +74,17 @@
     </div>
   </div>
  </fieldset>
-</form>
+</form> {else}
+              <h4><font style="color: red;">Los datos de Riesgos para este paciente,<br>yá fueron ingresados en la base de datos</font></h4>
+         
+    {/if}
+         {else}
+              <h4><font style="color: red;">No puede ingresar los datos. No está trabajando con ningun paciente</font></h4>
+          {/if}
       <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   <script src="bootstrap-hover-dropdown.js"></script>
- 
+ </div>
 </body>
 
 </html>

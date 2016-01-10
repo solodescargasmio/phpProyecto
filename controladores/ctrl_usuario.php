@@ -8,9 +8,13 @@
 require_once ('./clases/ficha_patronimica.php');
 require_once ('./clases/usuario.php');
 require_once ('./clases/template.php');
+require_once ('./clases/session.php');
 require_once ('ctrl_datos.php');
+require_once ('./multimedia/crearMKdir.php');
 
  function mostrarTodos(){
+     $id_user=  Session::get('cedula');
+     $apell=  Session::get('apellido');
      $mensage="";
      error_reporting(0);
      $tpl= new Template();
@@ -34,6 +38,8 @@ require_once ('ctrl_datos.php');
        'titulo' => 'Proyecto final',
        'mensaje' => $mensage
    );
+       $tpl->asignar('cedula', $id_user);
+    $tpl->asignar('apellido', $apell);
    $tpl->mostrar("mostrar", $data);
 }
 
@@ -61,6 +67,11 @@ function ingresarNuevo(){
 //        $ruta="imagenes/".$_FILES['foto']['name'];
 //        @move_uploaded_file($_FILES['foto']['tmp_name'], $ruta);
         if($user->ingresarUsuario()){
+            crearDir($id);//esta funcion esta en carpeta multimedia archivo crear...php
+//            $ruta=$_SERVER['DOCUMENT_ROOT'].'/phpProyecto/multimedia/'.$id;
+//            if (!file_exists($ruta)) {  
+//    mkdir($ruta, 0777, true);   
+//} 
          $fpat=new ficha_patronimica();
         $peso=$_POST['peso'];
         $altura=$_POST['altura'];
@@ -89,9 +100,10 @@ function ingresarNuevo(){
 }
 
 
-function traerFicha($param) {
-    $fptr=new ficha_patronimica();
-    
+function cerrar() {
+    Session::init();
+    Session::destroy();
+    principal();
 }
 
 

@@ -43,20 +43,22 @@
     {include file="header.tpl"}
     <div class="container-fluid">
     {if isset($mensage)}{$mensaje}{/if}
-    </div>
+    <h3>Datos Paciente</h3> 
+    {if isset($cedula)}
+        {if !isset($distancias)}
     <form id="FormularioPatronimico" method="POST" class="form-horizontal">
     <fieldset> <legend>Datos Distancia</legend>
                          <div class="form-group">     
                     <label  class="col-sm-4 control-label">Car. Fem. : </label>
                     <div class="col-sm-8">
-                        <input type="text" name="carfem" class="success" size ="50">
+                        <input type="text" name="carfem" class="success" size ="50" required="">
                     </div> 
                 </div> 
         
                   <div class="form-group">     
                     <label  class="col-sm-4 control-label">Car. Hueco : </label>
                     <div class="col-sm-8">
-                        <input type="text" name="carhueco"  class="success" size ="50">
+                        <input type="text" name="carhueco"  class="success" size ="50" required="">
                     </div> 
                 </div> 
         
@@ -64,26 +66,26 @@
                                      <div class="form-group"> 
                 <label  class="col-sm-4 control-label">Hueco Hombro : </label>
                 <div class="col-sm-6">
-                        <input type="text" name="huecohombro" required="required" size ="50" class="texto">
+                        <input type="text" name="huecohombro" required="required" size ="50" class="texto" required="">
                 </div>
             </div>
             <div class="form-group"> 
                 <label  class="col-sm-4 control-label">Hombro Braq. :</label>
                 <div class="col-sm-6">
-                    <input type="text" name="hombrobraq" required="required" size ="50" class="texto">
+                    <input type="text" name="hombrobraq" required="required" size ="50" class="texto" required="">
                 </div>
             </div>
             <div class="form-group"> 
                 <label  class="col-sm-4 control-label">Hombro Rad. : </label>
                 <div class="col-sm-6">
-                    <input type="text" name="hombrorad" required="required" size ="50">
+                    <input type="text" name="hombrorad" required="required" size ="50" required="">
                 </div>
             </div>
                          
             <div class="form-group"> 
                 <label  class="col-sm-4 control-label">Hueco Cuffxell : </label>
                 <div class="col-sm-6">
-                    <input type="text" name="huecocuff" size ="50" class="texto">
+                    <input type="text" name="huecocuff" size ="50" class="texto" required="">
                 </div>
             </div>
    
@@ -91,7 +93,7 @@
             <div class="form-group"> 
                 <label  class="col-sm-4 control-label">Cuffxell Fem. :</label>
                 <div class="col-sm-6">
-                    <input type="text" name="cuffem" required="required" size ="50" class="texto">
+                    <input type="text" name="cuffem" required="required" size ="50" class="texto" required="">
                 </div>
             </div> </fieldset>            
     <div class="form-group">
@@ -101,6 +103,13 @@
   </div>
  
 </form>
+     {else}
+              <h4><font style="color: red;">Los datos de Distancias para este paciente,<br>yá fueron ingresados en la base de datos</font></h4>
+         
+    {/if}
+     {else}
+              <h4><font style="color: red;">No puede ingresar los datos. No está trabajando con ningun paciente</font></h4>
+          {/if}
       <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   <script src="bootstrap-hover-dropdown.js"></script>
@@ -110,7 +119,7 @@
             //$("#FormularioPatronimico").formToWizard({ })
         });
        
-    </script>
+    </script></div>
 </body>
 
 </html>

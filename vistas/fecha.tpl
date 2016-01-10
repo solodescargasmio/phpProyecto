@@ -37,11 +37,10 @@ onSelect: function (date) {
 });
 </script>          
 
-    
-    <div class="col-lg-10">
-        <input type="date" id="datepicker" name="datepicker">
-    </div>
 
+    <div class="col-lg-10">
+        <input type="date" id="datepicker" name="datepicker" required="">
+    </div>
 
 </body>
 </html>

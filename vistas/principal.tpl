@@ -28,17 +28,17 @@
 
 <body>
     {include file="header.tpl"}
-    <div class="container-fluid" style="background: #fff; height: 600px;opacity: 0.9;">
+ <div class="container-fluid">
       <div class="row">
           {if isset($mensage)}
           {$mensage}
           {/if}
-    
+    {if is_null($cedula)}
     <div class="container-fluid">
     {if isset($mensaje)}{$mensaje}{/if}
     </div>
-    <h3><font style="color: #fff;">Proyecto Final Estudios Medicos</font></h3>
- <legend>Pacientes en Sistema</legend>
+    <h3><font style="color: #000;">Proyecto Final Estudios Medicos</h3>
+ <legend>Pacientes en Sistema</legend></font>
       <div class="form-group">
     <label for="nombre" class="col-lg-2 control-label">Seleccione paciente con el cual va a trabajar o <a tabindex="-1" href="nuevo.php">Ingresar Paciente Nuevo</a></label>
     <div class="col-lg-10">
@@ -52,7 +52,14 @@
         </select>
     </div>
   </div>
-
+        {else}
+            {if isset($usuarios)}
+          <select id="elejir"> 
+              <option value="{$cedula}">Ver avances</option>
+        <option value="{$cedula}">Ver avances</option>
+    {/if}
+        </select> 
+ {/if}
         <div id="respuestauser"></div>
         </div>
         </div>

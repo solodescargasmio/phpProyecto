@@ -20,7 +20,7 @@ and open the template in the editor.
 
 <body>
             {include file="header.tpl"}
-    <div class="container-fluid" style="background: #fff;opacity: 0.9;">
+    <div class="container-fluid" style="background: #fff;opacity: 0.9; height: 100%;">
       <div class="row">
           {if isset($mensage)}
           {$mensage}
@@ -31,7 +31,7 @@ and open the template in the editor.
     <div class="form-group">
     <label for="ci" class="col-lg-2 control-label">Cedula de Identidad</label>
     <div class="col-lg-10">
-        <input type="text" class="form-control" name="ci" id="ci" required="">
+        <input type="number" class="form-control" name="ci" id="ci" required="">
     </div>
   </div>          
               
@@ -47,12 +47,7 @@ and open the template in the editor.
     <div class="col-lg-10">
       <input type="text" class="form-control" name="apellido" id="apellido" required="">
     </div>
-  </div>
-             <div class="form-group">
-    <label for="fecha" class="col-lg-2 control-label">Fecha de Nacimiento</label>
-    {include file="fecha.tpl"}
-    </div>
-              <div class="form-group">
+  </div>  <div class="form-group" >
     <label for="sexo" class="col-lg-2 control-label">Sexo</label>
     <div class="col-lg-10">
               <select name="selector">
@@ -62,6 +57,11 @@ and open the template in the editor.
         </select>
     </div>
   </div>
+             <div class="form-group" style="background: #fff;opacity: 0.9; height: 100%;">
+    <label for="fecha" class="col-lg-2 control-label">Fecha de Nacimiento</label>
+    {include file="fecha.tpl"}
+    </div>
+            
     </fieldset>
     <fieldset> <legend>Datos Patronimicos</legend>    
                                      <div class="form-group"> 
@@ -100,5 +100,6 @@ and open the template in the editor.
         $(document).ready(function(){
             $("#FormularioPatronimico").formToWizard({ })
         });</script>
+        </div>
 </body>
 </html>
