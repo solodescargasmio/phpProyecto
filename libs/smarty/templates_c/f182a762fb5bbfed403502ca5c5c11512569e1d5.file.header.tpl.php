@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.20, created on 2015-12-27 16:01:36
+<?php /* Smarty version Smarty-3.1.20, created on 2016-01-13 02:44:08
          compiled from "vistas\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2831056799bf1f05375-02067113%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f182a762fb5bbfed403502ca5c5c11512569e1d5' => 
     array (
       0 => 'vistas\\header.tpl',
-      1 => 1451228492,
+      1 => 1452649312,
       2 => 'file',
     ),
   ),
@@ -33,20 +33,26 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <span class="icon-bar"></span>
       </button>
         <a tabindex="-1" class="navbar-brand" href="index.php">Inicio</a>
-        
         <a tabindex="-1" class="navbar-brand" href="cerrar.php" style="  margin-left: auto; margin-right: auto;;">Cerrar</a>
+                  
+        <form class="navbar-form navbar-right" method="post" action="index.php">
+        <input type="text" id="buscar" name="buscar" class="form-control" placeholder="paciente" >
+        <input type="submit" value="Buscar" class="form-control btn btn-primary">
+    
         <?php if (isset($_smarty_tpl->tpl_vars['cedula']->value)) {?>
             <div style="float: right;"><font style="color: #fff;">Apellido: <?php echo $_smarty_tpl->tpl_vars['apellido']->value;?>
 <br>Cedula : <?php echo $_smarty_tpl->tpl_vars['cedula']->value;?>
  <br>Edad : <?php echo $_smarty_tpl->tpl_vars['edad']->value;?>
 </font></div>
-        <?php }?>
-      <div class="navbar-collapse nav-collapse collapse navbar-header">
-        <ul class="nav navbar-nav">
-          <li class="dropdown"><?php if (!isset($_smarty_tpl->tpl_vars['cedula']->value)) {?>
-            <a tabindex="-1" href="nuevo.php">Ingresar Paciente</a>
-              <?php }?>
+         <?php }?>
+        </form>
+        
+        <div class="navbar-collapse nav-collapse collapse navbar-header">
+        <?php if (isset($_smarty_tpl->tpl_vars['cedula']->value)) {?>
 
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a tabindex="-1" href="ficha_patronimica.php">Datos Patronimicos</a>
           </li>
           <li> <a tabindex="-1" href="imts.php">IMT </a></li>
           <li class="dropdown">
@@ -82,24 +88,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
            <li class="dropdown">
             <a tabindex="-1" href="imprimir.php">Ver Ficha</a>
           </li>
-    <!--  <li class="dropdown">
-            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Reactividad Vascular <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a tabindex="-1" href="#">Basal</a></li>
-              <li><a tabindex="-1" href="#">Basal-Oclusión</a></li>
-              <li><a tabindex="-1" href="#">Oclusion Inmediata</a></li>
-              <li><a tabindex="-1" href="#">Minimo Post Oclusión</a></li>
-              <li><a tabindex="-1" href="#">Máximo Post Oclusión</a></li>
-              <li class="divider"></li>
-               <li><a tabindex="-1" href="#">Preliberación</a></li>
-              <li><a tabindex="-1" href="#">Liberación Inmediata</a></li>
-              <li><a tabindex="-1" href="#">Mínimo Post Liberación</a></li>
-              <li><a tabindex="-1" href="#">Máximo Post Liberación</a></li>
-      <li class="divider"></li>
-      <li><a tabindex="-1" href="cifras.php">Cifras</a></li>
-            </ul>
-          </li>   --> 
         </ul>
+        <?php }?>
       </div> <!-- .nav-collapse -->
     </div> <!-- .container -->
   </header> <!-- .navbar -->

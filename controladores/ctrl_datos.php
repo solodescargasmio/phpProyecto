@@ -20,6 +20,7 @@ require_once ('./clases/distancia.php');
 require_once ('./clases/usuario.php');
 require_once ('./conexion/config.php');
 require_once ('./multimedia/guardarMultimedia.php');
+
 function principal(){
     Session::init();
     $id_user=Session::get('cedula');
@@ -78,6 +79,52 @@ function principal(){
     $tpl->asignar('apellido', $apell);
    $tpl->mostrar("principal", $data); 
 }
+
+function ingresarDatosPatronimicos() {
+    $fecha=date('d-m-Y');
+    error_reporting(0);
+    Session::init();
+    $id_user=Session::get("cedula");
+    $apell=Session::get("apellido");
+    $edad=  Session::get('edad');
+    $tpl=new Template();
+    $mensaje="";
+    $titulo="Datos patronimicos";
+    $id_usuario=$id_user; 
+    $dpatronimicos=new ficha_patronimica();
+    $resdp=$dpatronimicos->mostrarFicha($id_user);
+     
+    
+    if($_POST['peso']){  
+        $peso=$_POST['peso'];
+        $altura=$_POST['altura'];
+        $indice=$peso/($altura*$altura);
+        $imc= number_format($indice,2,".",",");
+        $dpatronimicos->setId_usuario($id_usuario);
+        $dpatronimicos->setPeso($peso);
+        $dpatronimicos->setAltura($altura);
+        $dpatronimicos->setFecha_estudio($fecha);
+        $dpatronimicos->setImc($imc);
+        if($dpatronimicos->ingresaFicha()){
+            header('Location: index.php');
+            exit();
+        }
+        else{$mensaje="Error al ingresar datos patronimicos. Verifique";}
+    }
+    
+      $datos=array(
+          'dpatr' => $resdp,
+         'fecha' => $fecha, 
+        'mensaje' => $mensaje,
+        'titulo' => $titulo,
+    );
+    $tpl->asignar('edad', $edad);
+    $tpl->asignar('cedula', $id_user);
+    $tpl->asignar('apellido', $apell);
+    $tpl->mostrar("ficha_patronimica", $datos);
+    
+}
+
 function ingresarRiesgos(){
     error_reporting(0);
     Session::init();

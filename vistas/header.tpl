@@ -6,17 +6,23 @@
         <span class="icon-bar"></span>
       </button>
         <a tabindex="-1" class="navbar-brand" href="index.php">Inicio</a>
-        
         <a tabindex="-1" class="navbar-brand" href="cerrar.php" style="  margin-left: auto; margin-right: auto;;">Cerrar</a>
+                  
+        <form class="navbar-form navbar-right" method="post" action="index.php">
+        <input type="text" id="buscar" name="buscar" class="form-control" placeholder="paciente" >
+        <input type="submit" value="Buscar" class="form-control btn btn-primary">
+    
         {if isset($cedula)}
             <div style="float: right;"><font style="color: #fff;">Apellido: {$apellido}<br>Cedula : {$cedula} <br>Edad : {$edad}</font></div>
-        {/if}
-      <div class="navbar-collapse nav-collapse collapse navbar-header">
-        <ul class="nav navbar-nav">
-          <li class="dropdown">{if !isset($cedula)}
-            <a tabindex="-1" href="nuevo.php">Ingresar Paciente</a>
-              {/if}
+         {/if}
+        </form>
+        
+        <div class="navbar-collapse nav-collapse collapse navbar-header">
+        {if isset($cedula)}
 
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a tabindex="-1" href="ficha_patronimica.php">Datos Patronimicos</a>
           </li>
           <li> <a tabindex="-1" href="imts.php">IMT </a></li>
           <li class="dropdown">
@@ -52,24 +58,8 @@
            <li class="dropdown">
             <a tabindex="-1" href="imprimir.php">Ver Ficha</a>
           </li>
-    <!--  <li class="dropdown">
-            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Reactividad Vascular <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a tabindex="-1" href="#">Basal</a></li>
-              <li><a tabindex="-1" href="#">Basal-Oclusión</a></li>
-              <li><a tabindex="-1" href="#">Oclusion Inmediata</a></li>
-              <li><a tabindex="-1" href="#">Minimo Post Oclusión</a></li>
-              <li><a tabindex="-1" href="#">Máximo Post Oclusión</a></li>
-              <li class="divider"></li>
-               <li><a tabindex="-1" href="#">Preliberación</a></li>
-              <li><a tabindex="-1" href="#">Liberación Inmediata</a></li>
-              <li><a tabindex="-1" href="#">Mínimo Post Liberación</a></li>
-              <li><a tabindex="-1" href="#">Máximo Post Liberación</a></li>
-      <li class="divider"></li>
-      <li><a tabindex="-1" href="cifras.php">Cifras</a></li>
-            </ul>
-          </li>   --> 
         </ul>
+        {/if}
       </div> <!-- .nav-collapse -->
     </div> <!-- .container -->
   </header> <!-- .navbar -->

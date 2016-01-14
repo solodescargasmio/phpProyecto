@@ -10,5 +10,6 @@ function crearDir($id) {
    //var_dump($ruta);exit();
             if (!file_exists($ruta)) {  
     mkdir($ruta, 0777, true);   
-} 
+    header('Location: index.php');
+}
 }

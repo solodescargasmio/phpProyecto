@@ -19,13 +19,13 @@ require_once ('./multimedia/crearMKdir.php');
      error_reporting(0);
      $tpl= new Template();
      $fptr=new ficha_patronimica();
-    $usu=new usuario();
-   
-    $resultados=$usu->getListado();
-    foreach ($resultados as $key => $value) {
-        $usu=$value;
-        $usuarios[]=$usu;
-    }
+//    $usu=new usuario();
+//   
+//    $resultados=$usu->getListado();
+//    foreach ($resultados as $key => $value) {
+//        $usu=$value;
+//        $usuarios[]=$usu;
+//    }
     
      $resficha=$fptr->getListado();
      foreach ($resficha as $key => $value) {
@@ -34,7 +34,7 @@ require_once ('./multimedia/crearMKdir.php');
     }
     
    $data = array(
-       'usuarios' => $usuarios,
+       
        'titulo' => 'Proyecto final',
        'mensaje' => $mensage
    );
@@ -60,36 +60,10 @@ function ingresarNuevo(){
         $user->setApellido($apellido);
         $user->setFecha_nac($fechah);
         $user->setSexo($sexo);
-//        $imagen=$_FILES['foto']['name'];
-//        $user->setNombre($nombre);
-//        $user->setImagen($imagen);
-//     
-//        $ruta="imagenes/".$_FILES['foto']['name'];
-//        @move_uploaded_file($_FILES['foto']['tmp_name'], $ruta);
+
         if($user->ingresarUsuario()){
-            crearDir($id);//esta funcion esta en carpeta multimedia archivo crear...php
-//            $ruta=$_SERVER['DOCUMENT_ROOT'].'/phpProyecto/multimedia/'.$id;
-//            if (!file_exists($ruta)) {  
-//    mkdir($ruta, 0777, true);   
-//} 
-         $fpat=new ficha_patronimica();
-        $peso=$_POST['peso'];
-        $altura=$_POST['altura'];
-        $indice=$peso/($altura*$altura);
-        $imc= number_format($indice,2,".",",");
-        $fpat->setId_usuario($_POST['ci']);
-        $fpat->setPeso($peso);
-        $fpat->setAltura($altura);
-        $fpat->setFecha_estudio($fecha);
-        $fpat->setImc($imc);
-        
-          if($fpat->ingresaFicha()){
-           mostrarTodos();
-            exit();
-        }else{$mensaje="Error al guardar ficha patronimica. Verifique los datos";}
-    //   mostrarTodos();
-            exit();
-        }else{ $mensage="Error al ingresar usuario. Verifique los datos";}
+            crearDir($id);
+            }
     }
     $data=array(
         'fecha' => $fecha,
@@ -98,6 +72,8 @@ function ingresarNuevo(){
     );
     $tpl->mostrar("nuevo", $data);
 }
+
+
 
 
 function cerrar() {

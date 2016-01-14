@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.20, created on 2015-12-25 18:11:57
+<?php /* Smarty version Smarty-3.1.20, created on 2016-01-14 04:40:07
          compiled from "vistas\vop.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:10063567c50202625a2-09416337%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'da224bd7fb739fd5114646a3d5ca3e005671b8f9' => 
     array (
       0 => 'vistas\\vop.tpl',
-      1 => 1451063458,
+      1 => 1452742793,
       2 => 'file',
     ),
   ),
@@ -111,7 +111,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <?php } else { ?>
               <h4><font style="color: red;">No puede ingresar los datos. No está trabajando con ningun paciente</font></h4>
           <?php }?>
-             
                     <script src="bootstrap-hover-dropdown.js"></script>
   <script src="js/formToWizard.js" type="text/javascript"></script>
   <script type="text/javascript">

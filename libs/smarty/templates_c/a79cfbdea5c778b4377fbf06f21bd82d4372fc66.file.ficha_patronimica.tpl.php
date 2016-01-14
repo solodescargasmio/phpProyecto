@@ -1,32 +1,33 @@
-<?php /* Smarty version Smarty-3.1.20, created on 2016-01-11 17:26:01
-         compiled from "vistas\imt.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:158605679a383e4e1c7-44293551%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.20, created on 2016-01-14 04:44:04
+         compiled from "vistas\ficha_patronimica.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:326805695ac50bebc28-79585982%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '9616e24e98271fe71b18cbd4f80aa05164e03ab4' => 
+    'a79cfbdea5c778b4377fbf06f21bd82d4372fc66' => 
     array (
-      0 => 'vistas\\imt.tpl',
-      1 => 1452056147,
+      0 => 'vistas\\ficha_patronimica.tpl',
+      1 => 1452743038,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '158605679a383e4e1c7-44293551',
+  'nocache_hash' => '326805695ac50bebc28-79585982',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.20',
-  'unifunc' => 'content_5679a3841ab3f3_71369597',
+  'unifunc' => 'content_5695ac50bebc29_02244749',
   'variables' => 
   array (
     'titulo' => 0,
     'mensage' => 0,
     'cedula' => 0,
-    'imts' => 0,
+    'dpatr' => 0,
+    'fecha' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5679a3841ab3f3_71369597')) {function content_5679a3841ab3f3_71369597($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_5695ac50bebc29_02244749')) {function content_5695ac50bebc29_02244749($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -71,46 +72,54 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <body>
             <?php echo $_smarty_tpl->getSubTemplate ("header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="background: #fff;opacity: 0.9; height: 100%;">
       <div class="row">
           <?php if (isset($_smarty_tpl->tpl_vars['mensage']->value)) {?>
           <?php echo $_smarty_tpl->tpl_vars['mensage']->value;?>
 
           <?php }?>
-          <h3>Datos Paciente</h3>  
-          <?php if (isset($_smarty_tpl->tpl_vars['cedula']->value)) {?>
-              <?php if (!isset($_smarty_tpl->tpl_vars['imts']->value)) {?>
+         <legend>Datos Patronimicos</legend>   
+       <?php if (isset($_smarty_tpl->tpl_vars['cedula']->value)) {?>  
+            <?php if (!isset($_smarty_tpl->tpl_vars['dpatr']->value)) {?>
           <form id="FormularioPatronimico" class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
-    <fieldset> <legend>Datos IMT</legend>
-    <div class="form-group">
-    <label for="ci" class="col-lg-2 control-label">CD</label>
-    <div class="col-lg-10">
-        <input type="text" class="form-control" name="cd" id="cd" required="">
-    </div>
-  </div>          
+    
+                                     <div class="form-group"> 
+                <label  class="col-sm-4 control-label">Ingrese Peso : </label>
+                <div class="col-sm-6">
+                        <input type="text" name="peso" placeholder="Peso :" required="required" size ="50" class="texto">
+                </div>
+            </div>
+            <div class="form-group"> 
+                <label  class="col-sm-4 control-label">Ingrese Altura :</label>
+                <div class="col-sm-6">
+                    <input type="text" name="altura" placeholder="Altura :" required="required" size ="50" class="texto">
+                </div>
+            </div>
               
-  <div class="form-group">
-    <label for="nombre" class="col-lg-2 control-label">CI</label>
-    <div class="col-lg-10">
-      <input type="text" class="form-control" name="ci" id="ci" required="">
-    </div>
-  </div>
- 
+            <div class="form-group"> 
+                <label  class="col-sm-4 control-label">Fecha de Estudio: </label>
+                <div class="col-sm-6">
+                    <input type="text" value="<?php echo $_smarty_tpl->tpl_vars['fecha']->value;?>
+" size ="50" class="texto" readonly="">
+                    <div id="masInfo" style="float: right"></div>
+                </div>
+            </div>
+    
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
-      <button type="submit" class="btn btn-primary btn-lg btn-block">Alta Datos</button>
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Ingresar datos</button>
     </div>
   </div>
-    </fieldset>
+    
 </form>
-           <?php } else { ?>
-              <h4><font style="color: red;">Los datos de IMT para este paciente,<br>yá fueron ingresados en la base de datos</font></h4>
+      </div>
+                     <?php } else { ?>
+              <h4><font style="color: red;">Los datos patronimicos para este paciente,<br>yá fueron ingresados en la base de datos</font></h4>
          
     <?php }?>
-          <?php } else { ?>
+    <?php } else { ?>
               <h4><font style="color: red;">No puede ingresar los datos. No está trabajando con ningun paciente</font></h4>
           <?php }?>
-      </div>
              
                     <script src="bootstrap-hover-dropdown.js"></script>
   <script src="js/formToWizard.js" type="text/javascript"></script>
@@ -120,5 +129,5 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         });</script>
         </div>
 </body>
-
-</html><?php }} ?>
+</html>
+<?php }} ?>

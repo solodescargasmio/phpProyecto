@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.20, created on 2015-12-27 15:54:34
+<?php /* Smarty version Smarty-3.1.20, created on 2016-01-11 17:26:17
          compiled from "vistas\fichaImprimir.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:26774567f0851501bd8-05228632%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4cd7f76a79b391c1e606666df2bddd696c95a60c' => 
     array (
       0 => 'vistas\\fichaImprimir.tpl',
-      1 => 1451228071,
+      1 => 1452056148,
       2 => 'file',
     ),
   ),
@@ -176,7 +176,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['comentario']->key => $_smarty_tpl->tp
 $_smarty_tpl->tpl_vars['comentario']->_loop = true;
 ?>
          <tr class="success" style="text-align: center;">           
-             <td><?php echo $_smarty_tpl->tpl_vars['comentario']->value->getTitulo();?>
+             <td><?php echo htmlspecialchars_decode($_smarty_tpl->tpl_vars['comentario']->value->getTitulo(), ENT_QUOTES);?>
 <td
              </tr>    
                

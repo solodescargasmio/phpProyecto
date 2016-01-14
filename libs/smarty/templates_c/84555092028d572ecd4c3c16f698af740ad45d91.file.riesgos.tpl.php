@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.20, created on 2015-12-25 18:11:21
+<?php /* Smarty version Smarty-3.1.20, created on 2016-01-11 17:26:06
          compiled from "vistas\riesgos.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2783567c5019a037a2-51045260%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '84555092028d572ecd4c3c16f698af740ad45d91' => 
     array (
       0 => 'vistas\\riesgos.tpl',
-      1 => 1451062751,
+      1 => 1452056160,
       2 => 'file',
     ),
   ),
@@ -94,6 +94,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <input name="ejercicio" type="checkbox" /> Realiza Ejercicios
 <br/>
 <input name="medicacion" type="checkbox"/>  Medicacíon
+<br/>
+<input name="diabetes" type="checkbox"/>  Diabetes
 <br/>
 <br>
                 

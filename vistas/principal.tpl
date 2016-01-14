@@ -28,19 +28,18 @@
 
 <body>
     {include file="header.tpl"}
- <div class="container-fluid">
-      <div class="row">
-          {if isset($mensage)}
-          {$mensage}
-          {/if}
-    {if is_null($cedula)}
-    <div class="container-fluid">
-    {if isset($mensaje)}{$mensaje}{/if}
-    </div>
-    <h3><font style="color: #000;">Proyecto Final Estudios Medicos</h3>
- <legend>Pacientes en Sistema</legend></font>
+    
+    <div class="container-fluid" style="background: #fff; opacity: 0.8; height: 80%;">
+        <br>
+         
+                {if !isset($cedula)}
+                    
+                    <input type="submit" value="<<Ingresar nuevo paciente>>" class="form-control btn btn-primary" onClick="window.location='nuevo.php'">
+             
+                    <h3><font style="color: #000;">Proyecto Final Estudios Medicos</h3>
+                    <legend>Pacientes en Sistema</legend>
       <div class="form-group">
-    <label for="nombre" class="col-lg-2 control-label">Seleccione paciente con el cual va a trabajar o <a tabindex="-1" href="nuevo.php">Ingresar Paciente Nuevo</a></label>
+    <label for="nombre" class="col-lg-2 control-label">Seleccione paciente con el cual va a trabajar </label>
     <div class="col-lg-10">
         <select id="elejir"><option>Seleccione una opcion</option>
             {if isset($usuarios)}
@@ -59,11 +58,12 @@
         <option value="{$cedula}">Ver avances</option>
     {/if}
         </select> 
- {/if}
+          {/if}
+       
         <div id="respuestauser"></div>
-        </div>
-        </div>
-                       <script src="bootstrap-hover-dropdown.js"></script>
+   </div>
+   
+          <script src="bootstrap-hover-dropdown.js"></script>
   <script src="js/formToWizard.js" type="text/javascript"></script>
   <script src="js/jquery.js" type="text/javascript"></script>
   <script type="text/javascript">
@@ -83,22 +83,8 @@
      });     
     });  
     });
-  /*     $(document).ready(function(){ //comienza a leer la funcion al cargar la pagina
-         $("#elejir").click(function(){  //al sacar el foco de la caja de texto se dispara la funcion
-         user=$(this).val();//tomo el valor escrito en la caja de texto
-         datatypo='user='+user;//genero un array con indice
-     $.ajax({
-         url: 'probarajax.php',//llamo a la pagina q hace el control
-         type:'POST',//metodo por el cual paso el dato
-         data:datatypo,
-             success: function (data) { //funcion q recoge la respuesta de la pagina q hace el control
-                  $("#respuestauser").fadeIn(1000).html(data); //imprimo el mensaje en el div      
-                
-    }
-     });
-     });
- });   */
-   </script>
+    </script>
+          
 </body>
 
 </html>

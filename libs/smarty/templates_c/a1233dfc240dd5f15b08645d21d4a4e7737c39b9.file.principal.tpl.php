@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.20, created on 2015-12-27 16:32:52
+<?php /* Smarty version Smarty-3.1.20, created on 2016-01-14 05:18:18
          compiled from "vistas\principal.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3115356799beaa7d8c6-25755120%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a1233dfc240dd5f15b08645d21d4a4e7737c39b9' => 
     array (
       0 => 'vistas\\principal.tpl',
-      1 => 1451230365,
+      1 => 1452745095,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'titulo' => 0,
-    'mensage' => 0,
     'cedula' => 0,
-    'mensaje' => 0,
     'usuarios' => 0,
     'usuario' => 0,
   ),
@@ -60,21 +58,18 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <body>
     <?php echo $_smarty_tpl->getSubTemplate ("header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
- <div class="container-fluid">
-      <div class="row">
-          <?php if (isset($_smarty_tpl->tpl_vars['mensage']->value)) {?>
-          <?php echo $_smarty_tpl->tpl_vars['mensage']->value;?>
-
-          <?php }?>
-    <?php if (is_null($_smarty_tpl->tpl_vars['cedula']->value)) {?>
-    <div class="container-fluid">
-    <?php if (isset($_smarty_tpl->tpl_vars['mensaje']->value)) {?><?php echo $_smarty_tpl->tpl_vars['mensaje']->value;?>
-<?php }?>
-    </div>
-    <h3><font style="color: #000;">Proyecto Final Estudios Medicos</h3>
- <legend>Pacientes en Sistema</legend></font>
+    
+    <div class="container-fluid" style="background: #fff; opacity: 0.8; height: 80%;">
+        <br>
+         
+                <?php if (!isset($_smarty_tpl->tpl_vars['cedula']->value)) {?>
+                    
+                    <input type="submit" value="<<Ingresar nuevo paciente>>" class="form-control btn btn-primary" onClick="window.location='nuevo.php'">
+             
+                    <h3><font style="color: #000;">Proyecto Final Estudios Medicos</h3>
+                    <legend>Pacientes en Sistema</legend>
       <div class="form-group">
-    <label for="nombre" class="col-lg-2 control-label">Seleccione paciente con el cual va a trabajar o <a tabindex="-1" href="nuevo.php">Ingresar Paciente Nuevo</a></label>
+    <label for="nombre" class="col-lg-2 control-label">Seleccione paciente con el cual va a trabajar </label>
     <div class="col-lg-10">
         <select id="elejir"><option>Seleccione una opcion</option>
             <?php if (isset($_smarty_tpl->tpl_vars['usuarios']->value)) {?>
@@ -102,11 +97,12 @@ $_smarty_tpl->tpl_vars['usuario']->_loop = true;
 ">Ver avances</option>
     <?php }?>
         </select> 
- <?php }?>
+          <?php }?>
+       
         <div id="respuestauser"></div>
-        </div>
-        </div>
-                       <script src="bootstrap-hover-dropdown.js"></script>
+   </div>
+   
+          <script src="bootstrap-hover-dropdown.js"></script>
   <script src="js/formToWizard.js" type="text/javascript"></script>
   <script src="js/jquery.js" type="text/javascript"></script>
   <script type="text/javascript">
@@ -126,22 +122,8 @@ $_smarty_tpl->tpl_vars['usuario']->_loop = true;
      });     
     });  
     });
-  /*     $(document).ready(function(){ //comienza a leer la funcion al cargar la pagina
-         $("#elejir").click(function(){  //al sacar el foco de la caja de texto se dispara la funcion
-         user=$(this).val();//tomo el valor escrito en la caja de texto
-         datatypo='user='+user;//genero un array con indice
-     $.ajax({
-         url: 'probarajax.php',//llamo a la pagina q hace el control
-         type:'POST',//metodo por el cual paso el dato
-         data:datatypo,
-             success: function (data) { //funcion q recoge la respuesta de la pagina q hace el control
-                  $("#respuestauser").fadeIn(1000).html(data); //imprimo el mensaje en el div      
-                
-    }
-     });
-     });
- });   */
-   </script>
+    </script>
+          
 </body>
 
 </html><?php }} ?>

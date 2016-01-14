@@ -40,13 +40,17 @@
 </head>
 
 <body>
-    {include file="header.tpl"}
-    <div class="container-fluid">
-        <font style="color:#fff;">{if isset($mensaje)}{$mensaje}{/if}</font>
-    {if isset($cedula)}
-<form role="form" method="POST" class="form-horizontal">
-    <fieldset> <legend>Datos Patronimicos</legend>
-        <input type="text" class="form-control" name="ci" id="ci" value="{$cedula}">     
+            {include file="header.tpl"}
+    <div class="container-fluid" style="background: #fff;opacity: 0.9; height: 100%;">
+      <div class="row">
+          {if isset($mensage)}
+          {$mensage}
+          {/if}
+         <legend>Datos Patronimicos</legend>   
+       {if isset($cedula)}  
+            {if !isset($dpatr)}
+          <form id="FormularioPatronimico" class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
+    
                                      <div class="form-group"> 
                 <label  class="col-sm-4 control-label">Ingrese Peso : </label>
                 <div class="col-sm-6">
@@ -67,17 +71,29 @@
                     <div id="masInfo" style="float: right"></div>
                 </div>
             </div>
- <div class="form-group">
+    
+  <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
-      <button type="submit" class="btn btn-primary btn-lg btn-block">Agregar Ficha</button>
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Ingresar datos</button>
     </div>
   </div>
- </fieldset>
+    
 </form>
+      </div>
                      {else}
+              <h4><font style="color: red;">Los datos patronimicos para este paciente,<br>yá fueron ingresados en la base de datos</font></h4>
+         
+    {/if}
+    {else}
               <h4><font style="color: red;">No puede ingresar los datos. No está trabajando con ningun paciente</font></h4>
           {/if}
-</div>
+             
+                    <script src="bootstrap-hover-dropdown.js"></script>
+  <script src="js/formToWizard.js" type="text/javascript"></script>
+  <script type="text/javascript">
+        $(document).ready(function(){
+            $("#FormularioPatronimico").formToWizard({ })
+        });</script>
+        </div>
 </body>
-
 </html>
