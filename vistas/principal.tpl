@@ -29,17 +29,20 @@
 <body>
     {include file="header.tpl"}
     
-    <div class="container-fluid" style="background: #fff; opacity: 0.8; height: 80%;">
-        <br>
-         
-                {if !isset($cedula)}
+    <div class="container-fluid" style="background: #fff; opacity: 0.8; height: 100%;">
+        <div class="row">
+            {if isset($mensage)}
+          {$mensage}
+          {/if}
+                {if is_null($cedula)}
+                   
                     
                     <input type="submit" value="<<Ingresar nuevo paciente>>" class="form-control btn btn-primary" onClick="window.location='nuevo.php'">
-             
+                    
                     <h3><font style="color: #000;">Proyecto Final Estudios Medicos</h3>
-                    <legend>Pacientes en Sistema</legend>
+                    <legend>Pacientes en Sistema</legend></font>
       <div class="form-group">
-    <label for="nombre" class="col-lg-2 control-label">Seleccione paciente con el cual va a trabajar </label>
+    <label for="nombre" class="col-lg-2 control-label">Seleccione paciente con el cual va a trabajar o <a tabindex="-1" href="nuevo.php">Ingresar Paciente Nuevo</a></label>
     <div class="col-lg-10">
         <select id="elejir"><option>Seleccione una opcion</option>
             {if isset($usuarios)}
@@ -58,11 +61,11 @@
         <option value="{$cedula}">Ver avances</option>
     {/if}
         </select> 
-          {/if}
-       
+          
+       {/if}
         <div id="respuestauser"></div>
    </div>
-   
+   </div>
           <script src="bootstrap-hover-dropdown.js"></script>
   <script src="js/formToWizard.js" type="text/javascript"></script>
   <script src="js/jquery.js" type="text/javascript"></script>
