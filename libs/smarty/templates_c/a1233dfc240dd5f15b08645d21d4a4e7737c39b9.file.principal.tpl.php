@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.20, created on 2016-01-14 06:06:12
+<?php /* Smarty version Smarty-3.1.20, created on 2016-01-14 15:59:44
          compiled from "vistas\principal.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3115356799beaa7d8c6-25755120%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a1233dfc240dd5f15b08645d21d4a4e7737c39b9' => 
     array (
       0 => 'vistas\\principal.tpl',
-      1 => 1452747968,
+      1 => 1452783576,
       2 => 'file',
     ),
   ),
@@ -74,7 +74,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                     <h3><font style="color: #000;">Proyecto Final Estudios Medicos</h3>
                     <legend>Pacientes en Sistema</legend></font>
       <div class="form-group">
-    <label for="nombre" class="col-lg-2 control-label">Seleccione paciente con el cual va a trabajar o <a tabindex="-1" href="nuevo.php">Ingresar Paciente Nuevo</a></label>
+    <label for="nombre" class="col-lg-2 control-label">Seleccione el paciente con el cual va a trabajar </label>
     <div class="col-lg-10">
         <select id="elejir"><option>Seleccione una opcion</option>
             <?php if (isset($_smarty_tpl->tpl_vars['usuarios']->value)) {?>

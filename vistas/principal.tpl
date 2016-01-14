@@ -42,7 +42,7 @@
                     <h3><font style="color: #000;">Proyecto Final Estudios Medicos</h3>
                     <legend>Pacientes en Sistema</legend></font>
       <div class="form-group">
-    <label for="nombre" class="col-lg-2 control-label">Seleccione paciente con el cual va a trabajar o <a tabindex="-1" href="nuevo.php">Ingresar Paciente Nuevo</a></label>
+    <label for="nombre" class="col-lg-2 control-label">Seleccione el paciente con el cual va a trabajar </label>
     <div class="col-lg-10">
         <select id="elejir"><option>Seleccione una opcion</option>
             {if isset($usuarios)}
