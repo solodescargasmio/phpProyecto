@@ -1,22 +1,22 @@
-<?php /* Smarty version Smarty-3.1.20, created on 2016-01-14 15:57:59
+<?php /* Smarty version Smarty-3.1.20, created on 2016-01-18 19:13:41
          compiled from "vistas\header.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:2831056799bf1f05375-02067113%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:10367569a9f5b7635e7-50839857%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'f182a762fb5bbfed403502ca5c5c11512569e1d5' => 
     array (
       0 => 'vistas\\header.tpl',
-      1 => 1452782556,
+      1 => 1453140818,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '2831056799bf1f05375-02067113',
+  'nocache_hash' => '10367569a9f5b7635e7-50839857',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.20',
-  'unifunc' => 'content_56799bf25f5e17_43914563',
+  'unifunc' => 'content_569a9f5b81a794_20619426',
   'variables' => 
   array (
     'cedula' => 0,
@@ -25,7 +25,75 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_56799bf25f5e17_43914563')) {function content_56799bf25f5e17_43914563($_smarty_tpl) {?><header class="navbar navbar-fixed-top navbar-inverse">
+<?php if ($_valid && !is_callable('content_569a9f5b81a794_20619426')) {function content_569a9f5b81a794_20619426($_smarty_tpl) {?> <script type="text/javascript">
+  $(document).ready(function() {  
+      $('#suggestions').hide();
+      $('#buscar').hide();
+    //Al escribr dentro del input con id="service"
+    $('#service').keyup(function(){
+        //Obtenemos el value del input
+        largo=0;
+        
+        var service = $(this).val();
+        if(service.length>largo){
+         var dataString = 'service='+service;   
+    
+        
+         
+        //Le pasamos el valor del input al ajax
+        $.ajax({
+            type: "POST",
+            url: "autocompletar.php",
+            data: dataString,
+            success: function(data) {
+                //Escribimos las sugerencias que nos manda la consulta
+                $('#suggestions').fadeIn(1000).html(data);
+                //Al hacer click en algua de las sugerencias
+                var id="";
+                $('a').on('click', function(){
+                    //Obtenemos la id unica de la sugerencia pulsada
+                    id= $(this).attr('id') ;
+                    
+// var id = $('suggest-element').attr('#'+id);
+                  //  alert(id);
+                    //Editamos el valor del input con data de la sugerencia pulsada
+                    $('#service').val($('#'+id).attr('data')); 
+       
+                      datatypo='user='+id;//genero un array con indice
+     $.ajax({
+         url: 'cargaAjax.php',//llamo a la pagina q hace el control
+         type:'POST',//metodo por el cual paso el dato
+         data:datatypo,
+             success: function (data) { //funcion q recoge la respuesta de la pagina q hace el control
+                  $("#respuestauser").fadeIn(1000).html(data); //imprimo el mensaje en el div      
+                
+    }
+     });  
+       
+//  $('#service').val($('#'+id).attr('data'));
+                    //Hacemos desaparecer el resto de sugerencias
+                    $('#suggestions').fadeOut(1000);
+                });              
+            }
+        });}
+    });              
+}); 
+   </script>
+   <style>
+.suggest-element{
+    
+margin-left:5px;
+margin-top:5px;
+width:350px;
+cursor:pointer;
+}
+#suggestions {
+width:350px;
+height:150px;
+overflow: auto;
+}
+</style>
+<header class="navbar navbar-fixed-top navbar-inverse">
     <div class="container">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="icon-bar"></span>
@@ -33,48 +101,50 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <span class="icon-bar"></span>
       </button>
         <a tabindex="-1" class="navbar-brand" href="index.php">Inicio</a>
-        <a tabindex="-1" class="navbar-brand" href="cerrar.php" style="  margin-left: auto; margin-right: auto;;">Cerrar</a>
-                  
-        <form class="navbar-form navbar-right" method="post" action="index.php">
-        <input type="text" id="buscar" name="buscar" class="form-control" placeholder="paciente" >
-        <input type="submit" value="Buscar" class="form-control btn btn-primary">
+        <a tabindex="-1" class="navbar-brand" href="cerrar.php" style="  margin-left: auto; margin-right: auto;">Cerrar</a>
+       <?php if (!isset($_smarty_tpl->tpl_vars['cedula']->value)) {?> 
+           <a tabindex="-1" class="navbar-brand" href="ver_estadisticas.php">Estadisticas</a>         
+        <?php }?>
+           <form class="navbar-form navbar-right" method="post" action="index.php">
+        <input type="text" id="service" name="service" class="form-control" placeholder="paciente" >
+         <div id="suggestions"></div>
+         <input type="submit" value="Buscar" id="buscar" class="form-control btn btn-primary">
     
         <?php if (isset($_smarty_tpl->tpl_vars['cedula']->value)) {?>
             <div style="float: right;"><font style="color: #fff;">Apellido: <?php echo $_smarty_tpl->tpl_vars['apellido']->value;?>
 <br>Cedula : <?php echo $_smarty_tpl->tpl_vars['cedula']->value;?>
  <br>Edad : <?php echo $_smarty_tpl->tpl_vars['edad']->value;?>
 </font></div>
-         <?php }?>
+        <?php }?>
         </form>
         
         <div class="navbar-collapse nav-collapse collapse navbar-header">
         <?php if (isset($_smarty_tpl->tpl_vars['cedula']->value)) {?>
 
         <ul class="nav navbar-nav">
-          <li class="dropdown">
+              <li class="dropdown">
+            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Datos<b class="caret"></b></a>
+           <ul class="dropdown-menu">
+           <li class="dropdown">
             <a tabindex="-1" href="ficha_patronimica.php">Datos Patronimicos</a>
           </li>
           <li> <a tabindex="-1" href="imts.php">IMT </a></li>
-          <li class="dropdown">
-            <a tabindex="-1" href="guardarmultimedia.php">Archivos</a>
-          </li>
-          <li class="dropdown">
+           <li class="dropdown">
             <a tabindex="-1" href="riesgos.php">Riesgo CV</a>
           </li>
           <li class="dropdown">
-            <a tabindex="-1" href="vops.php">Velocidad de Onda de Pulso</a>
-          <!--  <ul class="dropdown-menu">
-              <li><a tabindex="-1" href="#">PWV SPHYGMOCOR Carotido-Femoral</a></li>
-              <li><a tabindex="-1" href="#">PWE Hemodin</a></li>
-            </ul>-->
-          </li>
-          <li class="dropdown">
+              <a tabindex="-1" href="vops.php">Velocidad de Onda de Pulso</a></li>
+            <li class="dropdown">
             <a tabindex="-1" href="distancias.php">Distancia</a>
-          <!--  <ul class="dropdown-menu">
-              <li><a tabindex="-1" href="#">PWV SPHYGMOCOR Carotido-Femoral</a></li>
-              <li><a tabindex="-1" href="#">PWE Hemodin</a></li>
-            </ul>-->
           </li>
+            </ul>  
+        </li>
+
+          <li class="dropdown">
+            <a tabindex="-1" href="guardarmultimedia.php">Archivos</a>
+          </li>
+
+        
         <li class="dropdown">
             <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown">Presión<b class="caret"></b></a>
            <ul class="dropdown-menu">

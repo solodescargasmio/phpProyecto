@@ -12,6 +12,7 @@
  * @author Yo
  */
 require_once ('clase_base.php');
+require_once ('session.php');
 class ficha_patronimica extends clase_base{
      private $id=0;
      private $id_usuario=0;
@@ -93,14 +94,15 @@ class ficha_patronimica extends clase_base{
 }
         return $ficha;
 }
-     function ingresaFicha(){ 
+     function ingresaFicha(){
+         $edad=Session::get('edad'); 
         $id=$this->getId_usuario();
          $peso=$this->getPeso();
         $altura=$this->getAltura();
         $imc=$this->getImc();
         $fecha=$this->getFecha_estudio();
-        $smtp=  $this->getDB()->prepare("INSERT INTO ficha_patronimica (id_usuario,peso,altura,fecha_estudio,imc) VALUES(?,?,?,?,?)" );
-       $smtp->bind_param("issss",$id,$peso,$altura,$fecha,$imc);
+        $smtp=  $this->getDB()->prepare("INSERT INTO ficha_patronimica (id_usuario,peso,altura,fecha_estudio,imc,edad) VALUES(?,?,?,?,?,?)" );
+       $smtp->bind_param("issssi",$id,$peso,$altura,$fecha,$imc,$edad);
        $smtp->execute();
        $res=false;
        if($this->getDB()->affected_rows>0){
@@ -110,5 +112,22 @@ class ficha_patronimica extends clase_base{
        return $res;  
     }
 
+    
+     function valoresIMC($menor,$mayor){
+     $valor=0;
+        $stmt = $this->getDB()->prepare( 
+"SELECT count(*) FROM `ficha_patronimica` WHERE `imc`>? AND `imc`<?" );
+          $stmt->bind_param( "dd",$menor,$mayor);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+        while ($fila=$resultado->fetch_object()) {
+            foreach ($fila as $value) {
+              $valor=$value;   
+            }
+                    
+}
+        
+        return $valor; 
+    }
     
 }

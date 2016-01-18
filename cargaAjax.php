@@ -95,7 +95,7 @@ require_once ('./clases/usuario.php');
               </tr>      
               
 </table>
-        
+   <input type="submit" value="<<Trabajar con este paciente>>" class="form-control btn btn-primary" onClick="window.location='index.php'">     
         <?php
      
      

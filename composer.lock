@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "db30e30932b5979ebd7a8161b8bc2d26",
-    "content-hash": "35f0cb206368aeaec01011338aba038d",
+    "hash": "b5c0411e34396ea22e4ebdd9a6dd4c47",
+    "content-hash": "af2db043622484f8728fca74eb1b46f0",
     "packages": [
         {
             "name": "deviservi/nusoap",
@@ -50,6 +50,52 @@
                 "soap"
             ],
             "time": "2014-10-29 10:55:48"
+        },
+        {
+            "name": "libchart/libchart",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/astehlik/libchart.git",
+                "reference": "408d6729f59c3d1641af4c5fee39bb3bcb7fd575"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/astehlik/libchart/zipball/408d6729f59c3d1641af4c5fee39bb3bcb7fd575",
+                "reference": "408d6729f59c3d1641af4c5fee39bb3bcb7fd575",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Libchart\\": "libchart/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Jean-Marc Trémeaux",
+                    "homepage": "http://naku.dohcrew.com/",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Alexander Stehlik",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Simple PHP chart drawing library",
+            "homepage": "http://naku.dohcrew.com/libchart/pages/introduction/",
+            "keywords": [
+                "bar charts",
+                "chart",
+                "charts",
+                "line charts",
+                "pie charts"
+            ],
+            "time": "2013-10-19 22:30:10"
         },
         {
             "name": "phpmailer/phpmailer",
@@ -203,7 +249,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "deviservi/nusoap": 20
+        "deviservi/nusoap": 20,
+        "libchart/libchart": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

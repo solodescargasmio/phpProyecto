@@ -49,23 +49,10 @@
     <fieldset> <legend>Agregar Archivos (Imagenes o Videos)</legend>
         <div class="form-group">
     <label for="ci" class="col-lg-2 control-label">Seccion del archivo</label>
-    <div class="col-lg-10">
-    <select name="cursos" id="cursos">
-<option value="0">Seleccione una opcion</option>
-            <option value="Ecografia Carotidea Izquierda">Ecografía Carotídea Izquierda</option>
-            <option value="Ecografia Femoral Comun Izquierda">Ecografía Femoral Común Izquierda</option>
-            <option value="Arteria Vertebral Izquierda">Arteria Vertebral Izquierda</option>
-            <option value="Ecografia Carotidea Derecha">Ecografía Carotídea Derecha</option>
-            <option value="Ecografia Femoral Comun Derecha">Ecografía Femoral Común Derecha</option>
-            <option value="Arteria Vertebral Derecha">Arteria Vertebral Derecha</option>
-            <option value="Ecografia Radial Derecha">Ecografía Radial Derecha</option>
-            <option value="Ecografia Braquial Derecha">Ecografía Braquial Derecha</option>
-    </select>
-    </div>
     <div id="respuestauser"></div>
    </div>
           <div class="form-group">
-    <label for="ci" class="col-lg-2 control-label">O introducir nombre de archivo (Sin extencion, este nombre es el que se usara para identificar el archivo en BD)</label>
+    <label for="ci" class="col-lg-2 control-label">Introducir nombre de archivo (Sin extencion, este nombre es el que se usara para identificar el archivo en BD)</label>
     <div class="col-lg-10">
         <input type="text" name="nombre" id="nombre" class="success">
     </div>
@@ -86,9 +73,9 @@
   <script type="text/javascript">
         $(function(){
 	//Aqui se coge el elemento y con la propiedad .on que requiere dos  parametros : change (cuando el valor de ese id cambie, que es cuando se elige otra opcion en la desplegable)y ejecutar la siguiente funcion cuando se haga change
-	$('#cursos').on('change', function(){
-              user=$('#cursos').val();
-          //    alert(user);
+	$('#cursos').on('blur', function(){
+              user=$('#nombre').val();
+              alert(user);
              datatypo='user='+user;//genero un array con indice
     $.ajax({
          url: 'controlArchivos.php',//llamo a la pagina q hace el control

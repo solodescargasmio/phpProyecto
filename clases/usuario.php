@@ -143,6 +143,22 @@ $edad=($ano-$anoe);
 
 return $edad;
     }
-
     
+     function contarSexo($sexo){
+     $valor=0;
+        $stmt = $this->getDB()->prepare( 
+"SELECT count(*) FROM usuario WHERE sexo=?" );
+          $stmt->bind_param( "s",$sexo);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+        while ($fila=$resultado->fetch_object()) {
+            foreach ($fila as $value) {
+              $valor=$value;   
+            }
+                    
+}
+        
+        return $valor; 
+    }
+
 }

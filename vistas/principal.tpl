@@ -35,8 +35,7 @@
           {$mensage}
           {/if}
                 {if is_null($cedula)}
-                   
-                    
+                       
                     <input type="submit" value="<<Ingresar nuevo paciente>>" class="form-control btn btn-primary" onClick="window.location='nuevo.php'">
                     
                     <h3><font style="color: #000;">Proyecto Final Estudios Medicos</h3>

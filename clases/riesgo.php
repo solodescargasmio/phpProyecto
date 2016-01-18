@@ -158,4 +158,20 @@ class riesgo extends clase_base{
     }
     return $res;
     }
+    
+     public function mostrarCantidad($dato){
+         $valor=0;
+        $stmt = $this->getDB()->prepare( 
+"SELECT count(*) FROM riesgo WHERE $dato=1" );
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+        while ($fila=$resultado->fetch_object()) {
+            foreach ($fila as $value) {
+              $valor=$value;   
+            }
+                    
+}
+        
+        return $valor;
+}
 }

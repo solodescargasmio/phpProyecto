@@ -1,22 +1,22 @@
-<?php /* Smarty version Smarty-3.1.20, created on 2016-01-14 15:58:07
+<?php /* Smarty version Smarty-3.1.20, created on 2016-01-17 20:43:30
          compiled from "vistas\nuevo.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:1178056799e2d501bd0-69669296%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:29095569bcc454f79a9-10650571%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'd8eec2b8568146e3779d6b6d2677edb17edc1f09' => 
     array (
       0 => 'vistas\\nuevo.tpl',
-      1 => 1452782552,
+      1 => 1453052319,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1178056799e2d501bd0-69669296',
+  'nocache_hash' => '29095569bcc454f79a9-10650571',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.20',
-  'unifunc' => 'content_56799e2d90f561_43564882',
+  'unifunc' => 'content_569bcc482d2491_86638509',
   'variables' => 
   array (
     'titulo' => 0,
@@ -24,7 +24,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_56799e2d90f561_43564882')) {function content_56799e2d90f561_43564882($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_569bcc482d2491_86638509')) {function content_569bcc482d2491_86638509($_smarty_tpl) {?><!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
@@ -58,9 +58,9 @@ and open the template in the editor.
     <h2>Datos Personales</h2>
     
     <div class="form-group">
-        <label for="ci" class="col-lg-3 control-label">Cedula de Identidad</label>
+        <label for="ci" class="col-lg-3 control-label">Cedula de Identidad (sin puntos '.', coma ',' o guiones '- _')</label>
         <div class="col-lg-10">
-            <input type="number" class="form-control" name="ci" id="ci" required="">
+            <input type="number" class="form-control" name="ci" id="ci" placeholder="123456789" required="">
         </div>
     </div>          
               
@@ -84,7 +84,6 @@ and open the template in the editor.
             <select name="selector">
                 <option value="masculino">Masculino</option>
                 <option value="femenino">Femenino</option>
-                <option value="indeterminado">Indeterminado</option>
             </select>
         </div>
     </div>

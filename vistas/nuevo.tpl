@@ -29,9 +29,9 @@ and open the template in the editor.
     <h2>Datos Personales</h2>
     
     <div class="form-group">
-        <label for="ci" class="col-lg-3 control-label">Cedula de Identidad</label>
+        <label for="ci" class="col-lg-3 control-label">Cedula de Identidad (sin puntos '.', coma ',' o guiones '- _')</label>
         <div class="col-lg-10">
-            <input type="number" class="form-control" name="ci" id="ci" required="">
+            <input type="number" class="form-control" name="ci" id="ci" placeholder="123456789" required="">
         </div>
     </div>          
               
@@ -55,7 +55,6 @@ and open the template in the editor.
             <select name="selector">
                 <option value="masculino">Masculino</option>
                 <option value="femenino">Femenino</option>
-                <option value="indeterminado">Indeterminado</option>
             </select>
         </div>
     </div>

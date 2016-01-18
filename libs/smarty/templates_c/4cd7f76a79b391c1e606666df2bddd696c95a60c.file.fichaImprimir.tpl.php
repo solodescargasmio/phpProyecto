@@ -1,22 +1,22 @@
-<?php /* Smarty version Smarty-3.1.20, created on 2016-01-11 17:26:17
+<?php /* Smarty version Smarty-3.1.20, created on 2016-01-17 18:15:25
          compiled from "vistas\fichaImprimir.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:26774567f0851501bd8-05228632%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:4101569ae6f4e2b740-01310459%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '4cd7f76a79b391c1e606666df2bddd696c95a60c' => 
     array (
       0 => 'vistas\\fichaImprimir.tpl',
-      1 => 1452056148,
+      1 => 1453050883,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '26774567f0851501bd8-05228632',
+  'nocache_hash' => '4101569ae6f4e2b740-01310459',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.20',
-  'unifunc' => 'content_567f0851895448_28699277',
+  'unifunc' => 'content_569ae6f5704994_22586578',
   'variables' => 
   array (
     'titulo' => 0,
@@ -30,7 +30,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_567f0851895448_28699277')) {function content_567f0851895448_28699277($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_569ae6f5704994_22586578')) {function content_569ae6f5704994_22586578($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -79,7 +79,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
    <button id="buscar" name="buscar" class="btn btn-success btn-group-justified">
       Imprimir Ficha</button>  
      </a>
-            <div class="container-fluid" id="imprimir" style="width: 100%; height: 100%;" >        
+            <div class="container-fluid" id="imprimir" style="width: 100%; height: 1280px;" >        
             <img src="./imagenes/header.jpg" style="width: 100%; height: 15%">
             <label style="width: 100%;text-align: center;" class="bg-success"><h3><font style="font-family: fantasy;">ESTUDIO VASCULAR NO INVASIVO MULTI-PARAMÉTRICO</h3></label>
     <!--   Empiezan las tablas                -->
@@ -93,8 +93,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                  <td>Sexo</td>
               </tr></thead> 
            <tbody><tr class="success">
+                   <?php if (isset($_smarty_tpl->tpl_vars['ficha']->value)) {?>
            <td><?php echo $_smarty_tpl->tpl_vars['ficha']->value->getFecha_estudio();?>
 </td>
+           <?php } else { ?>
+               <td></td>
+           <?php }?>
            <?php if (isset($_smarty_tpl->tpl_vars['usuarios']->value)) {?>  
                  <td><?php echo $_smarty_tpl->tpl_vars['usuarios']->value->getId();?>
 </td>
@@ -115,8 +119,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                  <td>Sedentarismo</td>
               </tr></thead> 
            <tbody><tr class="success">
+                       <?php if (isset($_smarty_tpl->tpl_vars['ficha']->value)) {?>
            <td><?php echo $_smarty_tpl->tpl_vars['ficha']->value->getImc();?>
 </td>
+           <?php } else { ?>
+               <td></td>
+           <?php }?>
            <?php if (isset($_smarty_tpl->tpl_vars['riesgo']->value)) {?> 
                <?php if ($_smarty_tpl->tpl_vars['riesgo']->value->getDiabetes()==0) {?>
                    <td>No</td>

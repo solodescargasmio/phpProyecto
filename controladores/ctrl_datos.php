@@ -483,3 +483,24 @@ function guardarArchivos(){
     subirDatos();//Esta funcion esta en la carpeta multimedia 
     //en el archivo guardar...php
 }
+
+function verEstadisticas() {
+      error_reporting(0);
+    Session::init();
+    $id_user=Session::get("cedula");
+    $apell=Session::get("apellido");
+    $edad=  Session::get('edad');
+    $tpl=new Template();
+    $mensaje="";
+    $titulo="Estadisticas"; 
+    $id_usuario=$id_user; 
+      $datos=array(
+        'mensaje' => $mensaje,
+        'titulo' => $titulo,
+    );
+      $tpl->asignar('edad', $edad);
+    $tpl->asignar('cedula', $id_user);
+    $tpl->asignar('apellido', $apell);
+    $tpl->mostrar("estadisticas", $datos);
+    
+}

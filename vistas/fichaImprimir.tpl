@@ -45,7 +45,7 @@
    <button id="buscar" name="buscar" class="btn btn-success btn-group-justified">
       Imprimir Ficha</button>  
      </a>
-            <div class="container-fluid" id="imprimir" style="width: 100%; height: 100%;" >        
+            <div class="container-fluid" id="imprimir" style="width: 100%; height: 1280px;" >        
             <img src="./imagenes/header.jpg" style="width: 100%; height: 15%">
             <label style="width: 100%;text-align: center;" class="bg-success"><h3><font style="font-family: fantasy;">ESTUDIO VASCULAR NO INVASIVO MULTI-PARAMÉTRICO</h3></label>
     <!--   Empiezan las tablas                -->
@@ -59,7 +59,11 @@
                  <td>Sexo</td>
               </tr></thead> 
            <tbody><tr class="success">
+                   {if isset($ficha)}
            <td>{$ficha->getFecha_estudio()}</td>
+           {else}
+               <td></td>
+           {/if}
            {if isset($usuarios)}  
                  <td>{$usuarios->getId()}</td>
                  <td>{$usuarios->getNombre()}</td>
@@ -77,7 +81,11 @@
                  <td>Sedentarismo</td>
               </tr></thead> 
            <tbody><tr class="success">
+                       {if isset($ficha)}
            <td>{$ficha->getImc()}</td>
+           {else}
+               <td></td>
+           {/if}
            {if isset($riesgo)} 
                {if $riesgo->getDiabetes()==0}
                    <td>No</td>
