@@ -91,4 +91,19 @@ class presion_central extends clase_base{
     return $res;
     }
     
+       function modificarPresionC(){
+    $id_user=  $this->getId_usuario();
+      $psis=  $this->getPsis();
+    $pdias=  $this->getPdias();
+        $smtp=  $this->getDB()->prepare("UPDATE presion_central SET psis=?,pdias=? WHERE id_usuario=?" );
+       $smtp->bind_param('iii',$psis,$pdias,$id_user);
+       $smtp->execute();
+       $res=false;
+       if($this->getDB()->affected_rows>0){
+        $res=true;  
+        
+       }
+       return $res;  
+    }
+    
 }

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.20, created on 2016-01-18 19:13:41
+<?php /* Smarty version Smarty-3.1.20, created on 2016-01-19 02:05:51
          compiled from "vistas\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:10367569a9f5b7635e7-50839857%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f182a762fb5bbfed403502ca5c5c11512569e1d5' => 
     array (
       0 => 'vistas\\header.tpl',
-      1 => 1453140818,
+      1 => 1453141019,
       2 => 'file',
     ),
   ),
@@ -27,8 +27,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_569a9f5b81a794_20619426')) {function content_569a9f5b81a794_20619426($_smarty_tpl) {?> <script type="text/javascript">
   $(document).ready(function() {  
-      $('#suggestions').hide();
-      $('#buscar').hide();
+      $('#suggestions').hide();//oculto el div que muestra las opciones que vá encontrando
     //Al escribr dentro del input con id="service"
     $('#service').keyup(function(){
         //Obtenemos el value del input
@@ -53,12 +52,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 $('a').on('click', function(){
                     //Obtenemos la id unica de la sugerencia pulsada
                     id= $(this).attr('id') ;
-                    
-// var id = $('suggest-element').attr('#'+id);
-                  //  alert(id);
+
                     //Editamos el valor del input con data de la sugerencia pulsada
                     $('#service').val($('#'+id).attr('data')); 
-       
+       /////////////////////////////////////////////////////////////
+       //de aca hasta las lineas de abajo es lo mismo que uso en principal
                       datatypo='user='+id;//genero un array con indice
      $.ajax({
          url: 'cargaAjax.php',//llamo a la pagina q hace el control
@@ -69,7 +67,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 
     }
      });  
-       
+    /////////////////////////////////////////////////////////////   
 //  $('#service').val($('#'+id).attr('data'));
                     //Hacemos desaparecer el resto de sugerencias
                     $('#suggestions').fadeOut(1000);
@@ -105,10 +103,10 @@ overflow: auto;
        <?php if (!isset($_smarty_tpl->tpl_vars['cedula']->value)) {?> 
            <a tabindex="-1" class="navbar-brand" href="ver_estadisticas.php">Estadisticas</a>         
         <?php }?>
-           <form class="navbar-form navbar-right" method="post" action="index.php">
+           <form class="navbar-form navbar-right">
         <input type="text" id="service" name="service" class="form-control" placeholder="paciente" >
          <div id="suggestions"></div>
-         <input type="submit" value="Buscar" id="buscar" class="form-control btn btn-primary">
+        
     
         <?php if (isset($_smarty_tpl->tpl_vars['cedula']->value)) {?>
             <div style="float: right;"><font style="color: #fff;">Apellido: <?php echo $_smarty_tpl->tpl_vars['apellido']->value;?>

@@ -138,4 +138,24 @@ public function setId($id) {
     }
     return $res;
     }
+    
+    function modificarDistancia(){
+   $id_user=  $this->getId_usuario();
+    $car_fem=  $this->getCar_fem();
+    $car_hueco=$this->getCar_hueco();
+    $hueco_hombro=$this->getHueco_hombro();
+    $hombro_braq=$this->getHombro_braq();
+    $hombro_rad=$this->getHombro_rad();
+    $hueco_cuffxell=$this->getHueco_cuffxell();
+    $cuffxell_fem=$this->getCuffxell_fem();
+        $smtp=  $this->getDB()->prepare("UPDATE distancia SET car_fem=?,car_hueco=?,hueco_hombro=?,hombro_braq=?,hombro_rad=?,hueco_cuffxell=?,cuffxell_fem=? WHERE id_usuario=?" );
+       $smtp->bind_param("iiiiiiii",$car_fem,$car_hueco,$hueco_hombro,$hombro_braq,$hombro_rad,$hueco_cuffxell,$cuffxell_fem,$id_user);
+       $smtp->execute();
+       $res=false;
+       if($this->getDB()->affected_rows>0){
+        $res=true;  
+        
+       }
+       return $res;  
+    }
 }

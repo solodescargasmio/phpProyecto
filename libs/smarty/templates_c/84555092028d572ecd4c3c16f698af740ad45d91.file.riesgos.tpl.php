@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.20, created on 2016-01-17 01:35:59
+<?php /* Smarty version Smarty-3.1.20, created on 2016-01-19 20:12:42
          compiled from "vistas\riesgos.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3834569ae1ef092e01-12051656%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '84555092028d572ecd4c3c16f698af740ad45d91' => 
     array (
       0 => 'vistas\\riesgos.tpl',
-      1 => 1451179040,
+      1 => 1453230760,
       2 => 'file',
     ),
   ),
@@ -15,16 +15,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.20',
+  'unifunc' => 'content_569ae1ef557ba7_36072106',
   'variables' => 
   array (
     'titulo' => 0,
-    'mensaje' => 0,
+    'mensage' => 0,
     'cedula' => 0,
     'riesgo' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.20',
-  'unifunc' => 'content_569ae1ef557ba7_36072106',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_569ae1ef557ba7_36072106')) {function content_569ae1ef557ba7_36072106($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
@@ -72,8 +72,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <?php echo $_smarty_tpl->getSubTemplate ("header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
    <div class="container-fluid">
-       <font style="color:red;" size=4> <?php if (isset($_smarty_tpl->tpl_vars['mensaje']->value)) {?><?php echo $_smarty_tpl->tpl_vars['mensaje']->value;?>
-<?php }?></font>
+   <?php if (isset($_smarty_tpl->tpl_vars['mensage']->value)) {?>
+          <?php echo $_smarty_tpl->tpl_vars['mensage']->value;?>
+
+          <?php }?>
     <h3>Datos Paciente</h3> 
        <?php if (isset($_smarty_tpl->tpl_vars['cedula']->value)) {?>
              <?php if (!isset($_smarty_tpl->tpl_vars['riesgo']->value)) {?>
@@ -105,8 +107,37 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     </div>
   </div>
  </fieldset>
-</form> <?php } else { ?>
-              <h4><font style="color: red;">Los datos de Riesgos para este paciente,<br>yá fueron ingresados en la base de datos</font></h4>
+</form> 
+             <?php } else { ?>
+          <form method="POST" class="form-horizontal">
+    <fieldset> <legend>Datos Riesgos</legend>
+  <input name="fuma" type="checkbox"  <?php if ($_smarty_tpl->tpl_vars['riesgo']->value->getFuma()!=0) {?> checked  <?php }?>/> <font face="caption" style="color: #000;" size=4>Fuma
+<br/>
+<input name="presion" type="checkbox" <?php if ($_smarty_tpl->tpl_vars['riesgo']->value->getPresion()!=0) {?> checked  <?php }?>/> Presíon
+<br/>
+<input name="colesterol" type="checkbox" <?php if ($_smarty_tpl->tpl_vars['riesgo']->value->getColesterol()!=0) {?> checked  <?php }?>/> Colesteról
+<br/>
+<input name="hiperglisemia" type="checkbox" <?php if ($_smarty_tpl->tpl_vars['riesgo']->value->getHiperglicemia()!=0) {?> checked  <?php }?>/> Hiperglisémia
+<br/>
+<input name="antecedentes" type="checkbox" <?php if ($_smarty_tpl->tpl_vars['riesgo']->value->getAnt_fliares()!=0) {?> checked  <?php }?>/> Antecedentes Familiares
+<br/>
+<input name="sedentarismo" type="checkbox" <?php if ($_smarty_tpl->tpl_vars['riesgo']->value->getSedentarismo()!=0) {?> checked  <?php }?>/> Sedentarísmo
+<br/>
+<input name="ejercicio" type="checkbox" <?php if ($_smarty_tpl->tpl_vars['riesgo']->value->getEjercicio()!=0) {?> checked  <?php }?>/> Realiza Ejercicios
+<br/>
+<input name="medicacion" type="checkbox" <?php if ($_smarty_tpl->tpl_vars['riesgo']->value->getMedicacion()!=0) {?> checked  <?php }?>/>  Medicacíon
+<br/>
+<input name="diabetes" type="checkbox" <?php if ($_smarty_tpl->tpl_vars['riesgo']->value->getDiabetes()!=0) {?> checked  <?php }?>/>  Diabetes
+<br/>
+<br>
+                
+    <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+     <input type="submit" name="modificar" class="btn btn-primary btn-lg btn-block" value="Modificar datos">
+    </div>
+  </div>
+ </fieldset>
+</form>
          
     <?php }?>
          <?php } else { ?>

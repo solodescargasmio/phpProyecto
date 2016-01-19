@@ -86,4 +86,19 @@ class imt extends clase_base{
     }
     return $res;
     }
+    
+     function modificarImt(){
+    $id_user=  $this->getId_usuario();
+     $cd=  $this->getCd();
+    $ci=  $this->getCi();
+        $smtp=  $this->getDB()->prepare("UPDATE imt SET cd=?,ci=? WHERE id_usuario=?" );
+       $smtp->bind_param('ssi',$cd,$ci,$id_user);
+       $smtp->execute();
+       $res=false;
+       if($this->getDB()->affected_rows>0){
+        $res=true;  
+        
+       }
+       return $res;  
+    }
 }

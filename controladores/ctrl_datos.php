@@ -92,9 +92,27 @@ function ingresarDatosPatronimicos() {
     $titulo="Datos patronimicos";
     $id_usuario=$id_user; 
     $dpatronimicos=new ficha_patronimica();
-    $resdp=$dpatronimicos->mostrarFicha($id_user);
-     
     
+    $resdp=$dpatronimicos->mostrarFicha($id_user);
+
+      
+    if($_POST['modificar']){    
+        $peso=$_POST['peso'];
+        $altura=$_POST['altura'];
+        $indice=$peso/($altura*$altura);
+        $imc= number_format($indice,2,".",",");
+        $dpatronimicos->setId_usuario($id_usuario);
+        $dpatronimicos->setPeso($peso);
+        $dpatronimicos->setAltura($altura);
+        $dpatronimicos->setImc($imc);
+      //  var_dump($dpatronimicos);exit();
+        if($dpatronimicos->modificarFicha()){
+            header('Location: index.php');
+            exit();
+        }
+        else{$mensaje="Error al modificar datos patronimicos. Verifique";}
+    }
+    else
     if($_POST['peso']){  
         $peso=$_POST['peso'];
         $altura=$_POST['altura'];
@@ -146,7 +164,35 @@ function ingresarRiesgos(){
     $ejercicio=0;
     $medicacion=0;
     $diabetes=0;
-    
+  
+        if($_POST['modificar']){  
+ if($_POST['fuma']){$fuma=1;}
+    if($_POST['presion']){$presion=1;}
+    if($_POST['colesterol']){$colesterol=1;}
+    if($_POST['hiperglisemia']){$hiperglicemia=1;}
+    if($_POST['antecedentes']){$ant_fliares=1;}
+    if($_POST['sedentarismo']){$sedentarismo=1;}
+    if($_POST['ejercicio']){$ejercicio=1;}
+    if($_POST['medicacion']){$medicacion=1;}
+    if($_POST['diabetes']){$diabetes=1;}
+     $riesgo->setId_usuario($id_usuario);
+     $riesgo->setFuma($fuma);
+     $riesgo->setPresion($presion);
+     $riesgo->setColesterol($colesterol);
+     $riesgo->setHiperglicemia($hiperglicemia);
+     $riesgo->setAnt_fliares($ant_fliares);
+     $riesgo->setSedentarismo($sedentarismo);
+     $riesgo->setEjercicio($ejercicio);
+     $riesgo->setMedicacion($medicacion);
+     $riesgo->setDiabetes($diabetes);
+    // var_dump($riesgo);exit();
+     if($riesgo->modificarRiesgos()){
+          header('Location: index.php');
+        exit();}
+
+        else{$mensaje="Error al modificar riesgos. Verifique";}
+    }
+    else
     if($_POST){
     if($_POST['fuma']){$fuma=1;}
     if($_POST['presion']){$presion=1;}
@@ -197,6 +243,19 @@ function ingresaPbraquial() {
     $id_usuario=$id_user; 
     $pbraquial=new presion_braquial();
     $respreb=$pbraquial->mostrarPb($id_user);
+    
+    if($_POST['modificar']){    
+        $psis=$_POST['psis'];
+        $pdias=$_POST['pdias'];
+        $pbraquial->setId_usuario($id_usuario);
+        $pbraquial->setPsis_br($psis);
+        $pbraquial->setPdias_br($pdias);
+        if($pbraquial->modificarPresionB()){
+           header('Location: index.php');
+            exit();
+        }
+        else{$mensaje="Error al modificar Presion Branquial. Verifique";}
+    }
     if($_POST['psis']){  
         $psis=$_POST['psis'];
         $pdias=$_POST['pdias'];
@@ -233,6 +292,20 @@ function ingresaPcentral() {
     $id_usuario=$id_user; 
     $pcen=new presion_central(); 
     $resprec=$pcen->mostrarPc($id_user);
+    
+     if($_POST['modificar']){    
+        $psis=$_POST['psis'];
+        $pdias=$_POST['pdias'];
+        $pbraquial->setId_usuario($id_usuario);
+         $pcen->setPsis($psis);
+         $pcen->setPdias($pdias);
+        if($pcen->modificarPresionC()){
+           header('Location: index.php');
+            exit();
+        }
+        else{$mensaje="Error al modificar Presion Central. Verifique";}
+    }
+    
     if($_POST['psis']){
         
         $psis=$_POST['psis'];
@@ -271,6 +344,20 @@ function ingresaVop() {
     $id_usuario=$id_user; 
      $vop=new vop();
      $resvop=$vop->mostrarVop($id_user);
+    
+      if($_POST['modificar']){    
+      $hemo=$_POST['hemo'];
+        $xcell=$_POST['xcell'];
+       
+         $vop->setId_usuario($id_usuario);
+         $vop->setHemo($hemo);
+         $vop->setXcell($xcell);
+        if($vop->modificarVop()){
+           header('Location: index.php');
+            exit();
+        }
+        else{$mensaje="Error al modificar Presion Central. Verifique";}
+    }
      
     if($_POST['hemo']){  
         $hemo=$_POST['hemo'];
@@ -310,6 +397,20 @@ function ingresaImt() {
     $id_usuario=$id_user; 
     $imt=new imt(); 
     $resimt=$imt->mostrarImt($id_user);
+    
+     if($_POST['modificar']){        
+        $cd=$_POST['cd'];
+        $ci=$_POST['ci']; 
+         $imt->setId_usuario($id_usuario);
+         $imt->setCd($cd);
+         $imt->setCi($ci);
+        if($imt->modificarImt()){
+           header('Location: index.php');
+            exit();
+        }
+        else{$mensaje="Error al modificar Presion Central. Verifique";}
+    }
+    
     if($_POST['cd']){
         
         $cd=$_POST['cd'];
@@ -349,6 +450,32 @@ function ingresarDis(){
     $id_usuario=$id_user; 
     $distancia=new distancia();
     $resdis=$distancia->mostrarDistancia($id_user);
+    
+     if($_POST['modificar']){    
+      $carfem=$_POST['carfem'];
+        $carhueco=$_POST['carhueco'];
+        $huecohombro=$_POST['huecohombro'];
+        $hombrobraq=$_POST['hombrobraq'];
+        $hombrorad=$_POST['hombrorad'];
+        $huecocuff=$_POST['huecocuff'];
+        $cuffem=$_POST['cuffem'];
+        
+        $distancia->setId_usuario($id_usuario);
+        $distancia->setCar_fem($carfem);
+        $distancia->setCar_hueco($carhueco);
+        $distancia->setHueco_hombro($huecohombro);
+        $distancia->setHombro_braq($hombrobraq);
+        $distancia->setHombro_rad($hombrorad);
+        $distancia->setHueco_cuffxell($huecocuff);
+        $distancia->setCuffxell_fem($cuffem);
+      //  var_dump($dpatronimicos);exit();
+        if($distancia->modificarDistancia()){
+            header('Location: index.php');
+            exit();
+        }
+        else{$mensaje="Error al modificar datos distancias. Verifique";}
+    }
+    
     if($_POST['carfem']){
         
         $carfem=$_POST['carfem'];

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.20, created on 2016-01-17 01:36:55
+<?php /* Smarty version Smarty-3.1.20, created on 2016-01-19 17:31:50
          compiled from "vistas\ficha_patronimica.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:123569ae2273c7080-75234592%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a79cfbdea5c778b4377fbf06f21bd82d4372fc66' => 
     array (
       0 => 'vistas\\ficha_patronimica.tpl',
-      1 => 1452903425,
+      1 => 1453221105,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.20',
+  'unifunc' => 'content_569ae227797b65_97844812',
   'variables' => 
   array (
     'titulo' => 0,
@@ -24,8 +26,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'fecha' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.20',
-  'unifunc' => 'content_569ae227797b65_97844812',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_569ae227797b65_97844812')) {function content_569ae227797b65_97844812($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
@@ -84,15 +84,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
           <form id="FormularioPatronimico" class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
     
                                      <div class="form-group"> 
-                <label  class="col-sm-4 control-label">Ingrese Peso : </label>
+                <label  class="col-sm-4 control-label">Ingrese Peso (kilos) : </label>
                 <div class="col-sm-6">
                         <input type="text" name="peso" placeholder="Peso :" required="required" size ="50" class="texto">
                 </div>
             </div>
             <div class="form-group"> 
-                <label  class="col-sm-4 control-label">Ingrese Altura :</label>
+                <label  class="col-sm-4 control-label">Ingrese Altura (en metros) :</label>
                 <div class="col-sm-6">
-                    <input type="text" name="altura" placeholder="Altura :" required="required" size ="50" class="texto">
+                    <input type="text" name="altura" placeholder="1.75" required="required" size ="50" class="texto">
                 </div>
             </div>
               
@@ -114,9 +114,41 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </form>
       </div>
                      <?php } else { ?>
-              <h4><font style="color: red;">Los datos patronimicos para este paciente,<br>yá fueron ingresados en la base de datos</font></h4>
-         
-    <?php }?>
+                         
+        <form id="FormularioPatronimico" class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
+    
+                                     <div class="form-group"> 
+                <label  class="col-sm-4 control-label">Ingrese Peso (kilos) : </label>
+                <div class="col-sm-6">
+                        <input type="text" name="peso" value="<?php echo $_smarty_tpl->tpl_vars['dpatr']->value->getPeso();?>
+" required="required" size ="50" class="texto">
+                </div>
+            </div>
+            <div class="form-group"> 
+                <label  class="col-sm-4 control-label">Ingrese Altura (en metros):</label>
+                <div class="col-sm-6">
+                    <input type="text" name="altura" value="<?php echo number_format($_smarty_tpl->tpl_vars['dpatr']->value->getAltura(),2,".",",");?>
+" required="required" size ="50" class="texto">
+                </div>
+            </div>
+              
+            <div class="form-group"> 
+                <label  class="col-sm-4 control-label">Fecha de Estudio: </label>
+                <div class="col-sm-6">
+                    <input type="text" value="<?php echo $_smarty_tpl->tpl_vars['dpatr']->value->getFecha_estudio();?>
+" size ="50" class="texto" readonly="">
+                    <div id="masInfo" style="float: right"></div>
+                </div>
+            </div>
+    
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+        <input type="submit" name="modificar" class="btn btn-primary btn-lg btn-block" value="Modificar datos"></button>
+    </div>
+  </div>
+    
+</form>
+                     <?php }?>
     <?php } else { ?>
               <h4><font style="color: red;">No puede ingresar los datos. No está trabajando con ningun paciente</font></h4>
           <?php }?>

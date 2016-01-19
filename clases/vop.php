@@ -86,4 +86,19 @@ class vop extends clase_base{
     }
     return $res;
     }
+    
+    function modificarVop(){
+    $id_user=  $this->getId_usuario();
+     $hemo=  $this->getHemo();
+    $xcell=  $this->getXcell();
+        $smtp=  $this->getDB()->prepare("UPDATE vop SET hemo=?,xcell=? WHERE id_usuario=?" );
+       $smtp->bind_param('ssi',$hemo,$xcell,$id_user);
+       $smtp->execute();
+       $res=false;
+       if($this->getDB()->affected_rows>0){
+        $res=true;  
+        
+       }
+       return $res;  
+    }
 }

@@ -174,4 +174,27 @@ class riesgo extends clase_base{
         
         return $valor;
 }
+
+  function modificarRiesgos(){
+    $id_user=  $this->getId_usuario();
+    $fuma=  $this->getFuma();
+    $presion=  $this->getPresion();
+    $colesterol= $this->getColesterol(); 
+    $hiper= $this->getHiperglicemia();
+    $ant=  $this->getAnt_fliares();
+    $seden=  $this->getSedentarismo();
+    $ejer=  $this->getEjercicio();
+    $medic=  $this->getMedicacion();
+    $dia=  $this->getDiabetes();
+        $smtp=  $this->getDB()->prepare("UPDATE riesgo SET fuma=?,presion=?,colesterol=?,hiperglicemia=?,ant_fliares=?,sedentarismo=?,ejercicio=?,medicacion=?,diabetes=? WHERE id_usuario=?" );
+       $smtp->bind_param('iiiiiiiiii',$fuma,$presion,$colesterol,$hiper,$ant,$seden,$ejer,$medic,$dia,$id_user);
+       $smtp->execute();
+       $res=false;
+       if($this->getDB()->affected_rows>0){
+        $res=true;  
+        
+       }
+       return $res;  
+    }
+
 }

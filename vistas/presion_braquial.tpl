@@ -73,7 +73,29 @@
     </fieldset>
 </form>
               {else}
-              <h4><font style="color: red;">Los datos de Presion braquial para este paciente,<br>yá fueron ingresados en la base de datos</font></h4>
+                    <form id="FormularioPatronimico" class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
+    <fieldset> <legend>Datos Presion Branquial</legend>
+    <div class="form-group">
+    <label for="ci" class="col-lg-2 control-label">Psis BR</label>
+    <div class="col-lg-10">
+        <input type="text" class="form-control" name="psis" id="psis" value="{$presionb->getPsis_br()}" required="">
+    </div>
+  </div>          
+              
+  <div class="form-group">
+    <label for="nombre" class="col-lg-2 control-label">Pdias BR</label>
+    <div class="col-lg-10">
+        <input type="text" class="form-control" name="pdias" id="pdias" value="{$presionb->getPdias_br()}" required="">
+    </div>
+  </div>
+ 
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+       <input type="submit" name="modificar" class="btn btn-primary btn-lg btn-block" value="Modificar datos">
+    </div>
+  </div>
+    </fieldset>
+</form>
          
     {/if}
             {else}

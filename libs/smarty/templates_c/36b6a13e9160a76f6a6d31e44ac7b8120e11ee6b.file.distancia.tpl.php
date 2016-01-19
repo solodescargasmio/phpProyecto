@@ -1,4 +1,33 @@
-<!DOCTYPE html>
+<?php /* Smarty version Smarty-3.1.20, created on 2016-01-19 19:13:01
+         compiled from "vistas\distancia.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:4537569e7cad57bcf7-03454182%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '36b6a13e9160a76f6a6d31e44ac7b8120e11ee6b' => 
+    array (
+      0 => 'vistas\\distancia.tpl',
+      1 => 1453227174,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '4537569e7cad57bcf7-03454182',
+  'function' => 
+  array (
+  ),
+  'variables' => 
+  array (
+    'titulo' => 0,
+    'mensage' => 0,
+    'mensaje' => 0,
+    'cedula' => 0,
+    'distancias' => 0,
+  ),
+  'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.20',
+  'unifunc' => 'content_569e7cad6ea055_33745648',
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_569e7cad6ea055_33745648')) {function content_569e7cad6ea055_33745648($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,7 +38,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{$titulo}</title>
+    <title><?php echo $_smarty_tpl->tpl_vars['titulo']->value;?>
+</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -40,12 +70,14 @@
 </head>
 
 <body>
-    {include file="header.tpl"}
+    <?php echo $_smarty_tpl->getSubTemplate ("header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+
     <div class="container-fluid">
-    {if isset($mensage)}{$mensaje}{/if}
+    <?php if (isset($_smarty_tpl->tpl_vars['mensage']->value)) {?><?php echo $_smarty_tpl->tpl_vars['mensaje']->value;?>
+<?php }?>
     <h3>Datos Paciente</h3> 
-    {if isset($cedula)}
-        {if !isset($distancias)}
+    <?php if (isset($_smarty_tpl->tpl_vars['cedula']->value)) {?>
+        <?php if (!isset($_smarty_tpl->tpl_vars['distancias']->value)) {?>
     <form id="FormularioPatronimico" method="POST" class="form-horizontal">
     <fieldset> <legend>Datos Distancia</legend>
                          <div class="form-group">     
@@ -103,20 +135,22 @@
   </div>
  
 </form>
-     {else}
+     <?php } else { ?>
                  <form id="FormularioPatronimico" method="POST" class="form-horizontal">
     <fieldset> <legend>Datos Distancia</legend>
                          <div class="form-group">     
                     <label  class="col-sm-4 control-label">Car. Fem. : </label>
                     <div class="col-sm-8">
-                        <input type="text" name="carfem" class="success" value="{$distancias->getCar_fem()}" size ="50" required="">
+                        <input type="text" name="carfem" class="success" value="<?php echo $_smarty_tpl->tpl_vars['distancias']->value->getCar_fem();?>
+" size ="50" required="">
                     </div> 
                 </div> 
         
                   <div class="form-group">     
                     <label  class="col-sm-4 control-label">Car. Hueco : </label>
                     <div class="col-sm-8">
-                        <input type="text" name="carhueco"  class="success" value="{$distancias->getCar_hueco()}" size ="50" required="">
+                        <input type="text" name="carhueco"  class="success" value="<?php echo $_smarty_tpl->tpl_vars['distancias']->value->getCar_hueco();?>
+" size ="50" required="">
                     </div> 
                 </div> 
         
@@ -124,26 +158,30 @@
                                      <div class="form-group"> 
                 <label  class="col-sm-4 control-label">Hueco Hombro : </label>
                 <div class="col-sm-6">
-                        <input type="text" name="huecohombro" required="required" size ="50" value="{$distancias->getHueco_hombro()}" class="texto" required="">
+                        <input type="text" name="huecohombro" required="required" size ="50" value="<?php echo $_smarty_tpl->tpl_vars['distancias']->value->getHueco_hombro();?>
+" class="texto" required="">
                 </div>
             </div>
             <div class="form-group"> 
                 <label  class="col-sm-4 control-label">Hombro Braq. :</label>
                 <div class="col-sm-6">
-                    <input type="text" name="hombrobraq" required="required" size ="50" value="{$distancias->getHombro_braq()}" class="texto" required="">
+                    <input type="text" name="hombrobraq" required="required" size ="50" value="<?php echo $_smarty_tpl->tpl_vars['distancias']->value->getHombro_braq();?>
+" class="texto" required="">
                 </div>
             </div>
             <div class="form-group"> 
                 <label  class="col-sm-4 control-label">Hombro Rad. : </label>
                 <div class="col-sm-6">
-                    <input type="text" name="hombrorad" required="required" value="{$distancias->getHombro_rad()}" size ="50" required="">
+                    <input type="text" name="hombrorad" required="required" value="<?php echo $_smarty_tpl->tpl_vars['distancias']->value->getHombro_rad();?>
+" size ="50" required="">
                 </div>
             </div>
                          
             <div class="form-group"> 
                 <label  class="col-sm-4 control-label">Hueco Cuffxell : </label>
                 <div class="col-sm-6">
-                    <input type="text" name="huecocuff" size ="50" value="{$distancias->getHueco_cuffxell()}" class="texto" required="">
+                    <input type="text" name="huecocuff" size ="50" value="<?php echo $_smarty_tpl->tpl_vars['distancias']->value->getHueco_cuffxell();?>
+" class="texto" required="">
                 </div>
             </div>
    
@@ -151,7 +189,8 @@
             <div class="form-group"> 
                 <label  class="col-sm-4 control-label">Cuffxell Fem. :</label>
                 <div class="col-sm-6">
-                    <input type="text" name="cuffem" required="required" size ="50" value="{$distancias->getCuffxell_fem()}" class="texto" required="">
+                    <input type="text" name="cuffem" required="required" size ="50" value="<?php echo $_smarty_tpl->tpl_vars['distancias']->value->getCuffxell_fem();?>
+" class="texto" required="">
                 </div>
             </div> </fieldset>            
     <div class="form-group">
@@ -162,10 +201,10 @@
  
 </form>
          
-    {/if}
-     {else}
+    <?php }?>
+     <?php } else { ?>
               <h4><font style="color: red;">No puede ingresar los datos. No está trabajando con ningun paciente</font></h4>
-          {/if}
+          <?php }?>
       <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
   <script src="bootstrap-hover-dropdown.js"></script>
@@ -178,4 +217,4 @@
     </script></div>
 </body>
 
-</html>
+</html><?php }} ?>

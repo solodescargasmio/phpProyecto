@@ -52,15 +52,15 @@
           <form id="FormularioPatronimico" class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
     
                                      <div class="form-group"> 
-                <label  class="col-sm-4 control-label">Ingrese Peso : </label>
+                <label  class="col-sm-4 control-label">Ingrese Peso (kilos) : </label>
                 <div class="col-sm-6">
                         <input type="text" name="peso" placeholder="Peso :" required="required" size ="50" class="texto">
                 </div>
             </div>
             <div class="form-group"> 
-                <label  class="col-sm-4 control-label">Ingrese Altura :</label>
+                <label  class="col-sm-4 control-label">Ingrese Altura (en metros) :</label>
                 <div class="col-sm-6">
-                    <input type="text" name="altura" placeholder="Altura :" required="required" size ="50" class="texto">
+                    <input type="text" name="altura" placeholder="1.75" required="required" size ="50" class="texto">
                 </div>
             </div>
               
@@ -81,9 +81,38 @@
 </form>
       </div>
                      {else}
-              <h4><font style="color: red;">Los datos patronimicos para este paciente,<br>yá fueron ingresados en la base de datos</font></h4>
-         
-    {/if}
+                         
+        <form id="FormularioPatronimico" class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
+    
+                                     <div class="form-group"> 
+                <label  class="col-sm-4 control-label">Ingrese Peso (kilos) : </label>
+                <div class="col-sm-6">
+                        <input type="text" name="peso" value="{$dpatr->getPeso()}" required="required" size ="50" class="texto">
+                </div>
+            </div>
+            <div class="form-group"> 
+                <label  class="col-sm-4 control-label">Ingrese Altura (en metros):</label>
+                <div class="col-sm-6">
+                    <input type="text" name="altura" value="{number_format($dpatr->getAltura(),2,".",",")}" required="required" size ="50" class="texto">
+                </div>
+            </div>
+              
+            <div class="form-group"> 
+                <label  class="col-sm-4 control-label">Fecha de Estudio: </label>
+                <div class="col-sm-6">
+                    <input type="text" value="{$dpatr->getFecha_estudio()}" size ="50" class="texto" readonly="">
+                    <div id="masInfo" style="float: right"></div>
+                </div>
+            </div>
+    
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+        <input type="submit" name="modificar" class="btn btn-primary btn-lg btn-block" value="Modificar datos"></button>
+    </div>
+  </div>
+    
+</form>
+                     {/if}
     {else}
               <h4><font style="color: red;">No puede ingresar los datos. No está trabajando con ningun paciente</font></h4>
           {/if}

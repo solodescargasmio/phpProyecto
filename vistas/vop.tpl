@@ -74,7 +74,29 @@
 </form>
       </div>
            {else}
-              <h4><font style="color: red;">Los datos de VOP para este paciente,<br>yá fueron ingresados en la base de datos</font></h4>
+               <form id="FormularioPatronimico" class="form-horizontal" role="form" method="POST" enctype="multipart/form-data">
+    <fieldset> <legend>Datos VOP</legend>
+    <div class="form-group">
+    <label for="ci" class="col-lg-2 control-label">Hemo</label>
+    <div class="col-lg-10">
+        <input type="text" class="form-control" name="hemo" id="hemo" value="{$vops->getHemo()}" required="">
+    </div>
+  </div>          
+              
+  <div class="form-group">
+    <label for="nombre" class="col-lg-2 control-label">XCELL</label>
+    <div class="col-lg-10">
+      <input type="text" class="form-control" name="xcell" id="xcell" value="{$vops->getXcell()}" required="">
+    </div>
+  </div>
+ 
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+ <input type="submit" name="modificar" class="btn btn-primary btn-lg btn-block" value="Modificar datos">
+    </div>
+  </div>
+    </fieldset>
+</form>
          
     {/if}
             {else}

@@ -87,5 +87,20 @@ class presion_braquial extends clase_base{
     }
     return $res;
     }
+    
+    function modificarPresionB(){
+    $id_user=  $this->getId_usuario();
+    $psis=  $this->getPsis_br();
+    $pdias=  $this->getPdias_br();
+        $smtp=  $this->getDB()->prepare("UPDATE presion_braquial SET psis=?,pdias=? WHERE id_usuario=?" );
+       $smtp->bind_param('iii',$psis,$pdias,$id_user);
+       $smtp->execute();
+       $res=false;
+       if($this->getDB()->affected_rows>0){
+        $res=true;  
+        
+       }
+       return $res;  
+    }
 
 }

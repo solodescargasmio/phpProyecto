@@ -42,7 +42,9 @@
 <body>
     {include file="header.tpl"}
    <div class="container-fluid">
-       <font style="color:red;" size=4> {if isset($mensaje)}{$mensaje}{/if}</font>
+   {if isset($mensage)}
+          {$mensage}
+          {/if}
     <h3>Datos Paciente</h3> 
        {if isset($cedula)}
              {if !isset($riesgo)}
@@ -74,8 +76,37 @@
     </div>
   </div>
  </fieldset>
-</form> {else}
-              <h4><font style="color: red;">Los datos de Riesgos para este paciente,<br>yá fueron ingresados en la base de datos</font></h4>
+</form> 
+             {else}
+          <form method="POST" class="form-horizontal">
+    <fieldset> <legend>Datos Riesgos</legend>
+  <input name="fuma" type="checkbox"  {if $riesgo->getFuma()!=0} checked  {/if}/> <font face="caption" style="color: #000;" size=4>Fuma
+<br/>
+<input name="presion" type="checkbox" {if $riesgo->getPresion()!=0} checked  {/if}/> Presíon
+<br/>
+<input name="colesterol" type="checkbox" {if $riesgo->getColesterol()!=0} checked  {/if}/> Colesteról
+<br/>
+<input name="hiperglisemia" type="checkbox" {if $riesgo->getHiperglicemia()!=0} checked  {/if}/> Hiperglisémia
+<br/>
+<input name="antecedentes" type="checkbox" {if $riesgo->getAnt_fliares()!=0} checked  {/if}/> Antecedentes Familiares
+<br/>
+<input name="sedentarismo" type="checkbox" {if $riesgo->getSedentarismo()!=0} checked  {/if}/> Sedentarísmo
+<br/>
+<input name="ejercicio" type="checkbox" {if $riesgo->getEjercicio()!=0} checked  {/if}/> Realiza Ejercicios
+<br/>
+<input name="medicacion" type="checkbox" {if $riesgo->getMedicacion()!=0} checked  {/if}/>  Medicacíon
+<br/>
+<input name="diabetes" type="checkbox" {if $riesgo->getDiabetes()!=0} checked  {/if}/>  Diabetes
+<br/>
+<br>
+                
+    <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+     <input type="submit" name="modificar" class="btn btn-primary btn-lg btn-block" value="Modificar datos">
+    </div>
+  </div>
+ </fieldset>
+</form>
          
     {/if}
          {else}

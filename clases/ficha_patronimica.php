@@ -130,4 +130,20 @@ class ficha_patronimica extends clase_base{
         return $valor; 
     }
     
+     function modificarFicha(){
+         $id=$this->getId_usuario(); 
+         $peso=$this->getPeso();
+        $altura=$this->getAltura();
+        $imc=$this->getImc();
+        $smtp=  $this->getDB()->prepare("UPDATE ficha_patronimica SET peso=?,altura=?,imc=? WHERE id_usuario=?" );
+       $smtp->bind_param("ddsi",$peso,$altura,$imc,$id);
+       $smtp->execute();
+       $res=false;
+       if($this->getDB()->affected_rows>0){
+        $res=true;  
+        
+       }
+       return $res;  
+    }
+    
 }

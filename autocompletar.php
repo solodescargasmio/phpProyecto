@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-//require_once ('./conexion/config.php');
+require('./conexion/config.php');
 require_once ('./clases/usuario.php');
 $host=DB_HOST;
 $root=DB_USR;
