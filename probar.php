@@ -70,5 +70,17 @@ overflow: auto;
    <input type="text" size="50" id="service" name="service" />
    <div id="suggestions"></div>
 </form>
+        <?php
+        error_reporting(0);
+        require_once ('./conexion/config.php');
+        require_once ('./clases/presion_braquial.php');
+        require_once ('./clases/presion_central.php');
+        $pres=new presion_braquial();
+        $dato=$pres->mostrarPb(44128169);
+        $pres1=new presion_central();
+        $dato1=$pres1->mostrarPc(44128169);
+        var_dump($dato);
+        var_dump($dato1);exit();
+        ?>
     </body>
 </html>

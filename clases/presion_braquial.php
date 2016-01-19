@@ -14,8 +14,8 @@
 class presion_braquial extends clase_base{
     private $id=0;
     private $id_usuario;
-    private $psis_br;
-    private $pdias_br;
+    private $psis;
+    private $pdias;
 
     
              //Contructor que recibe un array
@@ -47,22 +47,22 @@ class presion_braquial extends clase_base{
         }
 
                 public function getPsis_br() {
-            return $this->psis_br;
+            return $this->psis;
         }
 
         public function getPdias_br() {
-            return $this->pdias_br;
+            return $this->pdias;
         }
 
         public function setPsis_br($psis_br) {
-            $this->psis_br = $psis_br;
+            $this->psis = $psis_br;
         }
 
         public function setPdias_br($pdias_br) {
-            $this->pdias_br = $pdias_br;
+            $this->pdias = $pdias_br;
         }
-        
-           public function mostrarPb($id_user){
+
+        public function mostrarPb($id_user){    
         $stmt = $this->getDB()->prepare( 
 "SELECT * FROM presion_braquial WHERE id_usuario=?" );
         $stmt->bind_param( "i",$id_user);
@@ -73,7 +73,7 @@ class presion_braquial extends clase_base{
 }
         return $presionb;
 }
-        
+      
       function insertarPresionB(){
     $id_user=  $this->getId_usuario();
     $psis=  $this->getPsis_br();
