@@ -22,7 +22,7 @@ require_once ('./clases/vop.php');
 require_once ('./clases/imt.php');
 require_once ('./clases/distancia.php');
 require_once ('./clases/usuario.php');
-     Session::init();  
+     Session::init(); 
        $mensage="";
      error_reporting(0);
      $usu=new usuario();
@@ -97,8 +97,6 @@ require_once ('./clases/usuario.php');
 </table>
    <input type="submit" value="<<Trabajar con este paciente>>" class="form-control btn btn-primary" onClick="window.location='index.php'">     
         <?php
-     
-     
      }     
 
         ?></div>

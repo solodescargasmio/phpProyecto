@@ -29,10 +29,9 @@ function subirDatos(){
     $mensaje="";
     $titulo="Multimedia"; 
     $archivo=new archivo();
-    if(isset($_POST['cursos'])){
+    if(isset($_POST['nombre'])){
 $serv = $ruta=dirname(__FILE__).'/'.$id_user.'/';
-if(strcmp($_POST['cursos'],"0")==0){$varia=$_POST['nombre'];}
-else {$varia=$_POST['cursos'];}
+$varia=$_POST['nombre'];
 //var_dump($varia);exit();
   $exten=explode(".",$_FILES['archivo']['name']);
         $ex=  end($exten);
@@ -64,11 +63,14 @@ else {$varia=$_POST['cursos'];}
 
 		// Verificamos si ya se subio el archivo temporal
 		if (is_uploaded_file($remoto)){
+                    $ex="webm";
                         $archivo->setId_usuario($id_user);
                         $archivo->setNombre($varia);
                         $archivo->setExtension($ex);
                         if($archivo->insertarArchivo()){//guardamos nombre en base de datos
-                          copy($remoto, $ruta);// copiamos el archivo temporal, del directorio de temporales de nuestro servidor a la ruta que creamos	  
+                            copy($remoto, $ruta);
+                          //  exec("ffmpeg -i ".$remoto." ./multimedia/$id_user/".$varia.".webm 2>&1");
+                // copiamos el archivo temporal, del directorio de temporales de nuestro servidor a la ruta que creamos	  
                         }else{$mensaje="error al guardar archivo";}
                       
 		}

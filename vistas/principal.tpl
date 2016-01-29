@@ -57,7 +57,7 @@
             {if isset($usuarios)}
           <select id="elejir"> 
               <option value="{$cedula}">Ver avances</option>
-        <option value="{$cedula}">Ver avances</option>
+        <option value="{$cedula}">{$cedula}</option>
     {/if}
         </select> 
           

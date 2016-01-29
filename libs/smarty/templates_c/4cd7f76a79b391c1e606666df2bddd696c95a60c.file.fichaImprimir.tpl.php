@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.20, created on 2016-01-17 18:15:25
+<?php /* Smarty version Smarty-3.1.20, created on 2016-01-24 19:15:01
          compiled from "vistas\fichaImprimir.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:4101569ae6f4e2b740-01310459%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4cd7f76a79b391c1e606666df2bddd696c95a60c' => 
     array (
       0 => 'vistas\\fichaImprimir.tpl',
-      1 => 1453050883,
+      1 => 1453659298,
       2 => 'file',
     ),
   ),
@@ -92,7 +92,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                  <td>Nombre</td>
                  <td>Sexo</td>
               </tr></thead> 
-           <tbody><tr class="success">
+           <tbody><tr>
                    <?php if (isset($_smarty_tpl->tpl_vars['ficha']->value)) {?>
            <td><?php echo $_smarty_tpl->tpl_vars['ficha']->value->getFecha_estudio();?>
 </td>
@@ -113,12 +113,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
            <caption style="text-align: center;" class="alert-danger">Factores de Riesgo Cardiovacular</caption>
            <thead> 
            <tr class="success">
-               <td>IMC</td>
+               <td>IMC (kg/m2)</td>
+               <td>Presion</td>
                <td>Diabetes</td>
                  <td>Tabaquismo</td>
                  <td>Sedentarismo</td>
               </tr></thead> 
-           <tbody><tr class="success">
+           <tbody><tr>
                        <?php if (isset($_smarty_tpl->tpl_vars['ficha']->value)) {?>
            <td><?php echo $_smarty_tpl->tpl_vars['ficha']->value->getImc();?>
 </td>
@@ -126,6 +127,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                <td></td>
            <?php }?>
            <?php if (isset($_smarty_tpl->tpl_vars['riesgo']->value)) {?> 
+               <?php if ($_smarty_tpl->tpl_vars['riesgo']->value->getPresion()==0) {?>
+                   <td>No</td>
+           <?php } else { ?>
+               <td>Si</td>
+           <?php }?>
                <?php if ($_smarty_tpl->tpl_vars['riesgo']->value->getDiabetes()==0) {?>
                    <td>No</td>
            <?php } else { ?>
@@ -142,8 +148,45 @@ $_valid = $_smarty_tpl->decodeProperties(array (
            <?php } else { ?>
                <td>Si</td>
            <?php }?>
-<?php }?>
-               </tr>   
+
+               </tr> 
+                 <thead> 
+           <tr class="success">
+               <td>Colesterol</td>
+               <td>Hiperglisemia</td>
+                 <td>Ant. Familiares</td>
+                 <td>Ejercicios</td>
+                 <td>Medicación</td>
+              </tr></thead>
+                 <tr>
+               <?php if ($_smarty_tpl->tpl_vars['riesgo']->value->getColesterol()==0) {?>
+                   <td>No</td>
+           <?php } else { ?>
+               <td>Si</td>
+           <?php }?>
+               <?php if ($_smarty_tpl->tpl_vars['riesgo']->value->getHiperglicemia()==0) {?>
+                   <td>No</td>
+           <?php } else { ?>
+               <td>Si</td>
+           <?php }?>
+
+               <?php if ($_smarty_tpl->tpl_vars['riesgo']->value->getAnt_fliares()==0) {?>
+                   <td>No</td>
+           <?php } else { ?>
+               <td>Si</td>
+           <?php }?>
+               <?php if ($_smarty_tpl->tpl_vars['riesgo']->value->getEjercicio()==0) {?>
+                   <td>No</td>
+           <?php } else { ?>
+               <td>Si</td>
+           <?php }?>
+                <?php if ($_smarty_tpl->tpl_vars['riesgo']->value->getMedicacion()==0) {?>
+                   <td>No</td>
+           <?php } else { ?>
+               <td>Si</td>
+           <?php }?>
+               </tr> 
+                 <?php }?>
  </tbody>
        </table>
                

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.20, created on 2016-01-19 02:05:51
+<?php /* Smarty version Smarty-3.1.20, created on 2016-01-24 19:21:11
          compiled from "vistas\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:10367569a9f5b7635e7-50839857%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f182a762fb5bbfed403502ca5c5c11512569e1d5' => 
     array (
       0 => 'vistas\\header.tpl',
-      1 => 1453141019,
+      1 => 1453659665,
       2 => 'file',
     ),
   ),
@@ -31,8 +31,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     //Al escribr dentro del input con id="service"
     $('#service').keyup(function(){
         //Obtenemos el value del input
-        largo=0;
-        
+        largo=1;
+    
         var service = $(this).val();
         if(service.length>largo){
          var dataString = 'service='+service;   
@@ -70,10 +70,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     /////////////////////////////////////////////////////////////   
 //  $('#service').val($('#'+id).attr('data'));
                     //Hacemos desaparecer el resto de sugerencias
+         
                     $('#suggestions').fadeOut(1000);
+                    window.location='index.php';
                 });              
             }
-        });}
+        });}else{ $('#suggestions').fadeOut(1000);
+    }
     });              
 }); 
    </script>
@@ -106,15 +109,15 @@ overflow: auto;
            <form class="navbar-form navbar-right">
         <input type="text" id="service" name="service" class="form-control" placeholder="paciente" >
          <div id="suggestions"></div>
-        
+        </form>
     
         <?php if (isset($_smarty_tpl->tpl_vars['cedula']->value)) {?>
-            <div style="float: right;"><font style="color: #fff;">Apellido: <?php echo $_smarty_tpl->tpl_vars['apellido']->value;?>
+            <div style="float: right;" class="navbar-form navbar-right"><font style="color: #fff;">Apellido: <?php echo $_smarty_tpl->tpl_vars['apellido']->value;?>
 <br>Cedula : <?php echo $_smarty_tpl->tpl_vars['cedula']->value;?>
  <br>Edad : <?php echo $_smarty_tpl->tpl_vars['edad']->value;?>
 </font></div>
         <?php }?>
-        </form>
+        
         
         <div class="navbar-collapse nav-collapse collapse navbar-header">
         <?php if (isset($_smarty_tpl->tpl_vars['cedula']->value)) {?>

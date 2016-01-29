@@ -58,7 +58,7 @@
                  <td>Nombre</td>
                  <td>Sexo</td>
               </tr></thead> 
-           <tbody><tr class="success">
+           <tbody><tr>
                    {if isset($ficha)}
            <td>{$ficha->getFecha_estudio()}</td>
            {else}
@@ -75,18 +75,24 @@
            <caption style="text-align: center;" class="alert-danger">Factores de Riesgo Cardiovacular</caption>
            <thead> 
            <tr class="success">
-               <td>IMC</td>
+               <td>IMC (kg/m2)</td>
+               <td>Presion</td>
                <td>Diabetes</td>
                  <td>Tabaquismo</td>
                  <td>Sedentarismo</td>
               </tr></thead> 
-           <tbody><tr class="success">
+           <tbody><tr>
                        {if isset($ficha)}
            <td>{$ficha->getImc()}</td>
            {else}
                <td></td>
            {/if}
            {if isset($riesgo)} 
+               {if $riesgo->getPresion()==0}
+                   <td>No</td>
+           {else}
+               <td>Si</td>
+           {/if}
                {if $riesgo->getDiabetes()==0}
                    <td>No</td>
            {else}
@@ -103,8 +109,45 @@
            {else}
                <td>Si</td>
            {/if}
-{/if}
-               </tr>   
+
+               </tr> 
+                 <thead> 
+           <tr class="success">
+               <td>Colesterol</td>
+               <td>Hiperglisemia</td>
+                 <td>Ant. Familiares</td>
+                 <td>Ejercicios</td>
+                 <td>Medicación</td>
+              </tr></thead>
+                 <tr>
+               {if $riesgo->getColesterol()==0}
+                   <td>No</td>
+           {else}
+               <td>Si</td>
+           {/if}
+               {if $riesgo->getHiperglicemia()==0}
+                   <td>No</td>
+           {else}
+               <td>Si</td>
+           {/if}
+
+               {if $riesgo->getAnt_fliares()==0}
+                   <td>No</td>
+           {else}
+               <td>Si</td>
+           {/if}
+               {if $riesgo->getEjercicio()==0}
+                   <td>No</td>
+           {else}
+               <td>Si</td>
+           {/if}
+                {if $riesgo->getMedicacion()==0}
+                   <td>No</td>
+           {else}
+               <td>Si</td>
+           {/if}
+               </tr> 
+                 {/if}
  </tbody>
        </table>
                

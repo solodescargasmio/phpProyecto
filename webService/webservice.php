@@ -43,7 +43,33 @@ require_once ('funciones.php');
     $server->register("traer",
             array("id" => "xsd:string"),
         array("return" => "xsd:string"));
-      
+      $server->register("traerFicha",
+            array("id" => "xsd:string"),
+        array("return" => "xsd:string"));
+      $server->register("traerImt",
+            array("id" => "xsd:string"),
+        array("return" => "xsd:string"));
+      $server->register("traerDistancias",
+            array("id" => "xsd:string"),
+        array("return" => "xsd:string"));
+      $server->register("traerComentarios",
+            array("id" => "xsd:string"),
+        array("return" => "xsd:string"));
+      $server->register("traerPreBraq",
+            array("id" => "xsd:string"),
+        array("return" => "xsd:string"));
+       $server->register("traerPreCent",
+            array("id" => "xsd:string"),
+        array("return" => "xsd:string"));
+      $server->register("traerRiesgo",
+            array("id" => "xsd:string"),
+        array("return" => "xsd:string"));
+      $server->register("traerVop",
+            array("id" => "xsd:string"),
+        array("return" => "xsd:string"));
+       $server->register("ingresarUsuario",
+            array("dato" => "xsd:string"),
+        array("return" => "xsd:string"));
  $HTTP_RAW_POST_DATA = isset($HTTP_RAW_POST_DATA) ? $HTTP_RAW_POST_DATA : '';
     $server->service($HTTP_RAW_POST_DATA);
 

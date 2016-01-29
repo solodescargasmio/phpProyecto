@@ -4,8 +4,8 @@
     //Al escribr dentro del input con id="service"
     $('#service').keyup(function(){
         //Obtenemos el value del input
-        largo=0;
-        
+        largo=1;
+    
         var service = $(this).val();
         if(service.length>largo){
          var dataString = 'service='+service;   
@@ -43,10 +43,13 @@
     /////////////////////////////////////////////////////////////   
 //  $('#service').val($('#'+id).attr('data'));
                     //Hacemos desaparecer el resto de sugerencias
+         
                     $('#suggestions').fadeOut(1000);
+                    window.location='index.php';
                 });              
             }
-        });}
+        });}else{ $('#suggestions').fadeOut(1000);
+    }
     });              
 }); 
    </script>
@@ -79,12 +82,12 @@ overflow: auto;
            <form class="navbar-form navbar-right">
         <input type="text" id="service" name="service" class="form-control" placeholder="paciente" >
          <div id="suggestions"></div>
-        
+        </form>
     
         {if isset($cedula)}
-            <div style="float: right;"><font style="color: #fff;">Apellido: {$apellido}<br>Cedula : {$cedula} <br>Edad : {$edad}</font></div>
+            <div style="float: right;" class="navbar-form navbar-right"><font style="color: #fff;">Apellido: {$apellido}<br>Cedula : {$cedula} <br>Edad : {$edad}</font></div>
         {/if}
-        </form>
+        
         
         <div class="navbar-collapse nav-collapse collapse navbar-header">
         {if isset($cedula)}

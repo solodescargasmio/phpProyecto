@@ -15,15 +15,15 @@ require_once ('clase_base.php');
 class riesgo extends clase_base{
     private $id=0;
     private $id_usuario;
-    private $fuma;
-    private $presion;
-    private $colesterol;
-    private $hiperglicemia;
-    private $ant_fliares;
-    private $sedentarismo;
+    private $fuma;//
+    private $presion;//
+    private $colesterol;//
+    private $hiperglicemia;//
+    private $ant_fliares;//
+    private $sedentarismo;//
     private $ejercicio;
     private $medicacion;
-    private $diabetes;
+    private $diabetes;//
     
              //Contructor que recibe un array
 	public function __construct($obj=NULL) {

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.20, created on 2016-01-19 19:24:21
+<?php /* Smarty version Smarty-3.1.20, created on 2016-01-24 20:30:48
          compiled from "vistas\archivos.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:22607569e7f5581b320-10036767%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '965372a619bb27e4077c894b7898c79c9336d34e' => 
     array (
       0 => 'vistas\\archivos.tpl',
-      1 => 1450976877,
+      1 => 1453663841,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.20',
+  'unifunc' => 'content_569e7f5590f561_77608344',
   'variables' => 
   array (
     'archivos' => 0,
@@ -22,8 +24,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cedula' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.20',
-  'unifunc' => 'content_569e7f5590f561_77608344',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_569e7f5590f561_77608344')) {function content_569e7f5590f561_77608344($_smarty_tpl) {?> <link href="css/dashboard.css" rel="stylesheet" type="text/css">
 <div> <h4>Archivo actuales de paciente</h4>
@@ -44,13 +44,25 @@ $_smarty_tpl->tpl_vars['archivo']->_loop = true;
 " width="150" height="80">
         <?php } else { ?>
             
+            
+            
+                 <video width="250" height="80" controls>
+	<!-- MP4 must be first for iPad! -->
+        <source src="./multimedia/<?php echo $_smarty_tpl->tpl_vars['cedula']->value;?>
+/<?php echo $_smarty_tpl->tpl_vars['archivo']->value->getNombre();?>
+.<?php echo $_smarty_tpl->tpl_vars['archivo']->value->getExtension();?>
+" type="video/<?php echo $_smarty_tpl->tpl_vars['archivo']->value->getExtension();?>
+" />
+        <!--<source src="videos/bunny.webm" type="video/webm" /><!-- Firefox / Opera / Chrome10 -->
+</video>
+            
                <!-- <video id="conejito" controls preload="metadata">
                     <source src="./multimedia/<?php echo $_smarty_tpl->tpl_vars['cedula']->value;?>
 /<?php echo $_smarty_tpl->tpl_vars['archivo']->value->getNombre();?>
 .<?php echo $_smarty_tpl->tpl_vars['archivo']->value->getExtension();?>
 " type="video/<?php echo $_smarty_tpl->tpl_vars['archivo']->value->getExtension();?>
 " />
-    </video>-->
+    </video>
 
         <embed type="video/<?php echo $_smarty_tpl->tpl_vars['archivo']->value->getExtension();?>
 " pluginspage="http://www.microsoft.com/Windows/MediaPlayer/" 
@@ -59,7 +71,7 @@ $_smarty_tpl->tpl_vars['archivo']->_loop = true;
 .<?php echo $_smarty_tpl->tpl_vars['archivo']->value->getExtension();?>
 " width="150" height="80" autostart="0" 
 ShowStatusBar="0" ShowControls="0" DisplaySize="0">
-</embed>
+</embed>-->
    
         <?php }?>
         <a class="btn btn-primary btn-lg btn-block" href="descargas.php? archivo=<?php echo $_smarty_tpl->tpl_vars['archivo']->value->getNombre();?>

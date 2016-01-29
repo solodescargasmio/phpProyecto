@@ -1,0 +1,189 @@
+<definitions targetNamespace="urn:servicio">
+    <types>
+        <xsd:schema targetNamespace="urn:servicio">
+            <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+            <xsd:import namespace="http://schemas.xmlsoap.org/wsdl/"/>
+        </xsd:schema>
+    </types>
+    <message name="traerRequest">
+        <part name="id" type="xsd:string"/>
+    </message>
+    <message name="traerResponse">
+        <part name="return" type="xsd:string"/>
+    </message>
+    <message name="traerFichaRequest">
+        <part name="id" type="xsd:string"/>
+    </message>
+    <message name="traerFichaResponse">
+        <part name="return" type="xsd:string"/>
+    </message>
+    <message name="traerImtRequest">
+        <part name="id" type="xsd:string"/>
+    </message>
+    <message name="traerImtResponse">
+        <part name="return" type="xsd:string"/>
+    </message>
+    <message name="traerDistanciasRequest">
+        <part name="id" type="xsd:string"/>
+    </message>
+    <message name="traerDistanciasResponse">
+        <part name="return" type="xsd:string"/>
+    </message>
+    <message name="traerComentariosRequest">
+        <part name="id" type="xsd:string"/>
+    </message>
+    <message name="traerComentariosResponse">
+        <part name="return" type="xsd:string"/>
+    </message>
+    <message name="traerPreBraqRequest">
+        <part name="id" type="xsd:string"/>
+    </message>
+    <message name="traerPreBraqResponse">
+        <part name="return" type="xsd:string"/>
+    </message>
+    <message name="traerPreCentRequest">
+        <part name="id" type="xsd:string"/>
+    </message>
+    <message name="traerPreCentResponse">
+        <part name="return" type="xsd:string"/>
+    </message>
+    <message name="traerRiesgoRequest">
+        <part name="id" type="xsd:string"/>
+    </message>
+    <message name="traerRiesgoResponse">
+        <part name="return" type="xsd:string"/>
+    </message>
+    <message name="traerVopRequest">
+        <part name="id" type="xsd:string"/>
+    </message>
+    <message name="traerVopResponse">
+        <part name="return" type="xsd:string"/>
+    </message>
+    <portType name="servicioPortType">
+        <operation name="traer">
+            <input message="tns:traerRequest"/>
+            <output message="tns:traerResponse"/>
+        </operation>
+        <operation name="traerFicha">
+            <input message="tns:traerFichaRequest"/>
+            <output message="tns:traerFichaResponse"/>
+        </operation>
+        <operation name="traerImt">
+            <input message="tns:traerImtRequest"/>
+            <output message="tns:traerImtResponse"/>
+        </operation>
+        <operation name="traerDistancias">
+            <input message="tns:traerDistanciasRequest"/>
+            <output message="tns:traerDistanciasResponse"/>
+        </operation>
+        <operation name="traerComentarios">
+            <input message="tns:traerComentariosRequest"/>
+            <output message="tns:traerComentariosResponse"/>
+        </operation>
+        <operation name="traerPreBraq">
+            <input message="tns:traerPreBraqRequest"/>
+            <output message="tns:traerPreBraqResponse"/>
+        </operation>
+        <operation name="traerPreCent">
+            <input message="tns:traerPreCentRequest"/>
+            <output message="tns:traerPreCentResponse"/>
+        </operation>
+        <operation name="traerRiesgo">
+            <input message="tns:traerRiesgoRequest"/>
+            <output message="tns:traerRiesgoResponse"/>
+        </operation>
+        <operation name="traerVop">
+            <input message="tns:traerVopRequest"/>
+            <output message="tns:traerVopResponse"/>
+        </operation>
+    </portType>
+    <binding name="servicioBinding" type="tns:servicioPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="traer">
+            <soap:operation soapAction="http://localhost/phpProyecto/webService/webservice.php/traer" style="rpc"/>
+            <input>
+                <soap:body use="encoded" namespace="" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" namespace="" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="traerFicha">
+            <soap:operation soapAction="http://localhost/phpProyecto/webService/webservice.php/traerFicha" style="rpc"/>
+            <input>
+                <soap:body use="encoded" namespace="" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" namespace="" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="traerImt">
+            <soap:operation soapAction="http://localhost/phpProyecto/webService/webservice.php/traerImt" style="rpc"/>
+            <input>
+                <soap:body use="encoded" namespace="" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" namespace="" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="traerDistancias">
+            <soap:operation soapAction="http://localhost/phpProyecto/webService/webservice.php/traerDistancias" style="rpc"/>
+            <input>
+                <soap:body use="encoded" namespace="" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" namespace="" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="traerComentarios">
+            <soap:operation soapAction="http://localhost/phpProyecto/webService/webservice.php/traerComentarios" style="rpc"/>
+            <input>
+                <soap:body use="encoded" namespace="" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" namespace="" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="traerPreBraq">
+            <soap:operation soapAction="http://localhost/phpProyecto/webService/webservice.php/traerPreBraq" style="rpc"/>
+            <input>
+                <soap:body use="encoded" namespace="" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" namespace="" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="traerPreCent">
+            <soap:operation soapAction="http://localhost/phpProyecto/webService/webservice.php/traerPreCent" style="rpc"/>
+            <input>
+                <soap:body use="encoded" namespace="" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" namespace="" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="traerRiesgo">
+            <soap:operation soapAction="http://localhost/phpProyecto/webService/webservice.php/traerRiesgo" style="rpc"/>
+            <input>
+                <soap:body use="encoded" namespace="" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" namespace="" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+        <operation name="traerVop">
+            <soap:operation soapAction="http://localhost/phpProyecto/webService/webservice.php/traerVop" style="rpc"/>
+            <input>
+                <soap:body use="encoded" namespace="" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </input>
+            <output>
+                <soap:body use="encoded" namespace="" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="servicio">
+        <port name="servicioPort" binding="tns:servicioBinding">
+            <soap:address location="http://localhost/phpProyecto/webService/webservice.php"/>
+        </port>
+    </service>
+</definitions>

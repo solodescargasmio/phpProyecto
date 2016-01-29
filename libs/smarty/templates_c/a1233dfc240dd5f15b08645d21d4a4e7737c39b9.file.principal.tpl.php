@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.20, created on 2016-01-16 20:51:54
+<?php /* Smarty version Smarty-3.1.20, created on 2016-01-24 13:38:33
          compiled from "vistas\principal.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:13726569a9f5aec7752-49464295%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a1233dfc240dd5f15b08645d21d4a4e7737c39b9' => 
     array (
       0 => 'vistas\\principal.tpl',
-      1 => 1452904611,
+      1 => 1453639109,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.20',
+  'unifunc' => 'content_569a9f5b66f3a4_63324372',
   'variables' => 
   array (
     'titulo' => 0,
@@ -24,8 +26,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'usuario' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.20',
-  'unifunc' => 'content_569a9f5b66f3a4_63324372',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_569a9f5b66f3a4_63324372')) {function content_569a9f5b66f3a4_63324372($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
@@ -98,7 +98,8 @@ $_smarty_tpl->tpl_vars['usuario']->_loop = true;
               <option value="<?php echo $_smarty_tpl->tpl_vars['cedula']->value;?>
 ">Ver avances</option>
         <option value="<?php echo $_smarty_tpl->tpl_vars['cedula']->value;?>
-">Ver avances</option>
+"><?php echo $_smarty_tpl->tpl_vars['cedula']->value;?>
+</option>
     <?php }?>
         </select> 
           
