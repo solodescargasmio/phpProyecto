@@ -20,9 +20,9 @@ class ficha_patronimica extends clase_base{
     private $altura;
     private $fecha_estudio;
     private $imc;
- 
+    private $edad;
 
-           //Contructor que recibe un array
+    //Contructor que recibe un array
 	public function __construct($obj=NULL) {
         //$this->db=DB::conexion();
         if(isset($obj)){
@@ -34,8 +34,15 @@ class ficha_patronimica extends clase_base{
         parent::__construct($tabla);
 
     }
-     
-    public function getId() {
+    public function getEdad() {
+        return $this->edad;
+    }
+
+    public function setEdad($edad) {
+        $this->edad = $edad;
+    }
+
+        public function getId() {
         return $this->id;
     }
 

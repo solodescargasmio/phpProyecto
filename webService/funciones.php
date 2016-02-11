@@ -26,6 +26,24 @@ function consultar($sql){
 return $resultados;
 }
 
+function buscar($id_user){   
+   $sql="SELECT * FROM usuario WHERE id like '%$id_user%' OR nombre like '%$id_user%' OR apellido like '%$id_user%'";
+     $resultados=  consultar($sql);
+      //  $pdo->query("SELECT * FROM usuario WHERE id=$id");
+     // var_dump($resultados['nombre']);exit();
+      while ($row = mysqli_fetch_array($resultados)) {
+         $dato[]=array(
+            "id" => $row['id'],
+            "nombre" =>  $row['nombre'],
+           "apellido" => $row['apellido'],
+            "nacimiento" => $row['fecha_nac'],
+           "sexo" =>  $row['sexo']
+         );
+}//var_dump($dato);exit();
+return json_encode($dato);
+
+     } 
+
 
 
  function traer($id){   
@@ -188,15 +206,7 @@ return json_encode($dato);
 
      }
   
-     function ingresarUsuario($dato) {
-         $arreglo=json_decode($dato,true);
-              foreach ($arreglo as $key => $value) {
-            $id=$value['id']; 
-            $nombre=$value['nombre']; 
-            $apellido=$value['apellido']; 
-            $fecha=$value['fecha']; 
-            $sexo=$value['sexo']; 
-        }
+     function ingresarUsuario($id,$nombre,$apellido,$fecha,$sexo) {
         $conexion=  conectar();
     $smtp=$conexion->prepare("INSERT INTO usuario (id,nombre,apellido,fecha_nac,sexo) VALUES(?,?,?,?,?)" );
        $smtp->bind_param("sssss",$id,$nombre,$apellido,$fecha,$sexo);
@@ -210,15 +220,126 @@ return json_encode($dato);
 //        }
    // $sql="SELECT * FROM vop WHERE id_usuario=".$id;
 }
-//foreach ($resultados as $key => $value) {
-//       return $dato=join(",", array(
-//                $value['nombre'],
-//              $value['apellido'],
-//               
-//              ));
-//        }}
-//        else {
-//            return "No hay productos de esta categoria";
-//        }
  
+ function calcularEdad($param) {
+        
+                 $fecha=date('d-m-Y');
+                list($dia,$mes,$ano)=  explode('-', $fecha);
+//fecha de nacimiento
+        list($anoe,$mese,$diae)=  explode('-', $param);
 
+//si el mes es el mismo pero el día inferior aun no ha cumplido años, le quitaremos un año al actual
+
+if (($mese == $mes) && ($diae > $dia)) {
+$ano=($ano-1); }
+
+//si el mes es superior al actual tampoco habrá cumplido años, por eso le quitamos un año al actual
+
+if ($mese > $mes) {
+$ano=($ano-1);}
+
+//ya no habría mas condiciones, ahora simplemente restamos los años y mostramos el resultado como su edad
+
+$edad=($ano-$anoe);
+
+return $edad;
+    }
+
+function ingresarFicha($id,$peso,$altura,$fecha,$imc,$edad) {
+   // calcularEdad($fecha);
+        $conexion=  conectar();
+    $smtp=$conexion->prepare("INSERT INTO ficha_patronimica (id_usuario,peso,altura,fecha_estudio,imc,edad) VALUES(?,?,?,?,?,?)" );
+       $smtp->bind_param("issssi",$id,$peso,$altura,$fecha,$imc,$edad);
+       $smtp->execute();
+       $res=false;
+       if($conexion->affected_rows>0){
+       $res=true;}
+       return $res;
+}
+
+function ingresarDistancia($id,$car_fem,$car_hueco,$hueco_hombro,$hombro_braq,$hombro_rad,$hueco_cuffxell,$cuffxell_fem) {
+        $conexion=  conectar();
+    $smtp=$conexion->prepare("INSERT INTO distancia (id_usuario,car_fem,car_hueco,hueco_hombro,hombro_braq,hombro_rad,hueco_cuffxell,cuffxell_fem) VALUES(?,?,?,?,?,?,?,?)" );
+       $smtp->bind_param("ssssssss",$id,$car_fem,$car_hueco,$hueco_hombro,$hombro_braq,$hombro_rad,$hueco_cuffxell,$cuffxell_fem);
+       $smtp->execute();
+       $res=false;
+       if($conexion->affected_rows>0){
+       $res=true;}
+       return $res;
+}
+function ingresarImt($id,$ci,$cd){
+        $conexion=  conectar();
+    $smtp=$conexion->prepare("INSERT INTO imt (id_usuario,ci,cd) VALUES(?,?,?)" );
+       $smtp->bind_param("sss",$id,$ci,$cd);
+       $smtp->execute();
+       $res=false;
+       if($conexion->affected_rows>0){
+       $res=true;}
+       return $res;
+}
+
+function ingresarRiesgo($id,$fuma,$presion,$colesterol,$hiper,$ant,$seden,$ejer,$medic,$dia) {
+       $conexion=  conectar();
+    $smtp=$conexion->prepare("INSERT INTO riesgo(id_usuario,fuma,presion,colesterol,hiperglicemia,ant_fliares,sedentarismo,ejercicio,medicacion,diabetes)VALUES (?,?,?,?,?,?,?,?,?,?)");
+    $smtp->bind_param('ssssssssss',$id,$fuma,$presion,$colesterol,$hiper,$ant,$seden,$ejer,$medic,$dia);
+    $smtp->execute();
+    $res=$id+"  "+$fuma+" "+$colesterol+"  "+$hiper;
+      if($conexion->affected_rows>0){
+       // $res=true;
+    }
+    return $res;
+    }
+
+function ingresarVop($id,$hemo,$xcell) {
+        $conexion=  conectar();
+    $smtp=$conexion->prepare("INSERT INTO vop(id_usuario,hemo,xcell)VALUES (?,?,?)" );
+       $smtp->bind_param('sss',$id,$hemo,$xcell);
+       $smtp->execute();
+       $res=false;
+       if($conexion->affected_rows>0){
+       $res=true;}
+       return $res;
+}
+
+function ingresarComentario($id,$titulo,$texto) {
+        $conexion=  conectar();
+    $smtp=$conexion->prepare("INSERT INTO comentario(id_usuario,titulo,texto)VALUES (?,?,?)");
+    $smtp->bind_param('sss',$id,$titulo,$texto);
+    $smtp->execute();
+    $res=false;
+       if($conexion->affected_rows>0){
+       $res=true;}
+       return $res;
+}
+function ingresarPresionB($id,$psis,$pdia) {
+        $conexion=  conectar();
+    $smtp=$conexion->prepare("INSERT INTO presion_braquial(id_usuario,psis,pdias)VALUES (?,?,?)" );
+      $smtp->bind_param('sss',$id,$psis,$pdia);
+       $smtp->execute();
+       $res=false;
+       if($conexion->affected_rows>0){
+       $res=true;}
+       return $res;
+
+}
+
+function ingresarPresionC($id,$psis,$pdia) {
+        $conexion=  conectar();
+    $smtp=$conexion->prepare("INSERT INTO presion_central(id_usuario,psis,pdias)VALUES (?,?,?)" );
+      $smtp->bind_param('sss',$id,$psis,$pdia);
+       $smtp->execute();
+       $res=false;
+       if($conexion->affected_rows>0){
+       $res=true;}
+       return $res;
+
+}
+
+function subirArchivo($id,$img) {
+       
+       $res=false;
+       if($conexion->affected_rows>0){
+       $res=true;}
+       return $res;
+
+}

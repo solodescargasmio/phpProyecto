@@ -4,6 +4,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+ header('Content-type: application/json'); 
 ini_set ('display_errors', 'Off');
 error_reporting();
 require_once ('../vendor/deviservi/nusoap/lib/nusoap.php');
@@ -40,6 +41,9 @@ require_once ('funciones.php');
 //return json_encode($dato);
 //
 //     }  
+     $server->register("buscar",
+            array("id" => "xsd:string"),
+        array("return" => "xsd:string"));
     $server->register("traer",
             array("id" => "xsd:string"),
         array("return" => "xsd:string"));
@@ -68,7 +72,37 @@ require_once ('funciones.php');
             array("id" => "xsd:string"),
         array("return" => "xsd:string"));
        $server->register("ingresarUsuario",
-            array("dato" => "xsd:string"),
+            array("id" => "xsd:string","nombre" => "xsd:string","apellido" => "xsd:string","fecha" => "xsd:string","sexo" => "xsd:string"),
+        array("return" => "xsd:string"));
+       $server->register("ingresarFicha",
+            array("id" => "xsd:string","peso" => "xsd:string","altura" => "xsd:string","fecha" => "xsd:string","imc" => "xsd:string","edad" => "xsd:string"),
+        array("return" => "xsd:string"));
+       $server->register("ingresarDistancia",
+        array("id" => "xsd:string","car_fem" => "xsd:string","car_hueco" => "xsd:string","hueco_hombro" => "xsd:string",
+            "hombro_braq" => "xsd:string","hombro_rad" => "xsd:string","hueco_cuffxell" => "xsd:string","cuffxell_fem" => "xsd:string"),
+        array("return" => "xsd:string"));
+       $server->register("ingresarImt",
+            array("id" => "xsd:string","ci" => "xsd:string","cd" => "xsd:string"),
+        array("return" => "xsd:string"));
+       $server->register("ingresarRiesgo",            
+     array("id" => "xsd:string","fuma" => "xsd:string","presion" => "xsd:string","colesterol" => "xsd:string",
+         "hiper" => "xsd:string","ant" => "xsd:string","seden" => "xsd:string",
+         "ejer" => "xsd:string","medic" => "xsd:string","dia" => "xsd:string"),
+        array("return" => "xsd:string"),"urn:ingresarRiesgo","urn:ingresar#ingresarRiesgo" );
+       $server->register("ingresarVop",
+            array("id" => "xsd:string","hemo" => "xsd:string","xcell" => "xsd:string"),
+        array("return" => "xsd:string"));
+       $server->register("ingresarComentario",
+            array("id" => "xsd:string","titulo" => "xsd:string","texto" => "xsd:string"),
+        array("return" => "xsd:string"));
+       $server->register("ingresarPresionB",
+            array("id" => "xsd:string","psis" => "xsd:string","pdia" => "xsd:string"),
+        array("return" => "xsd:string"));
+       $server->register("ingresarPresionC",
+            array("id" => "xsd:string","psis" => "xsd:string","pdia" => "xsd:string"),
+        array("return" => "xsd:string"));
+       $server->register("subirArchivo",
+            array("id" => "xsd:string","img" => "xsd:string"),
         array("return" => "xsd:string"));
  $HTTP_RAW_POST_DATA = isset($HTTP_RAW_POST_DATA) ? $HTTP_RAW_POST_DATA : '';
     $server->service($HTTP_RAW_POST_DATA);
